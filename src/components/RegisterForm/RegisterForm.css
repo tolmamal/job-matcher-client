@@ -1,0 +1,15 @@
+#register-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#register-form .user-fields {
+    display: flex;
+    flex-direction: column;
+}
+
+#register-form .tags-selections {
+    width: 20%;
+}

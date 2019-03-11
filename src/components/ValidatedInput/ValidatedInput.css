@@ -1,0 +1,12 @@
+.validated-input {
+    min-width: 200px;
+    min-height: 40px;
+    border-radius: 5px;
+    margin: 5px;
+    outline: none;
+    direction: rtl;
+}
+
+.validated-input.invalid {
+    border: 1px solid red;
+}
