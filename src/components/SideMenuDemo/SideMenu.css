@@ -8,8 +8,8 @@
 }
  body {
 	 height: 100%;
-	 /* background: #444; */
-	 /* color: #fffce1; */
+	 background: #444;
+	 color: #fffce1;
 	 font-family: 'Raleway', Arial, sans-serif;
 }
  #app {
@@ -39,7 +39,31 @@
 	 line-height: 1.3em;
 	 font-weight: 400;
 }
- 
+ .demo-buttons {
+	 font-size: 1em;
+	 max-width: 1200px;
+	 margin: 2em auto 3em;
+	 padding: 0 10em;
+}
+ .demo-buttons a {
+	 display: inline-block;
+	 margin: 0.75em;
+	 padding: 1.35em 1.1em;
+	 width: 15em;
+	 background: #fffce1;
+	 text-transform: uppercase;
+	 letter-spacing: 1px;
+	 font-weight: 800;
+	 border-top-left-radius: 20px 50px;
+	 border-top-right-radius: 20px 50px;
+	 border-bottom-right-radius: 20px 50px;
+	 border-bottom-left-radius: 20px 50px;
+	 cursor: pointer;
+}
+ .demo-buttons a.current-demo {
+	 background: #c94e50;
+	 color: #fffce1;
+}
  .side-button {
 	 display: inline-block;
 	 width: 5em;
@@ -77,7 +101,6 @@
 		 padding: 0 2em;
 	}
 }
-
  .bm-burger-button {
 	 position: fixed;
 	 width: 36px;
