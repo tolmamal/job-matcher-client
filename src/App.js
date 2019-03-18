@@ -7,7 +7,7 @@ import RegisterForm from "./components/RegisterForm/RegisterForm";
 
 
 function Index() {
-    return <h2>Home</h2>;
+    return <h2>Job Matcher</h2>;
         
 }
 

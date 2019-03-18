@@ -8,8 +8,11 @@
 #register-form .user-fields {
     display: flex;
     flex-direction: column;
+    
 }
 
 #register-form .tags-selections {
     width: 20%;
 }
+
+
