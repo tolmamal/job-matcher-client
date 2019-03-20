@@ -1,0 +1,12 @@
+.instructions {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+li,ul 
+    {
+            text-align: right;
+            list-style-type: none;
+    }
