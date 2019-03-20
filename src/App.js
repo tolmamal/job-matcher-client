@@ -4,6 +4,9 @@ import './App.css';
 import {BrowserRouter as Router, Route, Link, Switch} from "react-router-dom";
 import SideMenu from "./components/SideMenu/SideMenu";
 import RegisterForm from "./components/RegisterForm/RegisterForm";
+import UserPage from "./components/UserPage/UserPage";
+
+
 
 
 function Index() {
@@ -31,7 +34,7 @@ function AppRouter() {
                     <Route path="/about/" component={About}/>
                     <Route path="/users/" component={Users}/>
                     <Route path="/register/" component={RegisterForm}/>
-                    {/* <Route path="/user/:id/" component={UserPage}/> */}
+                    <Route path="/user/:id/" component={UserPage}/> 
                 </Switch>
             </div>
         </Router>

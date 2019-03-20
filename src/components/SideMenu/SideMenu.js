@@ -105,6 +105,8 @@ class Demo extends Component {
     //       <a key="5" href=""><i className="fa fa-fw fa-newspaper-o" /><span>Reading List</span></a>
     //     ];
     // }
+    
+    // Tal //
 
     return items;
   }
@@ -184,7 +186,7 @@ class SideMenu extends Component {
         <BurgerMenu.slide>
           <Link to='/'>Home</Link>
           <Link to='/about'>About</Link>
-          <Link to='/users'>Users</Link>
+          {/* <Link to='/users'>Users</Link> */}
           <Link to='/register'>Register</Link>
         </BurgerMenu.slide>
     );
