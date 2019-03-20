@@ -184,6 +184,7 @@ class SideMenu extends Component {
         <BurgerMenu.slide>
           <Link to='/'>Home</Link>
           <Link to='/about'>About</Link>
+          <Link to='/Instructions'>Instructions</Link>
           <Link to='/users'>Users</Link>
           <Link to='/register'>Register</Link>
         </BurgerMenu.slide>
