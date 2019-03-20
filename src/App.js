@@ -5,6 +5,9 @@ import {BrowserRouter as Router, Route, Link, Switch} from "react-router-dom";
 import SideMenu from "./components/SideMenu/SideMenu";
 import RegisterForm from "./components/RegisterForm/RegisterForm";
 import About from "./components/About/About"
+import Instructions from "./components/Instructions/Instructions";
+
+
 function Index() {
     return <h2>Job Matcher</h2>;
         
@@ -30,6 +33,7 @@ function AppRouter() {
                     <Route path="/about/" component={About}/>
                     <Route path="/users/" component={Users}/>
                     <Route path="/register/" component={RegisterForm}/>
+                    <Route path="/instructions/" component={Instructions}/>
                     {/* <Route path="/user/:id/" component={UserPage}/> */}
                 </Switch>
             </div>
