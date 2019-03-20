@@ -4,16 +4,15 @@ import './App.css';
 import {BrowserRouter as Router, Route, Link, Switch} from "react-router-dom";
 import SideMenu from "./components/SideMenu/SideMenu";
 import RegisterForm from "./components/RegisterForm/RegisterForm";
-
-
+import About from "./components/About/About"
 function Index() {
     return <h2>Job Matcher</h2>;
         
 }
 
-function About () {
+/*function About () {
     return <h2>About</h2>;
-}
+}*/
 
 
 function Users() {
