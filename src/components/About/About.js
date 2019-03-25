@@ -7,7 +7,6 @@ import Body from "./Body";
 class About extends Component {
   constructor(props) {
     super(props);
-
     this.state = {};
   }
 

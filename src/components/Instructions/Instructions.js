@@ -15,7 +15,8 @@ class Instructions extends Component {
         show: false
     }
 
-    showModal = () => { 
+    showModal = (event) => {
+        console.log(event.currentTarget.name)
         this.setState( {  //update the state - change the state
             ...this.state,  // takes all the values of state
             show: !this.state.show  // change the value of show: if show = true we change show = false and opposite

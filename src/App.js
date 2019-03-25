@@ -8,6 +8,12 @@ import UserPage from "./components/UserPage/UserPage";
 import About from "./components/About/About"
 import Instructions from "./components/Instructions/Instructions";
 import Home from "./components/Home/Home";
+import SignIn from "./components/SignIn/SignIn";
+
+
+// import About from "./components/About/About"
+// import Instructions from "./components/Instructions/Instructions";
+
 
 function Index() {
     return <h2>Job Matcher</h2>;
@@ -24,6 +30,8 @@ function Users() {
 }
 
 function AppRouter() {
+    // let logged = false;
+
     return (
         <Router>
             <div className="app-container">
@@ -33,6 +41,7 @@ function AppRouter() {
                     {/* <Route path="/menu/" component={SideMenu}/> */}
                     <Route path="/about/" component={About}/>
                     <Route path="/users/" component={Users}/>
+                    <Route path="/signin/" component={SignIn}/>
                     <Route path="/register/" component={RegisterForm}/>
                     <Route path="/user/:id/" component={UserPage}/> 
                     <Route path="/instructions/" component={Instructions}/>
