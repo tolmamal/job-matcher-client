@@ -4,10 +4,10 @@ import BurgerMenu from 'react-burger-menu';
 
 import classNames from 'classnames';
 import './SideMenu.css';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 class MenuWrap extends Component {
-  constructor (props) {
+  constructor(props) {
     super(props);
     this.state = {
       hidden: false
@@ -18,7 +18,7 @@ class MenuWrap extends Component {
     const sideChanged = this.props.children.props.right !== nextProps.children.props.right;
 
     if (sideChanged) {
-      this.setState({hidden : true});
+      this.setState({ hidden: true });
 
       setTimeout(() => {
         this.show();
@@ -27,14 +27,14 @@ class MenuWrap extends Component {
   }
 
   show() {
-    this.setState({hidden : false});
+    this.setState({ hidden: false });
   }
 
   render() {
     let style;
 
     if (this.state.hidden) {
-      style = {display: 'none'};
+      style = { display: 'none' };
     }
 
     return (
@@ -46,7 +46,7 @@ class MenuWrap extends Component {
 }
 
 class Demo extends Component {
-  constructor (props) {
+  constructor(props) {
     super(props);
     this.state = {
       currentMenu: 'slide',
@@ -55,11 +55,11 @@ class Demo extends Component {
   }
 
   changeMenu(menu) {
-    this.setState({currentMenu: menu});
+    this.setState({ currentMenu: menu });
   }
 
   changeSide(side) {
-    this.setState({side});
+    this.setState({ side });
   }
 
   getItems() {
@@ -105,7 +105,7 @@ class Demo extends Component {
     //       <a key="5" href=""><i className="fa fa-fw fa-newspaper-o" /><span>Reading List</span></a>
     //     ];
     // }
-    
+
     // Tal //
 
     return items;
@@ -141,7 +141,7 @@ class Demo extends Component {
     const buttons = Object.keys(this.props.menus).map((menu) => {
       return (
         <a key={menu}
-          className={classNames({'current-demo': menu === this.state.currentMenu})}
+          className={classNames({ 'current-demo': menu === this.state.currentMenu })}
           onClick={this.changeMenu.bind(this, menu)}>
           {this.props.menus[menu].buttonText}
         </a>
@@ -149,12 +149,12 @@ class Demo extends Component {
     });
 
     return (
-      <div id="outer-container" style={{height: '100%'}}>
+      <div id="outer-container" style={{ height: '100%' }}>
         {this.getMenu()}
         <main id="page-wrap">
           <h1><a href="https://github.com/negomi/react-burger-menu">react-burger-menu</a></h1>
-          <a className={classNames({'side-button': true, 'left': true, 'active': this.state.side === 'left'})} onClick={this.changeSide.bind(this, 'left')}>Left</a>
-          <a className={classNames({'side-button': true, 'right': true, 'active': this.state.side === 'right'})} onClick={this.changeSide.bind(this, 'right')}>Right</a>
+          <a className={classNames({ 'side-button': true, 'left': true, 'active': this.state.side === 'left' })} onClick={this.changeSide.bind(this, 'left')}>Left</a>
+          <a className={classNames({ 'side-button': true, 'right': true, 'active': this.state.side === 'right' })} onClick={this.changeSide.bind(this, 'right')}>Right</a>
           <h2 className="description">An off-canvas sidebar React component with a collection of effects and styles using CSS transitions and SVG path animations.</h2>
           <nav className="demo-buttons">
             {buttons}
@@ -167,34 +167,51 @@ class Demo extends Component {
 }
 
 const menus = {
-  slide: {buttonText: 'Slide', items: 1},
-  stack: {buttonText: 'Stack', items: 1},
-  elastic: {buttonText: 'Elastic', items: 1},
-  bubble: {buttonText: 'Bubble', items: 1},
-  push: {buttonText: 'Push', items: 1},
-  pushRotate: {buttonText: 'Push Rotate', items: 2},
-  scaleDown: {buttonText: 'Scale Down', items: 2},
-  scaleRotate: {buttonText: 'Scale Rotate', items: 2},
-  fallDown: {buttonText: 'Fall Down', items: 2},
-  reveal: {buttonText: 'Reveal', items: 1}
+  slide: { buttonText: 'Slide', items: 1 },
+  stack: { buttonText: 'Stack', items: 1 },
+  elastic: { buttonText: 'Elastic', items: 1 },
+  bubble: { buttonText: 'Bubble', items: 1 },
+  push: { buttonText: 'Push', items: 1 },
+  pushRotate: { buttonText: 'Push Rotate', items: 2 },
+  scaleDown: { buttonText: 'Scale Down', items: 2 },
+  scaleRotate: { buttonText: 'Scale Rotate', items: 2 },
+  fallDown: { buttonText: 'Fall Down', items: 2 },
+  reveal: { buttonText: 'Reveal', items: 1 }
 };
 
 
+const SIDE_MENU_ITEMS = {
+  GUEST: [
+    { link: (data) => '/', label: 'Home' },
+    { link: (data) => '/about', label: 'About' },
+    { link: (data) => '/instructions', label: 'Instructions' },
+    { link: (data) => '/register', label: 'Register' },
+    { link: (data) => '/signin', label: 'Sign In' },
+  ],
+  USER: [
+    { link: (data) => '/', label: 'Home' },
+    { link: (data) => '/about', label: 'About' },
+    { link: (data) => '/instructions', label: 'Instructions' },
+    { link: (data) => `/user/${data.id}`, label: 'User Page' },
+    { link: (data) => '/logout', label: 'Log Out' },
+  ]
+};
+
 class SideMenu extends Component {
+  getUserType = () => {
+    return 'USER';
+  }
+
   render() {
-    return (
-        <BurgerMenu.slide>
-          <Link to='/'>Home</Link>
-          <Link to='/about'>About</Link>
-<<<<<<< HEAD
-          {/* <Link to='/users'>Users</Link> */}
-=======
-          <Link to='/Instructions'>Instructions</Link>
-          <Link to='/users'>Users</Link>
->>>>>>> 7f733f4dcae6601417519dc53d4444d656c05a5e
-          <Link to='/register'>Register</Link>
-        </BurgerMenu.slide>
-    );
+    const userType = this.getUserType();
+    const userData = userType === 'USER' ? { id: 100 } : {};
+    return <BurgerMenu.slide>
+      {
+        SIDE_MENU_ITEMS[userType].map((item, index) => (
+          <Link key={index} to={item.link(userData)}>{item.label}</Link>
+        ))
+      }
+    </BurgerMenu.slide>
   }
 }
 

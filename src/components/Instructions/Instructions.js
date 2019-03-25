@@ -12,7 +12,8 @@ class Instructions extends Component {
         show: false
     }
 
-    showModal = () => { 
+    showModal = (event) => {
+        console.log(event.currentTarget.name)
         this.setState( {  //update the state - change the state
             ...this.state,  // takes all the values of state
             show: !this.state.show  // change the value of show: if show = true we change show = false and opposite
@@ -35,7 +36,7 @@ class Instructions extends Component {
                 <h4>עבור משתמש רשום</h4>
                 <ul>
                 <li> סינון משרות לפי: מיקום/אחוזים/סוג משרה/תחום/הגשת קו"ח</li>
-                <input type="url" onClick={this.showModal} value="Show Modal" />
+                <input type="button" name="sort_video" onClick={this.showModal} value="Show Modal" />
                 <Modal
                     onClose={this.showModal} 
                     show={this.state.show}>
