@@ -10,3 +10,79 @@ li,ul
             text-align: right;
             list-style-type: none;
     }
+
+
+
+.header {
+    position: relative;
+    /*display: block;*/
+    height: 70px;
+    width: 100%;
+    background: white;
+    color:black;
+    font-size: xx-large;
+
+}
+
+
+
+.p{
+    /*position: relative;*/
+    display: block;
+    height: 100%;
+    background:white;
+    color:black;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: right;
+    
+}
+
+.body{
+    /*font-family:'Baloo Chettan', cursive;*/
+    font-size: medium;
+    color: black;
+    font-weight:400;
+    font-style: normal;
+    background:white;
+}
+
+.footer{
+    color: black;
+    font-weight:400;
+    font-style: normal;
+    background:gray;
+    position: static;
+    bottom: 0px;
+    width: 100%;
+    height: auto;
+    
+}
+
+
+.button {
+    border: none;
+    cursor: pointer;
+    color:black;
+    font-size: inherit;
+    cursor: pointer;
+    display:inline-block;
+    padding:12px 12px;
+    text-align: right;
+    
+    border-radius:10px;
+}
+
+.Input{
+    color:black;
+    font-size: inherit;
+    cursor: pointer;
+    /*line-height: normal;*/
+    border: none;
+    /*border-radius:10px;*/
+    display:inline-block;
+    padding:12px 12px;
+    text-align: right;
+    align-content: center;
+    text-decoration: underline;
+    font-family: 'Baloo Chettan', cursive;
+}
