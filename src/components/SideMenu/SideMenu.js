@@ -186,12 +186,9 @@ class SideMenu extends Component {
         <BurgerMenu.slide>
           <Link to='/'>Home</Link>
           <Link to='/about'>About</Link>
-<<<<<<< HEAD
           {/* <Link to='/users'>Users</Link> */}
-=======
           <Link to='/Instructions'>Instructions</Link>
           <Link to='/users'>Users</Link>
->>>>>>> 7f733f4dcae6601417519dc53d4444d656c05a5e
           <Link to='/register'>Register</Link>
         </BurgerMenu.slide>
     );

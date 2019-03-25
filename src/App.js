@@ -4,14 +4,11 @@ import './App.css';
 import {BrowserRouter as Router, Route, Link, Switch} from "react-router-dom";
 import SideMenu from "./components/SideMenu/SideMenu";
 import RegisterForm from "./components/RegisterForm/RegisterForm";
-<<<<<<< HEAD
 import UserPage from "./components/UserPage/UserPage";
 
 
-=======
 import About from "./components/About/About"
 import Instructions from "./components/Instructions/Instructions";
->>>>>>> 7f733f4dcae6601417519dc53d4444d656c05a5e
 
 
 function Index() {
@@ -39,12 +36,9 @@ function AppRouter() {
                     <Route path="/about/" component={About}/>
                     <Route path="/users/" component={Users}/>
                     <Route path="/register/" component={RegisterForm}/>
-<<<<<<< HEAD
                     <Route path="/user/:id/" component={UserPage}/> 
-=======
                     <Route path="/instructions/" component={Instructions}/>
                     {/* <Route path="/user/:id/" component={UserPage}/> */}
->>>>>>> 7f733f4dcae6601417519dc53d4444d656c05a5e
                 </Switch>
             </div>
         </Router>
