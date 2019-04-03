@@ -14,7 +14,7 @@
     /*position: relative;
     display: block;*/
     color: black;
-    font-size: larger;
+    font-size: xx-large;
 
 }
 
@@ -22,7 +22,7 @@
 .pp{
     /*position: relative;*/
     display: block;
-    /*height: 100%;*/
+    /*height: auto;*/
     background:white;
     color:black;
     font-family: 'Heebo', sans-serif;
@@ -30,56 +30,39 @@
     /*font-family:'Assistant',sans-serif;*/
 }
 
-/*ul li {
-    list-style-type: none;
-    display: inline-block;
-    margin-right: 10px;
-    
-}*/
-
-
-
 .body{
     /*font-family:'Baloo Chettan', cursive;*/
     font-size: medium;
     color: black;
-    /*font-weight:400;*/
     font-style: normal;
     background:white;
     height: 665px;
     width: 100%;
+    font-weight:400;
 }
 
 .footer{
+    
     color: black;
     font-weight:400;
     font-style: normal;
     background:gray;
     position: static;
-    /*bottom: 0px;*/
-    width: 100%;
     height: auto;
+    width: 100.0%;
+
     
 }
 
-/*a{
-    font-size: 19px;
-    line-height: normal;
-    color: white;
-    -webkit-transition: .4s ease-in-out;
-    -moz-transition: .4s ease-in-out;
-    transition:.4s ease-in-out;
-    cursor: pointer;
-    text-decoration: none;
+.tr{
+    padding: 100.06%;
+}
+.td{
+    text-align:center;
+    /*position: unset;*/ 
+    width: 100.01%;
+    height: auto;
+
     
 }
 
-.logo {
-    position: absolute;
-    top: 50%;
-    left: 15px;
-    -webkit-transform: translateY(-50%);
-    -moz-transform: translateY(-50%);
-    transform: translateY(-50%);
-
-}*/

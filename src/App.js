@@ -1,14 +1,18 @@
 import React, {Component} from 'react';
-import logo from './logo.svg';
+
 import './App.css';
-import {BrowserRouter as Router, Route, Link, Switch} from "react-router-dom";
+import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import SideMenu from "./components/SideMenu/SideMenu";
 import RegisterForm from "./components/RegisterForm/RegisterForm";
 import UserPage from "./components/UserPage/UserPage";
-
-
 import About from "./components/About/About"
 import Instructions from "./components/Instructions/Instructions";
+import Home from "./components/Home/Home";
+import SignIn from "./components/SignIn/SignIn";
+import Jobs from "./components/Jobs/Jobs";
+
+// import About from "./components/About/About"
+// import Instructions from "./components/Instructions/Instructions";
 
 
 function Index() {
@@ -26,18 +30,22 @@ function Users() {
 }
 
 function AppRouter() {
+    // let logged = false;
+
     return (
         <Router>
             <div className="app-container">
                 <SideMenu/>
                 <Switch>
-                    <Route path="/" exact component={Index}/>
+                    <Route path="/" exact component={Home}/>
                     {/* <Route path="/menu/" component={SideMenu}/> */}
                     <Route path="/about/" component={About}/>
                     <Route path="/users/" component={Users}/>
+                    <Route path="/signin/" component={SignIn}/>
                     <Route path="/register/" component={RegisterForm}/>
                     <Route path="/user/:id/" component={UserPage}/> 
                     <Route path="/instructions/" component={Instructions}/>
+                    <Route path="/jobs/" component={Jobs}/>
                     {/* <Route path="/user/:id/" component={UserPage}/> */}
                 </Switch>
             </div>

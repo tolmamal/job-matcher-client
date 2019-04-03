@@ -74,7 +74,7 @@ class RegisterForm extends Component {
     };
 
     render() {
-        const { email, password, confirmPassword, selectedTags, formValid } = this.state;
+        const { first_name,last_name, email, password, confirmPassword, selectedTags, formValid } = this.state;
 
         return (
             <div id="register-form" className="container">
@@ -84,8 +84,8 @@ class RegisterForm extends Component {
                 <br></br>
                 <br></br>
                 <div className="user-fields">
-                    <ValidatedInput onInputChange={this.onInputChange} name="first_name" value={email} placeholder="First name" valid={formValid} />
-                    <ValidatedInput onInputChange={this.onInputChange} name="last_name" value={email} placeholder="Last name" valid={formValid} />
+                    <ValidatedInput onInputChange={this.onInputChange} name="first_name" value={first_name} placeholder="First name" valid={formValid} />
+                    <ValidatedInput onInputChange={this.onInputChange} name="last_name" value={last_name} placeholder="Last name" valid={formValid} />
                     <ValidatedInput onInputChange={this.onInputChange} name="email" value={email} placeholder="Email" valid={formValid || Utils.validateEmail(email)} />
                     <ValidatedInput onInputChange={this.onInputChange} name="password" value={password} type="password" placeholder="Password" valid={formValid} />
                     <ValidatedInput onInputChange={this.onInputChange} name="confirmPassword" value={confirmPassword} type="password" placeholder="Re-enter password" valid={formValid} />

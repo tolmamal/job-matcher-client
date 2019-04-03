@@ -2,11 +2,12 @@ import React, { Component } from "react";
 //import "./About.css";
 import Header from "./Header";
 import Footer from "./Fotter";
-import Body from "./Body";
+import Div from "./Div";
 
-class About extends Component {
+class Home extends Component {
   constructor(props) {
     super(props);
+
     this.state = {};
   }
 
@@ -14,11 +15,11 @@ class About extends Component {
     return (
       <div>
         <Header />
-        <Body />
+        <Div />
         <Footer/>
       </div>
     );
   }
 }
 
-export default About;
+export default Home;
