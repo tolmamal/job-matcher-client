@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
+// import ReactDOM from 'react-dom';
 import BurgerMenu from 'react-burger-menu';
-
 import classNames from 'classnames';
 import './SideMenu.css';
 import { Link } from 'react-router-dom';
