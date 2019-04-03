@@ -5,6 +5,8 @@ import BurgerMenu from 'react-burger-menu';
 import classNames from 'classnames';
 import './SideMenu.css';
 import { Link } from 'react-router-dom';
+import { getToken } from '../../utils/axios';
+import jwt_decode from 'jwt-decode';
 
 class MenuWrap extends Component {
   constructor(props) {
@@ -202,10 +204,22 @@ class SideMenu extends Component {
     return 'USER';
   }
 
+  getUserWelcome = () => {
+    const token = getToken();
+    if(!token){
+      return <Link to='/signin'>Login</Link>;
+    }
+    const data = jwt_decode(token);
+    
+    return <label>hello {data.user.fullname}</label>
+  }
+
   render() {
     const userType = this.getUserType();
     const userData = userType === 'USER' ? { id: 100 } : {};
+    const userWelcome = this.getUserWelcome();
     return <BurgerMenu.slide>
+      {userWelcome}
       {
         SIDE_MENU_ITEMS[userType].map((item, index) => (
           <Link key={index} to={item.link(userData)}>{item.label}</Link>
