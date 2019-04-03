@@ -2,31 +2,37 @@ import React from "react";
 import PropTypes from 'prop-types';
 
 // create gray backgroun -> define after in css file
-const backdropStyle = {
-    position: 'fixed',
-    top: 0,
-    buttom: 0,
-    left:0,
-    right: 0,
-    backgroundColor: 'rgba(0,0,0,0.2)',
-    padding: 50
-}
+// const backdropStyle = {
+//     position: 'fixed',
+//     top: 0,
+//     buttom: 0,
+//     left:0,
+//     right: 0,
+//     backgroundColor: 'rgba(0,0,0,0.2)',
+//     padding: 50,
+//     display:'none'
+// };
 
 // create modal style -> css
-const modalStyle = {
-    backgroundColor: '#fff',
-    borderRadius: 5,
-    maxWidth: 500,
-    minHeight: 300,
-    margin: ' 0 auto',
-    padding: 30,
-    position: "relative"
-};
+// const modalStyle = {
+//     backgroundColor: '#fff',
+//     borderRadius: 5,
+//     maxWidth: 500,
+//     minHeight: 300,
+//     margin: ' 0 auto',
+//     padding: 30,
+//     position: "relative"
+// };
 
-const footerStyle = {
-    position: "absolute",
-    bottom: 20
-};
+// const footerStyle = {
+//     position: "absolute",
+//     bottom: 20
+// };
+
+// const vvv={
+//     type: "video/mp4",
+//      position: "relative",
+// };
 
 export default class Modal extends React.Component {
     onClose = (e) => {
@@ -55,10 +61,14 @@ export default class Modal extends React.Component {
             return null;
         }
         return (
-            <div style={backdropStyle}>
-                <div style={modalStyle}>
+            <div className="backdropStyle">
+                <div className="modalStyle">
                     {this.props.children}
-                    <div style={footerStyle}>
+                    <div className="footerStyle">
+                    <video width="320" height="240" controls >
+                        <source src="https://www.youtube.com/watch?v=sJUGAIf1Px0" className="vvv" preload="metadata"/>
+                        {/* <source src="movie.ogg" type="video/ogg"/> */}
+                    </video>
                     <button onClick={(e) => {this.onClose(e)}}>
                         close
                     </button>

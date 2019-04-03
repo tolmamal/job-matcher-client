@@ -1,8 +1,9 @@
 import React, { Component } from "react";
-//import "./About.css";
 import Header from "./Header";
 import Footer from "./Fotter";
-import Div from "./Div";
+import Body from "../Home/Body";
+import Bbb from "../Bbb/bbb"
+import SlideShow from "../SlideShow/SlideShow"
 
 class Home extends Component {
   constructor(props) {
@@ -15,7 +16,9 @@ class Home extends Component {
     return (
       <div>
         <Header />
-        <Div />
+        <Body />
+        <SlideShow/>
+        <Bbb/>
         <Footer/>
       </div>
     );
