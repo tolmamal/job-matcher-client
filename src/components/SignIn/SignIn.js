@@ -1,140 +1,106 @@
 import React, { Component } from 'react';
 import './SignIn.css';
-
-
-
-
-
-
+import axiosInstance from '../../utils/axios';
+import Utils from "../../utils/Utils";
+import ValidatedInput from "../ValidatedInput";
+import jwt_decode from 'jwt-decode';
 
 
 class SignIn extends Component {
 
-    state = {
-        controls: {
-            email: {
-                elementType: 'input',
-                elementConfig: {
-                    type: 'text',
-                    placeholder: 'E-mail'
-                },
-                value: '',
-                validation: {
-                    required: true,
-                    isEmail: true
-                },
-                valid: false,
-                touched: false
-            },
-            password: {
-                elementType: 'input',
-                elementConfig: {
-                    type: 'text',
-                    placeholder: 'Password'
-                },
-                value: '',
-                validation: {
-                    required: true,
-                    minLength: 5
-                },
-                valid: false,
-                touched: false
+    constructor(props) {
+        super(props);
 
-            }
-        }
-    }
+        this.state = {
+            email: "",
+            password: "",
+            formValid: true
 
-
-    checkValidity(value, rules) {
-        let isValid = true;
-        if (!rules) {
-            return true;
-        }
-
-        if (rules.required) {
-            isValid = value.trim() !== '' && isValid;
-        }
-
-        if (rules.minLength) {
-            isValid = value.length >= rules.minLength && isValid;
-        }
-
-        if (rules.maxLength) {
-            isValid = value.length <= rules.maxLength && isValid;
-        }
-
-        if (rules.isEmail) {
-            const pattern = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
-            isValid = pattern.test(value) && isValid;
-        }
-
-        if (rules.isNumeric) {
-            const pattern = /^\d+$/;
-            isValid = pattern.test(value) && isValid;
-        }
-
-        return isValid;
-
-    }
-
-
-    inputChangedHandler = (event, controlName) => {
-        const updatedControls = {
-            ...this.state.controls,
-            [controlName]: {
-                ...this.state.controls[controlName],
-                value: event.target.value,
-                valid: this.checkValidity(event.target.value, this.state.controls[controlName].validation),
-                touched: true
-            }
         };
-        this.setState({ controls: updatedControls });
+
+
     }
 
-    submitHandler = (event) => {
-        event.preventDefault();
-        this.props.onAuth(this.state.controls.email.value, this.state.controls.password.value);
-    }
+    onInputChange = ({ target: { name, value } }) => {
+        this.setState({ [name]: value });
+    };
 
-    render() {
-        const formElementsArray = [];
-        for(let key  in this.state.controls){
-            formElementsArray.push({
-                id: key,
-                config: this.state.controls[key]
+    isValid = () => {
+        const { email, password } = this.state;
+        return Utils.validateEmail(email)
+            && password.length >= 5
 
-            });
+    };
+
+    submitForm = async () => {
+        if (!this.isValid()) {
+            this.setState({ formValid: false });
+            return;
+        }
+        const { state } = this;
+        const body = {
+            email: state.email,
+            password: state.password
+
+        };
+
+        try {
 
         }
-        
+        catch (e) {
+            console.log(e);
 
-    }
-
-
-
+        }
 
 
 
 
+    };
 
 
 
+    submitHandler = async () => {
+        if(!this.isValid()){
+            this.setState({formValid: false});
+            return;
+        }
+        const { email, password } = this.state;
+        try {
+            const response = await axiosInstance.post('/auth', { email, password });
+            const { data: { token } } = response;
+            localStorage.setItem('token', token);
+            this.setState({ error: null, formValid: true });
+        } catch (e) {
+            this.setState({ error: 'Invalid Email/Password' });
+        }
 
 
+        // const data = jwt_decode(token);
+        // const userId = data.user.id;
+        // just an experiment on using PUT endpoint with user id in the url
+        // const test = await axiosInstance.put(`/user/${userId}/update`, {});
+    };
 
 
 
     render() {
+        const { email, password, formValid, error } = this.state;
         return (
+
             <div id="signin-form" className="container">
-                <h3>Sign In</h3>
-                <br></br>
-                <br></br>
-                <br></br>
-                <div className="user-fields">
-
+                <div className="container">
+                    <h2>Sign In</h2>
+                    <hr style={{ width: '40%' }} />
+                    {
+                        error &&
+                        <label style={{ color: 'red' }}>{error}</label>
+                    }
+                    <div className="user-fields">
+                        <ValidatedInput onInputChange={this.onInputChange} name="email" value={email} placeholder="Email" valid={formValid || Utils.validateEmail(email)} />
+                        <ValidatedInput onInputChange={this.onInputChange} name="password" value={password} type="password" placeholder="Password" valid={formValid} />
+                    </div>
+                    <button className="Button" onClick={this.submitHandler}>Sign In</button>
                 </div>
-
             </div>
 
         );

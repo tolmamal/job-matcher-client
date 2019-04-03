@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './UserPage.css';
+import UserMenu from '../UserMenu/UserMenu';
 
 
 class UserPage extends Component {
@@ -11,9 +12,10 @@ class UserPage extends Component {
     render () {
         return(
             <div>
+                <UserMenu/>
+                <br></br>
+                <br></br>
                 
-                <br></br>
-                <br></br>
                 <p>Hello User!</p>
 
                 

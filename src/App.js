@@ -10,6 +10,7 @@ import Instructions from "./components/Instructions/Instructions";
 import Home from "./components/Home/Home";
 import SignIn from "./components/SignIn/SignIn";
 import Jobs from "./components/Jobs/Jobs";
+// import UserMenu from "./components/UserMenu/UserMenu"
 
 // import About from "./components/About/About"
 // import Instructions from "./components/Instructions/Instructions";
@@ -30,7 +31,7 @@ function Users() {
 }
 
 function AppRouter() {
-    // let logged = false;
+    
 
     return (
         <Router>

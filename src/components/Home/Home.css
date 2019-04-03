@@ -7,6 +7,7 @@
     background: white;
     color:black;
     font-size: xx-large;
+    
 
 }
 
@@ -15,6 +16,7 @@
     display: block;*/
     color: black;
     font-size: xx-large;
+    block-size: 100%;
 
 }
 
@@ -36,9 +38,10 @@
     color: black;
     font-style: normal;
     background:white;
-    height: 665px;
+    height:550px;
     width: 100%;
     font-weight:400;
+    block-size: 100%;
 }
 
 .footer{
@@ -47,22 +50,61 @@
     font-weight:400;
     font-style: normal;
     background:gray;
-    position: static;
+    position: relative;
     height: auto;
-    width: 100.0%;
-
-    
+    width: 100%;
+    bottom: 0px;
 }
 
 .tr{
-    padding: 100.06%;
+    /* align-self: center;
+    align-content: center;
+    align-items: center;
+    vertical-align: middle;
+    height: auto;
+    block-size: 100%; */
+    /* padding: 100.06%; */
+    margin-bottom: 0%;
 }
 .td{
-    text-align:center;
-    /*position: unset;*/ 
-    width: 100.01%;
-    height: auto;
+    /* block-size: 50%;
+    vertical-align: middle;
+    align-self: center;
+    align-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;  */
+    width: 9.9%;
+    margin-bottom: 0%;
+    /* float: center; */
+    /* height: 9.9%; */
+   
+}
+.Img{
+    margin-top: 5px;
+    block-size: 60%; 
+    width: 100%;
+    position: relative; 
+}
+.divImg{
+    /* width: 155px; */
+    /* min-height: 274px; */
+    margin-right: 12px;
+    /* margin-top: 10%; */
+    /* margin-bottom: 0px; */
+    /* background-color: white; */
+    /* border: 1px solid #E0DCDC; */
+    /* border-radius: 3px; */
+    padding: 0 15px 0 15px;
+    /* background-image: url(//ksp.co.il/images/tablesbg.jpg); */
+    /* position: relative; */
+    block-size: 500px;
+    display: block;
+}
 
-    
+.table{
+    block-size: 100%;
+    /* margin-bottom: 0%;
+    height: 300px; */
 }
 
