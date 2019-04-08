@@ -12,7 +12,7 @@ class SlideShow extends Component {
 
     
 
-showSlides=(n)=> {
+    showSlides=(n)=> {
         this.slideIndex=n;
         var i;
         var slides = document.getElementsByClassName("mySlides");

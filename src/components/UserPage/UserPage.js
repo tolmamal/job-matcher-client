@@ -15,10 +15,6 @@ class UserPage extends Component {
                 <UserMenu/>
                 <br></br>
                 <br></br>
-                
-                <p>Hello User!</p>
-
-                
             </div>
 
         );

@@ -27,6 +27,12 @@
   color: white;
 }
 
+.topnav a.unactive {
+  /*background-color: #2196F3;*/
+  color: black;
+}
+
+
 .topnav .search-container {
   float: right;
 }
@@ -68,4 +74,27 @@
   .topnav input[type=text] {
     border: 1px solid #ccc;  
   }
+}
+.UMHome{
+  display:none;
+}
+
+.UMProfile{
+  display:block;
+}
+
+.UMCvDetails{
+  display:none;
+}
+
+.UMJobDetails{
+  display:none;
+}
+
+.UMAbout{
+  display:none;
+}
+
+.UMInstruction{
+  display:none;
 }
