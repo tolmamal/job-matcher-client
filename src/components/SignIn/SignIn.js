@@ -5,6 +5,10 @@ import Utils from "../../utils/Utils";
 import ValidatedInput from "../ValidatedInput";
 import jwt_decode from 'jwt-decode';
 
+import UserPage from '../../components/UserPage/UserPage';
+
+
+
 
 class SignIn extends Component {
 
@@ -32,30 +36,30 @@ class SignIn extends Component {
 
     };
 
-    submitForm = async () => {
-        if (!this.isValid()) {
-            this.setState({ formValid: false });
-            return;
-        }
-        const { state } = this;
-        const body = {
-            email: state.email,
-            password: state.password
-
-        };
-
-        try {
-
-        }
-        catch (e) {
-            console.log(e);
-
-        }
-
-
-
-
-    };
+    // submitForm = async () => {
+    //     if (!this.isValid()) {
+    //         this.setState({ formValid: false });
+    //         return;
+    //     }
+    //     const { state } = this;
+    //     const body = {
+    //         email: state.email,
+    //         password: state.password
+    //
+    //     };
+    //
+    //     try {
+    //
+    //     }
+    //     catch (e) {
+    //         console.log(e);
+    //
+    //     }
+    //
+    //
+    //
+    //
+    // };
 
 
 
@@ -70,6 +74,7 @@ class SignIn extends Component {
             const { data: { token } } = response;
             localStorage.setItem('token', token);
             this.setState({ error: null, formValid: true });
+
         } catch (e) {
             this.setState({ error: 'Invalid Email/Password' });
         }
