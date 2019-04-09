@@ -66,8 +66,6 @@ function AppRouter() {
 
 
 class App extends Component {
-    const x = {y: 42};
-    const {y} = x;
     render() {
         return (
             <div className="App">
