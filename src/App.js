@@ -43,8 +43,6 @@ class LogOut extends Component {
 }
 
 function AppRouter() {
-    
-
     return (
         <Router>
             <div className="app-container">
@@ -68,6 +66,8 @@ function AppRouter() {
 
 
 class App extends Component {
+    const x = {y: 42};
+    const {y} = x;
     render() {
         return (
             <div className="App">
