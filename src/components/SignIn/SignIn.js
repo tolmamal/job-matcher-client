@@ -74,7 +74,8 @@ class SignIn extends Component {
             const { data: { token } } = response;
             localStorage.setItem('token', token);
             this.setState({ error: null, formValid: true });
-
+            const user = jwt_decode(token).user;
+            this.props.history.push(`/user/${user.id}`);
         } catch (e) {
             this.setState({ error: 'Invalid Email/Password' });
         }
