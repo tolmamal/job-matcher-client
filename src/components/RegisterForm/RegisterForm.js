@@ -4,6 +4,7 @@ import Select from "react-select";
 import Utils from "../../utils/Utils";
 import ValidatedInput from "../ValidatedInput";
 import axiosInstance from '../../utils/axios';
+import Confetti from 'react-confetti';
 
 const tagOptions = [
     { value: 'React', label: 'React' },
@@ -26,7 +27,8 @@ class RegisterForm extends Component {
             first_name: "",
             last_name: "",
             selectedTags: [],
-            formValid: true
+            formValid: true,
+            success: false
         };
     }
 
@@ -67,6 +69,7 @@ class RegisterForm extends Component {
             const { data } = response;
             if (data.success) {
                 localStorage.setItem('token', data.token);
+                this.setState({success: true});
             }
         } catch (e) {
             console.log(e)
@@ -74,10 +77,15 @@ class RegisterForm extends Component {
     };
 
     render() {
-        const { first_name,last_name, email, password, confirmPassword, selectedTags, formValid } = this.state;
+        const { first_name,last_name, email, password, confirmPassword, selectedTags, formValid, success } = this.state;
 
         return (
             <div id="register-form" className="container">
+                <Confetti
+                    run={success}
+                    width={window.innerWidth}
+                    height={window.innerHeight}
+                />
                 {/* <h3>יצירת משתמש חדש</h3> */}
                 <h3>Create account</h3>
                 <br></br>
