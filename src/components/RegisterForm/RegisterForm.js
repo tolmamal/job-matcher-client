@@ -109,7 +109,7 @@ class RegisterForm extends Component {
                     />
                 </div>
                 <br></br>
-                <button onClick={this.submitForm}>Create your account</button>
+                <button className="regBtn" onClick={this.submitForm}>Create your account</button>
             </div>
         );
     }
