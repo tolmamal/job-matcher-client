@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import "./RegisterForm.css";
 import Select from "react-select";
 import Utils from "../../utils/Utils";
@@ -7,13 +7,13 @@ import axiosInstance from '../../utils/axios';
 import Confetti from 'react-confetti';
 
 const tagOptions = [
-    { value: 'React', label: 'React' },
-    { value: 'Redux', label: 'Redux' },
-    { value: 'JavaScript', label: 'JavaScript' },
-    { value: 'Angular', label: 'Angular' },
-    { value: 'CSS', label: 'CSS' },
-    { value: 'C++', label: 'C++' },
-    { value: 'HTML', label: 'HTML' }
+    {value: 'React', label: 'React'},
+    {value: 'Redux', label: 'Redux'},
+    {value: 'JavaScript', label: 'JavaScript'},
+    {value: 'Angular', label: 'Angular'},
+    {value: 'CSS', label: 'CSS'},
+    {value: 'C++', label: 'C++'},
+    {value: 'HTML', label: 'HTML'}
 ];
 
 class RegisterForm extends Component {
@@ -32,16 +32,16 @@ class RegisterForm extends Component {
         };
     }
 
-    onInputChange = ({ target: { name, value } }) => {
-        this.setState({ [name]: value });
+    onInputChange = ({target: {name, value}}) => {
+        this.setState({[name]: value});
     };
 
     onTagsChanged = (selectedTags) => {
-        this.setState({ selectedTags });
+        this.setState({selectedTags});
     };
 
     isValid = () => {
-        const { email, password, confirmPassword, selectedTags, first_name, last_name } = this.state;
+        const {email, password, confirmPassword, selectedTags, first_name, last_name} = this.state;
         return Utils.validateEmail(email)
             && password.length >= 5
             && password === confirmPassword
@@ -52,10 +52,10 @@ class RegisterForm extends Component {
 
     submitForm = async () => {
         if (!this.isValid()) {
-            this.setState({ formValid: false });
+            this.setState({formValid: false});
             return;
         }
-        const { state } = this;
+        const {state} = this;
         const body = {
             first_name: state.first_name,
             last_name: state.last_name,
@@ -65,8 +65,8 @@ class RegisterForm extends Component {
         };
 
         try {
-            const response = await axiosInstance.post('/users/register', { body });
-            const { data } = response;
+            const response = await axiosInstance.post('/users/register', {body});
+            const {data} = response;
             if (data.success) {
                 localStorage.setItem('token', data.token);
                 this.setState({success: true});
@@ -77,7 +77,11 @@ class RegisterForm extends Component {
     };
 
     render() {
+<<<<<<< HEAD
+        const {first_name, last_name, email, password, confirmPassword, selectedTags, formValid} = this.state;
+=======
         const { first_name,last_name, email, password, confirmPassword, selectedTags, formValid, success } = this.state;
+>>>>>>> 7a055a2d9fa1b59350a5133fa1fc40cf856606e6
 
         return (
             <div id="register-form" className="container">
@@ -92,11 +96,16 @@ class RegisterForm extends Component {
                 <br></br>
                 <br></br>
                 <div className="user-fields">
-                    <ValidatedInput onInputChange={this.onInputChange} name="first_name" value={first_name} placeholder="First name" valid={formValid} />
-                    <ValidatedInput onInputChange={this.onInputChange} name="last_name" value={last_name} placeholder="Last name" valid={formValid} />
-                    <ValidatedInput onInputChange={this.onInputChange} name="email" value={email} placeholder="Email" valid={formValid || Utils.validateEmail(email)} />
-                    <ValidatedInput onInputChange={this.onInputChange} name="password" value={password} type="password" placeholder="Password" valid={formValid} />
-                    <ValidatedInput onInputChange={this.onInputChange} name="confirmPassword" value={confirmPassword} type="password" placeholder="Re-enter password" valid={formValid} />
+                    <ValidatedInput onInputChange={this.onInputChange} name="first_name" value={first_name}
+                                    placeholder="First name" valid={formValid}/>
+                    <ValidatedInput onInputChange={this.onInputChange} name="last_name" value={last_name}
+                                    placeholder="Last name" valid={formValid}/>
+                    <ValidatedInput onInputChange={this.onInputChange} name="email" value={email} placeholder="Email"
+                                    valid={formValid || Utils.validateEmail(email)}/>
+                    <ValidatedInput onInputChange={this.onInputChange} name="password" value={password} type="password"
+                                    placeholder="Password" valid={formValid}/>
+                    <ValidatedInput onInputChange={this.onInputChange} name="confirmPassword" value={confirmPassword}
+                                    type="password" placeholder="Re-enter password" valid={formValid}/>
                 </div>
                 <div className="tags-selections">
                     <br></br>

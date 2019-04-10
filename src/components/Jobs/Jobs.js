@@ -1,68 +1,67 @@
 import React, {Component} from 'react'
-import axios from 'axios'
-
 import axiosInstance from '../../utils/axios';
 import "./Jobs.css"
 
 
 class Jobs extends Component {
-    constructor(props){
-        super(props)
+    constructor(props) {
+        super(props);
+        this.state = {
+            //buttonOnclick: false,
+            jobsList: []
+        };
     }
 
-    
+    // identifier: "",
+    // role_name: "",
+    // location: "",
+    // type: "",
+    // salary: "",
+    // description: "",
+    // requirements: ""
 
-    componentDidMount= async () => {
-        const response = await axiosInstance.get('/jobs/upload')
-        .then(response => {
-            console.log(response.data);
-        })
-        .catch(err => {
-            console.log(err)
-        })
-        
+    componentDidMount = async () => {
+        try {
+            const response = await axiosInstance.get('/jobs/upload')
+                .then(response => {
+                    //console.log(response.data)
+                    this.setState({
+                        jobsList: response.data,
+                        //buttonOnclick: true
+                    })
+
+                    //this.setState({ error: null, response });
+                    return response;
+                })
+            //this.setState({ error: null, formValid: true });
+        } catch (e) {
+            this.setState({error: 'Cannot read the data'});
+        }
     };
-
 
     render() {
-        return <div>
+        const {jobsList} = this.state;
+        return (
+            <div>
+                Jobs offers:
+                {jobsList.map(job => {
+                    return (
+                        <div className="jobCard" key={job.identifier}>
+                            <div className="jobContent">
+                                <span className="jobName">{job.identifier}. Role: {job.role_name}</span>
+                                <p>Location: {job.location} </p>
+                                <p>Type: {job.type}</p>
+                                <p>Salary: {job.salary}</p>
+                                <p>Description: {job.description}</p>
+                                <p>Requirements: {job.requirements}</p>
+                            </div>
+                        </div>
+                    )
+                })}
+            </div>
 
-        </div>
+        )
     }
 }
-       
+
 export default Jobs
-
-/*
-constructor(props){
-        super(props)
-        this.state = {
-            Job: {
-                id: "",
-                role_name: "",
-                location: "",
-                type: "",
-                salary: "",
-                description: "",
-                requirements: ""
-            }
-        }
-    }
-
-                    return (
-                    <div>
-                    <button className="Button" onClick={this.buttonHandler}>Jobs</button>
-                    </div>
-
-
-    buttonHandler = async () => {
-        const response = await axiosInstance.get('/jobs/upload')
-        .then(response => {
-            console.log(response.data);
-        this.setState({
-            jobs: response.data
-            })
-        })
-        
-    };
-*/
