@@ -8,8 +8,6 @@ import jwt_decode from 'jwt-decode';
 import UserPage from '../../components/UserPage/UserPage';
 
 
-
-
 class SignIn extends Component {
 
     constructor(props) {
@@ -57,6 +55,7 @@ class SignIn extends Component {
     //
     //
     // };
+
     // submitForm = async () => {
     //     if (!this.isValid()) {
     //         this.setState({ formValid: false });
@@ -94,6 +93,7 @@ class SignIn extends Component {
             const {data: {token}} = response;
             localStorage.setItem('token', token);
             this.setState({ error: null, formValid: true });
+
             const user = jwt_decode(token).user;
             this.props.history.push(`/user/${user.id}`);
         } catch (e) {
@@ -112,23 +112,24 @@ class SignIn extends Component {
         const {email, password, formValid, error} = this.state;
         return (
 
-            <div id="signin-form" className="container">
-                <div className="container">
-                    <h2>Sign In</h2>
-                    <hr style={{width: '40%'}}/>
-                    {
-                        error &&
-                        <label style={{color: 'red'}}>{error}</label>
-                    }
-                    <div className="user-fields">
-                        <ValidatedInput onInputChange={this.onInputChange} name="email" value={email}
-                                        placeholder="Email" valid={formValid || Utils.validateEmail(email)}/>
-                        <ValidatedInput onInputChange={this.onInputChange} name="password" value={password}
-                                        type="password" placeholder="Password" valid={formValid}/>
+                <div id="signin-form" className="container">
+                    <div className="container">
+                        <h2>Sign In</h2>
+                        <hr style={{width: '40%'}}/>
+                        {
+                            error &&
+                            <label style={{color: 'red'}}>{error}</label>
+                        }
+                        <div className="user-fields">
+                            <ValidatedInput onInputChange={this.onInputChange} name="email" value={email}
+                                            placeholder="Email" valid={formValid || Utils.validateEmail(email)}/>
+                            <ValidatedInput onInputChange={this.onInputChange} name="password" value={password}
+                                            type="password" placeholder="Password" valid={formValid}/>
+                        </div>
+                        <button className="Button" onClick={this.submitHandler}>Sign In</button>
                     </div>
-                    <button className="Button" onClick={this.submitHandler}>Sign In</button>
                 </div>
-            </div>
+
 
         );
     }
