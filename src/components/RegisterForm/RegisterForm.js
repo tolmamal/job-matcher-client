@@ -77,11 +77,7 @@ class RegisterForm extends Component {
     };
 
     render() {
-<<<<<<< HEAD
-        const {first_name, last_name, email, password, confirmPassword, selectedTags, formValid} = this.state;
-=======
         const { first_name,last_name, email, password, confirmPassword, selectedTags, formValid, success } = this.state;
->>>>>>> 7a055a2d9fa1b59350a5133fa1fc40cf856606e6
 
         return (
             <div id="register-form" className="container">

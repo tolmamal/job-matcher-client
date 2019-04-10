@@ -36,29 +36,27 @@ class SignIn extends Component {
 
     };
 
-<<<<<<< HEAD
-    submitForm = async () => {
-        if (!this.isValid()) {
-            this.setState({formValid: false});
-            return;
-        }
-        const {state} = this;
-        const body = {
-            email: state.email,
-            password: state.password
-
-        };
-
-        try {
-
-        } catch (e) {
-            console.log(e);
-
-        }
-
-
-    };
-=======
+    // submitForm = async () => {
+    //     if (!this.isValid()) {
+    //         this.setState({formValid: false});
+    //         return;
+    //     }
+    //     const {state} = this;
+    //     const body = {
+    //         email: state.email,
+    //         password: state.password
+    //
+    //     };
+    //
+    //     try {
+    //
+    //     } catch (e) {
+    //         console.log(e);
+    //
+    //     }
+    //
+    //
+    // };
     // submitForm = async () => {
     //     if (!this.isValid()) {
     //         this.setState({ formValid: false });
@@ -83,7 +81,6 @@ class SignIn extends Component {
     //
     //
     // };
->>>>>>> 7a055a2d9fa1b59350a5133fa1fc40cf856606e6
 
 
     submitHandler = async () => {
@@ -96,13 +93,9 @@ class SignIn extends Component {
             const response = await axiosInstance.post('/auth', {email, password});
             const {data: {token}} = response;
             localStorage.setItem('token', token);
-<<<<<<< HEAD
-            this.setState({error: null, formValid: true});
-=======
             this.setState({ error: null, formValid: true });
             const user = jwt_decode(token).user;
             this.props.history.push(`/user/${user.id}`);
->>>>>>> 7a055a2d9fa1b59350a5133fa1fc40cf856606e6
         } catch (e) {
             this.setState({error: 'Invalid Email/Password'});
         }
