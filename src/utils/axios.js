@@ -1,6 +1,7 @@
 import axios from 'axios';
 
-const BASE_URL = 'http://localhost:5000';
+//const BASE_URL = 'http://localhost:5000';
+const BASE_URL = 'http://172.20.2.73:5000';
 
 export const getToken = () => localStorage.getItem('token');
 
