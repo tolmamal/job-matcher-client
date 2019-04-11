@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 
 import './App.css';
-import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
+import {BrowserRouter as Router, Redirect, Route, Switch} from "react-router-dom";
 import SideMenu from "./components/SideMenu/SideMenu";
 import RegisterForm from "./components/RegisterForm/RegisterForm";
 import UserPage from "./components/UserPage/UserPage";
@@ -10,6 +10,8 @@ import Instructions from "./components/Instructions/Instructions";
 import Home from "./components/Home/Home";
 import SignIn from "./components/SignIn/SignIn";
 import Jobs from "./components/Jobs/Jobs";
+import {removeToken} from "./utils/axios";
+import isAuthenticated from "./components/isAuthenticated";
 // import UserMenu from "./components/UserMenu/UserMenu"
 
 // import About from "./components/About/About"
@@ -30,9 +32,17 @@ function Users() {
     return <h2>Users</h2>;
 }
 
-function AppRouter() {
-    
+class LogOut extends Component {
+    componentDidMount() {
+        removeToken();
+    }
 
+    render() {
+        return <Redirect to={'/'}>LogOut</Redirect>;
+    }
+}
+
+function AppRouter() {
     return (
         <Router>
             <div className="app-container">
@@ -44,10 +54,10 @@ function AppRouter() {
                     <Route path="/users/" component={Users}/>
                     <Route path="/signin/" component={SignIn}/>
                     <Route path="/register/" component={RegisterForm}/>
-                    <Route path="/user/:id/" component={UserPage}/> 
+                    <Route path="/user/:id/" component={isAuthenticated(UserPage)}/>
                     <Route path="/instructions/" component={Instructions}/>
-                    <Route path="/jobs/" component={Jobs}/>
-                    {/* <Route path="/user/:id/" component={UserPage}/> */}
+                    <Route path="/jobs/" component={isAuthenticated(Jobs)}/>
+                    <Route path="/logout" component={isAuthenticated(LogOut)}/>
                 </Switch>
             </div>
         </Router>
