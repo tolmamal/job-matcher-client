@@ -66,7 +66,7 @@ export default class Modal extends React.Component {
                     {this.props.children}
                     <div className="footerStyle">
                     <video width="320" height="240" controls >
-                        <source src="https://www.youtube.com/watch?v=sJUGAIf1Px0" className="vvv" preload="metadata"/>
+                        <source src="https://youtu.be/2nO48zhNTYo" className="vvv" preload="metadata"/>
                         {/* <source src="movie.ogg" type="video/ogg"/> */}
                     </video>
                     <button onClick={(e) => {this.onClose(e)}}>

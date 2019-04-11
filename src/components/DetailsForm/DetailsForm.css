@@ -1,0 +1,148 @@
+* {box-sizing: border-box;}
+
+/* Full-width input fields */
+/*.DFinput[type=text]{*/
+/*    width: 100%;*/
+/*    padding: 15px;*/
+/*    margin: 5px 0 22px 0;*/
+/*    display: inline-block;*/
+/*    border: none;*/
+/*    background: #f1f1f1;*/
+/*}*/
+
+/*.DFinput[type=password] {*/
+/*    width: 100%;*/
+/*    padding: 15px;*/
+/*    margin: 5px 0 22px 0;*/
+/*    display: inline-block;*/
+/*    border: none;*/
+/*    background: #f1f1f1;*/
+/*}*/
+
+/*!* Add a background color when the inputs get focus *!*/
+/*.DFinput[type=text]:focus{*/
+/*    background-color: #ddd;*/
+/*    outline: none;*/
+/*}*/
+
+/*.DFinput[type=password]:focus {*/
+/*    background-color: #ddd;*/
+/*    outline: none;*/
+/*}*/
+
+.DFlable{
+    float: left;
+    min-width: 200px;
+    min-height: 40px;
+    border-radius: 5px;
+    margin: 5px;
+    padding: 0 5px;
+}
+
+.DFb{
+    display: none;
+}
+
+.DFcancelbtn:hover{
+    opacity:1;
+}
+
+.DFsignupbtn:hover{
+    opacity:1;
+}
+
+/* Extra styles for the cancel button */
+.DFcancelbtn {
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    opacity: 0.9;
+    background-color: #f44336;
+    float: left;
+    width: 50%;
+}
+
+
+.DFsignupbtn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    opacity: 0.9;
+    float: left;
+    width: 50%;
+}
+
+/* Add padding to container elements */
+.DFcontainer {
+    padding: 16px;
+}
+
+/* The Modal (background) */
+.DFmodal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: #474e5d;
+    padding-top: 50px;
+}
+
+/* Modal Content/Box */
+.DFmodal-content {
+    background-color: #fefefe;
+    margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+}
+
+/* Style the horizontal ruler */
+.DFhr {
+    border: 1px solid #f1f1f1;
+    margin-bottom: 25px;
+}
+
+/* The Close Button (x) */
+.DFclose {
+    position: absolute;
+    right: 35px;
+    top: 15px;
+    font-size: 40px;
+    font-weight: bold;
+    color: #f1f1f1;
+}
+
+.DFclose:hover{
+    color: #f44336;
+    cursor: pointer;
+}
+
+.DFclose:focus {
+    color: #f44336;
+    cursor: pointer;
+}
+
+/* Clear floats */
+.DFclearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+.DFa{
+    color:dodgerblue
+}
+
+/* Change styles for cancel button and signup button on extra small screens */
+@media screen and (max-width: 300px) {
+    .cancelbtn, .signupbtn {
+        width: 100%;
+    }
+}

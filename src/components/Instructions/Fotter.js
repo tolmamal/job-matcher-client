@@ -6,7 +6,7 @@ class Footer extends Component {
 
   render() {
     return (
-      <footer className="footer">JobMatcher &#169;
+      <footer className="Ifooter">JobMatcher &#169;
       </footer>
     );
   }

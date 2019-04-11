@@ -1,0 +1,27 @@
+
+
+.Ffooter{
+    color: black;
+    font-weight:400;
+    font-style: normal;
+    background:gray;
+    position: static;
+    bottom: 0px;
+    width: 100%;
+    height: auto;
+    margin: 500px 0px 0px 0px;
+
+}
+
+.FFfooter{
+    color: black;
+    font-weight:400;
+    font-style: normal;
+    background:gray;
+    position: static;
+    bottom: 0px;
+    width: 100%;
+    height: auto;
+    margin: 130px 0px 0px 0px;
+
+}

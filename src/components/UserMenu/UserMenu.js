@@ -3,9 +3,13 @@ import React, {
 } from "react";
 import "./UserMenu.css"
 import About from "../About/About"
-import Instructions from "../Instructions/Instructions";
 import Home from "../Home/Home"
-
+import TimeLine from "../TimeLine/TimeLine";
+import ProfileCard from "../ProfileCard/ProfileCard";
+import StateStatus from "../StateStatus/StateStatus";
+import Footer from "../Footer/Footer";
+import Header from "../Header/Header";
+import UserInstructions from "../UserInstructions/UserInstructions";
 
 class UserMenu extends Component {
 
@@ -100,7 +104,13 @@ class UserMenu extends Component {
                 </div>
 
                 <div className="UMProfile">
-                    <h1>UMProfile</h1>
+                    {/*<h3>follow </h3>*/}
+                    <Header/>
+                    <ProfileCard/>
+                    <TimeLine/>
+                    <br/>
+                    <StateStatus/>
+                    <Footer/>
                 </div>
 
                 <div className="UMCvDetails">
@@ -116,7 +126,7 @@ class UserMenu extends Component {
                 </div>
 
                 <div className="UMInstruction">
-                    <Instructions/>
+                    <UserInstructions/>
                 </div>
             </div>
         );

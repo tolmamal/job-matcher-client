@@ -1,0 +1,63 @@
+
+.SScontainer {
+    /*display: block;*/
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* Hide the browser's default radio button */
+.SScontainer input {
+    /*position: absolute;*/
+    opacity: 0;
+    cursor: pointer;
+}
+
+/* Create a custom radio button */
+.SScheckmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #c9cdc6;
+    border-radius: 50%;
+}
+
+/* On mouse-over, add a grey background color */
+.SScontainer:hover input ~ .SScheckmark {
+    background-color: #9c9c9c;
+}
+
+/* When the radio button is checked, add a blue background */
+.SScontainer input:checked ~ .SScheckmark {
+    background-color: #FF9F55;
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.SScheckmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Show the indicator (dot/circle) when checked */
+.SScontainer input:checked ~ .SScheckmark:after {
+    display: block;
+}
+
+/* Style the indicator (dot/circle) */
+.SScontainer .SScheckmark:after {
+    top: 9px;
+    left: 9px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: white;
+}
