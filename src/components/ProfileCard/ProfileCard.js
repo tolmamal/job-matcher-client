@@ -6,6 +6,7 @@ import DetailsForm from "../DetailsForm/DetailsForm";
 
 class ProfileCard extends Component {
 
+
     name="Jone Deo";
 
     btnOnClick=(e)=>{
