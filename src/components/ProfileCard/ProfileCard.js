@@ -6,6 +6,7 @@ import DetailsForm from "../DetailsForm/DetailsForm";
 
 class ProfileCard extends Component {
 
+
     name="Jone Deo";
 
     btnOnClick=(e)=>{
@@ -19,6 +20,7 @@ class ProfileCard extends Component {
     };
 
     render() {
+
         return (
             <div>
                 <div className="PCMain">
