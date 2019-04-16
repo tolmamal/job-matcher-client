@@ -98,3 +98,7 @@
 .UMInstruction{
   display:none;
 }
+
+.UMPreferences {
+  display: none;
+}

@@ -7,6 +7,7 @@ import TryUpdateForm from '../TryUpdateForm/TryUpdateForm'
 
 class ProfileCard extends Component {
 
+
     name="Jone Deo";
 
     btnOnClick=(e)=>{
@@ -20,6 +21,7 @@ class ProfileCard extends Component {
     };
 
     render() {
+
         return (
             <div>
                 <div className="PCMain">
