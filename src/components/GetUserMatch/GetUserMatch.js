@@ -23,7 +23,7 @@ class GetUserMatch extends Component {
                 <br/>
                 <br/>
                 <br/>
-                <h3>find match for user</h3>
+                <h3>finding your matches ...</h3>
                 <br/>
                 <br/>
                 <br/>

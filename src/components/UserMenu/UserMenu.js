@@ -12,6 +12,7 @@ import Header from "../Header/Header";
 import UserInstructions from "../UserInstructions/UserInstructions";
 import Preferences from "../Preferences/Preferences";
 import GetUserMatch from "../GetUserMatch/GetUserMatch";
+import UploadFile from "../UploadFile/UploadFile";
 
 class UserMenu extends Component {
 
@@ -141,7 +142,7 @@ class UserMenu extends Component {
                 </div>
 
                 <div className="UMCvDetails">
-                    <h1>UMCvDetails</h1>
+                    <UploadFile {...this.props}/>
                 </div>
 
                 <div className="UMJobDetails">
