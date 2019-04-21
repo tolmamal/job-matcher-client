@@ -3,7 +3,6 @@ import React, {
 } from "react";
 import "./ProfileCard.css"
 import DetailsForm from "../DetailsForm/DetailsForm";
-import TryUpdateForm from '../TryUpdateForm/TryUpdateForm'
 
 class ProfileCard extends Component {
 
