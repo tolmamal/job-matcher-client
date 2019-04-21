@@ -13,6 +13,9 @@ import UserInstructions from "../UserInstructions/UserInstructions";
 
 class UserMenu extends Component {
 
+    constructor(props){
+        super(props);
+    }
     activeClass=(e)=>{
         var as = document.getElementsByClassName("active");
         as[0].className="unactive";
@@ -104,9 +107,8 @@ class UserMenu extends Component {
                 </div>
 
                 <div className="UMProfile">
-                    {/*<h3>follow </h3>*/}
                     <Header/>
-                    <ProfileCard/>
+                    <ProfileCard {...this.props}/>
                     <TimeLine/>
                     <br/>
                     <StateStatus/>

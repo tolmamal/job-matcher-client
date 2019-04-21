@@ -140,6 +140,16 @@
     color:dodgerblue
 }
 
+.DFtags-selections {
+    min-width: 150px;
+    min-height: 40px;
+    border-radius: 5px;
+    margin: 5px;
+    outline: none;
+    padding: 0px 10px 10px 10px;
+}
+
+
 /* Change styles for cancel button and signup button on extra small screens */
 @media screen and (max-width: 300px) {
     .cancelbtn, .signupbtn {

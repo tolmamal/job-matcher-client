@@ -5,6 +5,7 @@ import axiosInstance from '../../utils/axios';
 
 
 class UserPage extends Component {
+
     componentDidMount() {
         console.log(`calling /api/user/${this.getUserId()}`);
     }
@@ -45,7 +46,8 @@ class UserPage extends Component {
     render() {
         return (
             <div>
-                <UserMenu/>
+                <UserMenu {...this.props}/>
+                {console.log(this.props)}
                 <br></br>
                 <br></br>
                 <p>Hello User!</p>
