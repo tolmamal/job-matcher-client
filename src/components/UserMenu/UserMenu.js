@@ -18,16 +18,9 @@ import UploadFile from "../UploadFile/UploadFile";
 
 class UserMenu extends Component {
 
-<<<<<<< HEAD
-    constructor(props){
-        super(props);
-    }
-    activeClass=(e)=>{
-=======
 
 
     activeClass = (e) => {
->>>>>>> 092f9b75d7fb9ee7a3636cffcbc3ad3819e0dc99
         var as = document.getElementsByClassName("active");
         as[0].className = "unactive";
         var ab = document.getElementsByClassName("unactive");
@@ -141,6 +134,7 @@ class UserMenu extends Component {
                 </div>
 
                 <div className="UMProfile">
+                    {/*<h3>follow </h3>*/}
                     <Header/>
                     <ProfileCard {...this.props}/>
                     <TimeLine/>

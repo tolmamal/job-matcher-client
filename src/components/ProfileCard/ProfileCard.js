@@ -34,13 +34,10 @@ class ProfileCard extends Component {
     };
 
     render() {
-<<<<<<< HEAD
         {this.componentDidMount()}
         const { first_name,last_name} = this.state;
         // console.log("ProfileCard:  "+ this.props);
-=======
 
->>>>>>> 092f9b75d7fb9ee7a3636cffcbc3ad3819e0dc99
         return (
             <div>
                 <div className="PCMain">
