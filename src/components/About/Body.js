@@ -7,6 +7,7 @@ class Body extends Component {
   render() {
     return (
       <div className="body">
+          <br/>
           <h2>About the founders:</h2>
           <div>
               <br/>
