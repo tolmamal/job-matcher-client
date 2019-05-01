@@ -10,13 +10,14 @@ class ProfileCard extends Component {
 
     constructor(props) {
         super(props);
+        console.log(props.push)
         this.state = {
             first_name: "",
             last_name: ""
         };
     };
 
-    componentDidMount = async () => {
+    componentWillMount = async () => {
         const response = await axiosInstance.get(`/user/${this.props.match.params.id}/changeProfile`);
         // console.log(response.data[0]);
         this.setState({first_name:response.data[0]});
@@ -34,7 +35,6 @@ class ProfileCard extends Component {
     };
 
     render() {
-        {this.componentDidMount()}
         const { first_name,last_name} = this.state;
         // console.log("ProfileCard:  "+ this.props);
 
