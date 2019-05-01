@@ -7,13 +7,27 @@ import axiosInstance from '../../utils/axios';
 import Confetti from 'react-confetti';
 
 const tagOptions = [
-    {value: 'React', label: 'React'},
-    {value: 'Redux', label: 'Redux'},
-    {value: 'JavaScript', label: 'JavaScript'},
-    {value: 'Angular', label: 'Angular'},
-    {value: 'CSS', label: 'CSS'},
-    {value: 'C++', label: 'C++'},
-    {value: 'HTML', label: 'HTML'}
+    {value: 'Front-end', label: 'Front-end'},
+    {value: 'Back-end', label: 'Back-end'},
+    {value: 'DB', label: 'DB'},
+    {value: 'Full-stack', label: 'Full-stack'},
+    {value: 'Cyber', label: 'Cyber'},
+    {value: 'Mobile', label: 'Mobile'},
+    {value: 'QA', label: 'QA'},
+    {value: 'Devops', label: 'Devops'},
+    {value: 'Machine-learning', label: 'Machine-learning'},
+    {value: 'Big data', label: 'Big data'},
+    {value: 'Games', label: 'Games'},
+    {value: 'Hardware', label: 'Hardware'},
+    {value: 'Network', label: 'Network'},
+    {value: 'Cloud', label: 'Cloud'},
+    {value: 'Algorithms', label: 'Algorithms'},
+    {value: 'Games', label: 'Games'},
+    {value: 'Games', label: 'Games'},
+    {value: 'Games', label: 'Games'},
+    {value: 'Games', label: 'Games'},
+    {value: 'Games', label: 'Games'},
+
 ];
 
 class RegisterForm extends Component {

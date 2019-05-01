@@ -45,6 +45,7 @@ class UploadFile extends Component {
 
     showFile = async (event) => {
 
+        const success = false; //flag True will indicate that user doesn't already have CV file
         const {files} = event.target;
         const file = files[0];
 
@@ -63,6 +64,10 @@ class UploadFile extends Component {
             console.log(result)
 
             const response = await axiosInstance.post(`/user/${this.getUserId()}/update`, {data: result});
+            if (response.data === false)
+                // alert("WARNING: CV file exist already!")
+                alert("WARNING: CV file exist already!");
+
 
 
         };
