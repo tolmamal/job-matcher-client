@@ -8,10 +8,8 @@ class GetUserMatch extends Component {
 
     getUserId = () => this.props.match.params.id;
 
-    //const response = await axiosInstance.post(`/user/${this.getUserId()}/preferences`,{body});
-
     findMatchHandler = async () => {
-        // do not forget - add try&catch later
+        // TODO: add try&catch later
         const response = await axiosInstance.post(`/user/${this.getUserId()}/svemtchjbs`);
 
     };
@@ -27,7 +25,7 @@ class GetUserMatch extends Component {
                 <br/>
                 <br/>
                 <br/>
-                <button id="find-match-button" onClick={this.findMatchHandler}>Find Match!</button>
+                <button id="find-match-button" onClick={this.findMatchHandler}>Find Location Match!</button>
             </div>
         );
     }

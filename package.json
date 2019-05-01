@@ -7,6 +7,8 @@
     "@casl/react": "^1.0.2",
     "axios": "^0.18.0",
     "classnames": "^2.2.6",
+    "google-distance-matrix": "^1.1.1",
+    "google-maps-react": "^2.0.2",
     "jwt-decode": "^2.2.0",
     "mongodb": "^3.2.2",
     "react": "^16.8.3",
