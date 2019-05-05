@@ -3,6 +3,7 @@ import Header from "../Header/Header";
 import Footer from "./Fotter";
 import Body from "../Home/Body";
 import Bbb from "../Bbb/bbb"
+
 import SlideShow from "../SlideShow/SlideShow"
 
 class Home extends Component {
@@ -16,8 +17,10 @@ class Home extends Component {
     return (
       <div>
         <Header />
+
         <Body />
-        <SlideShow/>
+
+        {/*<SlideShow/>*/}
         <Bbb/>
         <Footer/>
       </div>

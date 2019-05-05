@@ -21,7 +21,7 @@ class DetailsForm extends Component {
 
     constructor(props) {
         super(props);
-
+        console.log("props", props);
         this.state = {
             first_name:"",
             last_name: "",
@@ -33,7 +33,8 @@ class DetailsForm extends Component {
         };
     };
 
-    componentDidMount = async () => {
+
+    componentWillMount = async () => {
         const response = await axiosInstance.get(`/user/${this.props.match.params.id}/changeProfile`);
         // console.log(response.data[0]);
         this.setState({first_name:response.data[0]});
@@ -41,7 +42,7 @@ class DetailsForm extends Component {
         this.setState({password:response.data[4]});
         this.setState({confirmPassword:response.data[4]});
         this.setState({email:response.data[2]});
-        console.log(response.data[3]);
+        // console.log(response.data[3]);
         this.setState({selectedTags:response.data[3]});
     }
 
@@ -84,7 +85,7 @@ class DetailsForm extends Component {
         try {
             // console.log("Details Form:  " + `/user/${this.props.match.params.id}/changeProfile`);
             const response = await axiosInstance.post(`/user/${this.getUserId()}/changeProfile`,{ body });
-            console.log(response);
+            // console.log(response);
             const { data } = response;
             if (data.success) {
                 localStorage.setItem('token', data.token);
@@ -93,8 +94,6 @@ class DetailsForm extends Component {
         } catch (e) {
             console.log(e)
         }
-
-
         var modal = document.getElementById("myModal");
         modal.style.display = "none";
     };

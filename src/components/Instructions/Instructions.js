@@ -6,6 +6,7 @@ import Footer from "./Fotter";
 import Modal from '../Modal/Modal'
 
 class Instructions extends Component {
+
     constructor(props){
         super(props)
        

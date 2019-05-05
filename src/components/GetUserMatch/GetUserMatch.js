@@ -150,8 +150,6 @@ class GetUserMatch extends Component {
     };
 
     render() {
-        const {jobsList} = this.state;
-
         return (
             <div>
                 <br/>
@@ -171,6 +169,8 @@ class GetUserMatch extends Component {
             </div>
         );
     }
+
+
 }
 
 
