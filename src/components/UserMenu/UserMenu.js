@@ -136,7 +136,7 @@ class UserMenu extends Component {
                 <div className="UMProfile">
                     {/*<h3>follow </h3>*/}
                     <Header/>
-                    <ProfileCard {...this.props}/>
+                    {/*<ProfileCard {...this.props}/>*/}
                     <TimeLine/>
                     <br/>
                     <StateStatus/>
