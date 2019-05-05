@@ -17,16 +17,15 @@ const tagOptions = [
     {value: 'Devops', label: 'Devops'},
     {value: 'Machine-learning', label: 'Machine-learning'},
     {value: 'Big data', label: 'Big data'},
-    {value: 'Games', label: 'Games'},
+    {value: 'Game Development', label: 'Game Development'},
     {value: 'Hardware', label: 'Hardware'},
     {value: 'Network', label: 'Network'},
     {value: 'Cloud', label: 'Cloud'},
     {value: 'Algorithms', label: 'Algorithms'},
-    {value: 'Games', label: 'Games'},
-    {value: 'Games', label: 'Games'},
-    {value: 'Games', label: 'Games'},
-    {value: 'Games', label: 'Games'},
-    {value: 'Games', label: 'Games'},
+    {value: 'Data Science', label: 'Data Science'},
+    {value: 'Embedded', label: 'Embedded'},
+    {value: 'Artificial Intelligence', label: 'Artificial Intelligence'}
+
 
 ];
 
@@ -119,7 +118,7 @@ class RegisterForm extends Component {
                 </div>
                 <div className="tags-selections">
                     <br></br>
-                    <h4>Interests</h4>
+                    <h4>Fields</h4>
                     <Select
                         isMulti={true}
                         value={selectedTags}
@@ -129,6 +128,7 @@ class RegisterForm extends Component {
                 </div>
                 <br></br>
                 <button className="regBtn" onClick={this.submitForm}>Create your account</button>
+
             </div>
         );
     }

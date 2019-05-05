@@ -5,7 +5,7 @@ import "./Wrapping.css";
 class Wrapping extends Component {
     render() {
         return(
-            <div id="demo-main">
+            <div>
 
 
             </div>

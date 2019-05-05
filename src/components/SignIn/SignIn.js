@@ -96,6 +96,7 @@ class SignIn extends Component {
 
             const user = jwt_decode(token).user;
             this.props.history.push(`/user/${user.id}`);
+
         } catch (e) {
             this.setState({error: 'Invalid Email/Password'});
         }
