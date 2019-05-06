@@ -26,10 +26,6 @@ class GetUserMatch extends Component {
                 <Sort {...this.props}/>
                 {/*<button id="find-match-button" onClick={this.findMatchHandler}>Find Match!</button>*/}
                 <br/>
-                {/*<div id="aaa"></div>*/}
-                {/*<button id="find-match-button" onClick={this.filterLocationHandler}>Find Match By LOCATION Order!</button>*/}
-                {/*<button id="find-match-button" onClick={this.filterScoreHandler}>Find Match By SCORE Order!</button>*/}
-                <button id="find-match-button" onClick={this.findJobHandler}>Find Match word2vec!</button>
                 <div id="aaa"/>
             </div>
         );

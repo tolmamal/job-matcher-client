@@ -173,13 +173,11 @@ export default class GetUserMatch extends Component {
         }
     };
 
-    filterSelection = async(c)=> {
+    sortSelection = (c)=> {
         var btns=document.getElementsByClassName('btn_active');
-        btns[0].className='btn_nothing';
+        btns[1].className='btn_nothing';
         var btns=document.getElementsByClassName('btn_nothing');
-        btns[c].className='btn_active'
-
-        console.log('in filterSelection');
+        btns[c-1].className='btn_active'
 
         var div = document.getElementById('aaa');
         if (div.children.length != 0)
@@ -188,12 +186,11 @@ export default class GetUserMatch extends Component {
                 div.removeChild(div.firstChild);
             }
         }
-        console.log('before switch');
 
         switch (c) {
-            case 0: this.sortScore();
+            case 6: this.sortScore();
                 break;
-            case 1: this.sortLocation();
+            case 7: this.sortLocation();
                 break;
             default:
                 console.log(c);
@@ -205,8 +202,8 @@ export default class GetUserMatch extends Component {
         <div>
             <h2>Sort by:</h2>
             <div className="myBtnContainer">
-            <button className="btn_active" onClick={(event) =>this.filterSelection(0)}> Score </button>
-            <button className="btn_nothing" onClick={(event) =>this.filterSelection(1)}> Location</button>
+            <button className="btn_active" onClick={(event) =>this.sortSelection(6)}> Score </button>
+            <button className="btn_nothing" onClick={(event) =>this.sortSelection(7)}> Location</button>
             </div>
         </div>
     );}
