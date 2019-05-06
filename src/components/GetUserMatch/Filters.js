@@ -9,7 +9,7 @@ class Filters extends Component {
         super(props)
         // console.log("Filters",this.props)
         this.state = {
-            jobs: {}
+            jobs: {},
         }
     };
 
@@ -71,27 +71,41 @@ class Filters extends Component {
             var ps = document.createElement("p");
             var score = document.createTextNode("Score: " + this.state.jobs[key][2].toFixed(2) * 100 + "%");
             ps.appendChild(score);
-
-            // var div=document.getElementsByClassName('filter')[0];
-            // var text = document.createTextNode("hello");
-            // text.className = "fa fa-heart-o";
+            //heart element
             var elem=document.createElement('a');
             elem.className='heart';
             var heart=document.createElement('i');
-            heart.className = "fa fa-heart";
-            heart.classList.toggle('fa-heart-o')
-
+            if(this.state.jobs[key][4]==true)
+                heart.className = "fa fa-heart";
+            else {
+                heart.className = "fa fa-heart";
+                heart.classList.toggle('fa-heart-o');
+            }
             heart.id=key;
-            // Listen for the event.
-            heart.addEventListener('click', (event) =>this.func(event), false);
+            heart.addEventListener('click', (event) =>this.UpdateFavorite(event), false);
             elem.appendChild(heart);
+
+            //send element
+            var elem1=document.createElement('a');
+            elem1.className='send';
+            var send=document.createElement('i');
+            if(this.state.jobs[key][5]==true)
+                send.className = "fa fa-paper-plane";
+            else {
+                send.className = "fa fa-paper-plane";
+                send.classList.toggle('fa-paper-plane-o');
+            }
+            send.id=key+"send";
+            send.addEventListener('click', (event) =>this.UpdateSending(event), false);
+            elem1.appendChild(send);
+
             flipCardFront.appendChild(pr);
             flipCardBack.appendChild(ps);
             flipCardBack.appendChild(ll);
             var brl = document.createElement("br");
             flipCardBack.appendChild(brl);
             flipCardBack.appendChild(elem);
-            // flipCardBack.appendChild(iconHeart);
+            flipCardBack.appendChild(elem1);
             flipCardInner.appendChild(flipCardFront);
             flipCardInner.appendChild(flipCardBack);
             flipCard.appendChild(flipCardInner);
@@ -120,7 +134,7 @@ class Filters extends Component {
         row.className = 'row';
         var index = 0;
         for (var key in this.state.jobs) {
-            if (this.state.jobs[key][5] == 'full-job') {
+            if (this.state.jobs[key][3] == 'full') {
                 var column = document.createElement("div");
                 column.className = 'column';
                 var flipCard = document.createElement("div");
@@ -142,23 +156,42 @@ class Filters extends Component {
                 var ps = document.createElement("p");
                 var score = document.createTextNode("Score: " + this.state.jobs[key][2].toFixed(2) * 100 + "%");
                 ps.appendChild(score);
-                var iconHeart = document.createElement("a");
-                iconHeart.className = 'heart';
-                iconHeart.id = key;
-                // iconHeart.onClick = this.favHandler();
-                var heart = document.createElement("i");
-                heart.className = 'fa fa-heart-o';
-                // heart.setAttribute('aria-hidden', 'true');
-                // var fullHeart = document.createElement('i');
-                // fullHeart.className = "fa fa-heart";
-                // iconHeart.appendChild(fullHeart);
-                iconHeart.appendChild(heart);
+                var elem=document.createElement('a');
+                elem.className='heart';
+                //heart element
+                var elem=document.createElement('a');
+                elem.className='heart';
+                var heart=document.createElement('i');
+                if(this.state.jobs[key][4]==true)
+                    heart.className = "fa fa-heart";
+                else {
+                    heart.className = "fa fa-heart";
+                    heart.classList.toggle('fa-heart-o');
+                }
+                heart.id=key;
+                heart.addEventListener('click', (event) =>this.UpdateFavorite(event), false);
+                elem.appendChild(heart);
+
+                //send element
+                var elem1=document.createElement('a');
+                elem1.className='send';
+                var send=document.createElement('i');
+                if(this.state.jobs[key][5]==true)
+                    send.className = "fa fa-paper-plane";
+                else {
+                    send.className = "fa fa-paper-plane";
+                    send.classList.toggle('fa-paper-plane-o');
+                }
+                send.id=key+"send";
+                send.addEventListener('click', (event) =>this.UpdateSending(event), false);
+                elem1.appendChild(send);
                 flipCardFront.appendChild(pr);
                 flipCardBack.appendChild(ps);
                 flipCardBack.appendChild(ll);
                 var brl = document.createElement("br");
                 flipCardBack.appendChild(brl);
-                flipCardBack.appendChild(iconHeart);
+                flipCardBack.appendChild(elem);
+                flipCardBack.appendChild(elem1);
                 flipCardInner.appendChild(flipCardFront);
                 flipCardInner.appendChild(flipCardBack);
                 flipCard.appendChild(flipCardInner);
@@ -187,7 +220,7 @@ class Filters extends Component {
         row.className = 'row';
         var index = 0;
         for (var key in this.state.jobs) {
-            if (this.state.jobs[key][5] == 'half-job') {
+            if (this.state.jobs[key][3] == 'half') {
                 var column = document.createElement("div");
                 column.className = 'column';
                 var flipCard = document.createElement("div");
@@ -209,38 +242,53 @@ class Filters extends Component {
                 var ps = document.createElement("p");
                 var score = document.createTextNode("Score: " + this.state.jobs[key][2].toFixed(2) * 100 + "%");
                 ps.appendChild(score);
-                var iconHeart = document.createElement("a");
-                iconHeart.className = 'heart';
-                iconHeart.id = key;
-                // iconHeart.onClick = this.favHandler();
-                var heart = document.createElement("i");
-                heart.className = 'fa fa-heart-o';
-                // heart.setAttribute('aria-hidden', 'true');
-                // var fullHeart = document.createElement('i');
-                // fullHeart.className = "fa fa-heart";
-                // iconHeart.appendChild(fullHeart);
-                iconHeart.appendChild(heart);
+                //heart element
+                var elem=document.createElement('a');
+                elem.className='heart';
+                var heart=document.createElement('i');
+                if(this.state.jobs[key][4]==true)
+                    heart.className = "fa fa-heart";
+                else {
+                    heart.className = "fa fa-heart";
+                    heart.classList.toggle('fa-heart-o');
+                }
+                heart.id=key;
+                heart.addEventListener('click', (event) =>this.UpdateFavorite(event), false);
+                elem.appendChild(heart);
+
+                //send element
+                var elem1=document.createElement('a');
+                elem1.className='send';
+                var send=document.createElement('i');
+                if(this.state.jobs[key][5]==true)
+                    send.className = "fa fa-paper-plane";
+                else {
+                    send.className = "fa fa-paper-plane";
+                    send.classList.toggle('fa-paper-plane-o');
+                }
+                send.id=key+"send";
+                send.addEventListener('click', (event) =>this.UpdateSending(event), false);
+                elem1.appendChild(send);
                 flipCardFront.appendChild(pr);
                 flipCardBack.appendChild(ps);
                 flipCardBack.appendChild(ll);
                 var brl = document.createElement("br");
                 flipCardBack.appendChild(brl);
-                flipCardBack.appendChild(iconHeart);
+                flipCardBack.appendChild(elem);
+                flipCardBack.appendChild(elem1);
                 flipCardInner.appendChild(flipCardFront);
                 flipCardInner.appendChild(flipCardBack);
                 flipCard.appendChild(flipCardInner);
                 column.appendChild(flipCard);
-                if (index < 4)
-                {
+                if (index < 4) {
                     row.appendChild(column);
                     index++;
-                }
-                else {
+                } else {
                     div.appendChild(row);
                     row = document.createElement("div");
                     row.className = 'row';
                     row.appendChild(column);
-                    index =1;
+                    index = 1;
                 }
             }
         }
@@ -254,7 +302,7 @@ class Filters extends Component {
         row.className = 'row';
         var index = 0;
         for (var key in this.state.jobs) {
-            if (this.state.jobs[key][5] == 'student-job') {
+            if (this.state.jobs[key][3] == 'student') {
                 var column = document.createElement("div");
                 column.className = 'column';
                 var flipCard = document.createElement("div");
@@ -276,23 +324,40 @@ class Filters extends Component {
                 var ps = document.createElement("p");
                 var score = document.createTextNode("Score: " + this.state.jobs[key][2].toFixed(2) * 100 + "%");
                 ps.appendChild(score);
-                var iconHeart = document.createElement("a");
-                iconHeart.className = 'heart';
-                iconHeart.id = key;
-                // iconHeart.onClick = this.favHandler();
-                var heart = document.createElement("i");
-                heart.className = 'fa fa-heart-o';
-                // heart.setAttribute('aria-hidden', 'true');
-                // var fullHeart = document.createElement('i');
-                // fullHeart.className = "fa fa-heart";
-                // iconHeart.appendChild(fullHeart);
-                iconHeart.appendChild(heart);
+                //heart element
+                var elem=document.createElement('a');
+                elem.className='heart';
+                var heart=document.createElement('i');
+                if(this.state.jobs[key][4]==true)
+                    heart.className = "fa fa-heart";
+                else {
+                    heart.className = "fa fa-heart";
+                    heart.classList.toggle('fa-heart-o');
+                }
+                heart.id=key;
+                heart.addEventListener('click', (event) =>this.UpdateFavorite(event), false);
+                elem.appendChild(heart);
+
+                //send element
+                var elem1=document.createElement('a');
+                elem1.className='send';
+                var send=document.createElement('i');
+                if(this.state.jobs[key][5]==true)
+                    send.className = "fa fa-paper-plane";
+                else {
+                    send.className = "fa fa-paper-plane";
+                    send.classList.toggle('fa-paper-plane-o');
+                }
+                send.id=key+"send";
+                send.addEventListener('click', (event) =>this.UpdateSending(event), false);
+                elem1.appendChild(send);
                 flipCardFront.appendChild(pr);
                 flipCardBack.appendChild(ps);
                 flipCardBack.appendChild(ll);
                 var brl = document.createElement("br");
                 flipCardBack.appendChild(brl);
-                flipCardBack.appendChild(iconHeart);
+                flipCardBack.appendChild(elem);
+                flipCardBack.appendChild(elem1);
                 flipCardInner.appendChild(flipCardFront);
                 flipCardInner.appendChild(flipCardBack);
                 flipCard.appendChild(flipCardInner);
@@ -321,7 +386,7 @@ class Filters extends Component {
         row.className = 'row';
         var index = 0;
         for (var key in this.state.jobs) {
-            if (this.state.jobs[key][4] == true) {
+            if (this.state.jobs[key][5] == true) {
                 var column = document.createElement("div");
                 column.className = 'column';
                 var flipCard = document.createElement("div");
@@ -343,23 +408,40 @@ class Filters extends Component {
                 var ps = document.createElement("p");
                 var score = document.createTextNode("Score: " + this.state.jobs[key][2].toFixed(2) * 100 + "%");
                 ps.appendChild(score);
-                var iconHeart = document.createElement("a");
-                iconHeart.className = 'heart';
-                iconHeart.id = key;
-                // iconHeart.onClick = this.favHandler();
-                var heart = document.createElement("i");
-                heart.className = 'fa fa-heart-o';
-                // heart.setAttribute('aria-hidden', 'true');
-                // var fullHeart = document.createElement('i');
-                // fullHeart.className = "fa fa-heart";
-                // iconHeart.appendChild(fullHeart);
-                iconHeart.appendChild(heart);
+                //heart element
+                var elem=document.createElement('a');
+                elem.className='heart';
+                var heart=document.createElement('i');
+                if(this.state.jobs[key][4]==true)
+                    heart.className = "fa fa-heart";
+                else {
+                    heart.className = "fa fa-heart";
+                    heart.classList.toggle('fa-heart-o');
+                }
+                heart.id=key;
+                heart.addEventListener('click', (event) =>this.UpdateFavorite(event), false);
+                elem.appendChild(heart);
+
+                //send element
+                var elem1=document.createElement('a');
+                elem1.className='send';
+                var send=document.createElement('i');
+                if(this.state.jobs[key][5]==true)
+                    send.className = "fa fa-paper-plane";
+                else {
+                    send.className = "fa fa-paper-plane";
+                    send.classList.toggle('fa-paper-plane-o');
+                }
+                send.id=key+"send";
+                send.addEventListener('click', (event) =>this.UpdateSending(event), false);
+                elem1.appendChild(send);
                 flipCardFront.appendChild(pr);
                 flipCardBack.appendChild(ps);
                 flipCardBack.appendChild(ll);
                 var brl = document.createElement("br");
                 flipCardBack.appendChild(brl);
-                flipCardBack.appendChild(iconHeart);
+                flipCardBack.appendChild(elem);
+                // flipCardBack.appendChild(iconHeart);
                 flipCardInner.appendChild(flipCardFront);
                 flipCardInner.appendChild(flipCardBack);
                 flipCard.appendChild(flipCardInner);
@@ -388,7 +470,7 @@ class Filters extends Component {
         row.className = 'row';
         var index = 0;
         for (var key in this.state.jobs) {
-            if (this.state.jobs[key][3] == true) {
+            if (this.state.jobs[key][4] == true) {
                 var column = document.createElement("div");
                 column.className = 'column';
                 var flipCard = document.createElement("div");
@@ -410,23 +492,40 @@ class Filters extends Component {
                 var ps = document.createElement("p");
                 var score = document.createTextNode("Score: " + this.state.jobs[key][2].toFixed(2) * 100 + "%");
                 ps.appendChild(score);
-                var iconHeart = document.createElement("a");
-                iconHeart.className = 'heart';
-                iconHeart.id = key;
-                // iconHeart.onClick = this.favHandler();
-                var heart = document.createElement("i");
-                heart.className = 'fa fa-heart-o';
-                // heart.setAttribute('aria-hidden', 'true');
-                // var fullHeart = document.createElement('i');
-                // fullHeart.className = "fa fa-heart";
-                // iconHeart.appendChild(fullHeart);
-                iconHeart.appendChild(heart);
+                //heart element
+                var elem=document.createElement('a');
+                elem.className='heart';
+                var heart=document.createElement('i');
+                if(this.state.jobs[key][4]==true)
+                    heart.className = "fa fa-heart";
+                else {
+                    heart.className = "fa fa-heart";
+                    heart.classList.toggle('fa-heart-o');
+                }
+                heart.id=key;
+                heart.addEventListener('click', (event) =>this.UpdateFavorite(event), false);
+                elem.appendChild(heart);
+
+                //send element
+                var elem1=document.createElement('a');
+                elem1.className='send';
+                var send=document.createElement('i');
+                if(this.state.jobs[key][5]==true)
+                    send.className = "fa fa-paper-plane";
+                else {
+                    send.className = "fa fa-paper-plane";
+                    send.classList.toggle('fa-paper-plane-o');
+                }
+                send.id=key+"send";
+                send.addEventListener('click', (event) =>this.UpdateSending(event), false);
+                elem1.appendChild(send);
                 flipCardFront.appendChild(pr);
                 flipCardBack.appendChild(ps);
                 flipCardBack.appendChild(ll);
                 var brl = document.createElement("br");
                 flipCardBack.appendChild(brl);
-                flipCardBack.appendChild(iconHeart);
+                flipCardBack.appendChild(elem);
+                flipCardBack.appendChild(elem1);
                 flipCardInner.appendChild(flipCardFront);
                 flipCardInner.appendChild(flipCardBack);
                 flipCard.appendChild(flipCardInner);
@@ -449,17 +548,26 @@ class Filters extends Component {
             div.appendChild(row);
     };
 
-
-    func=(event)=>{
+    UpdateFavorite= async(event)=>{
         var heart = document.getElementById(event.target.id);
-        heart.classList.toggle('fa-heart-o')
+        heart.classList.toggle('fa-heart-o');
+        const body={id:event.target.id}
+        const response = await axiosInstance.post(`/user/${this.getUserId()}/UpdateFavorite`,{body});
     };
 
+    UpdateSending= async(event)=>{
+        //TODO:to add the perfix fot the it attribute
+        var send = document.getElementById(event.target.id);
+        console.log(event.target.id.substring(0,event.target.id.length-4));
+        send.classList.toggle('fa-paper-plane-o');
+        const body={id:event.target.id.substring(0, event.target.id.length-4)};
+        const response = await axiosInstance.post(`/user/${this.getUserId()}/UpdateSending`,{body});
+    };
 
     render() {
         return (
             <div className="filter">
-                <h2>Filter DIV Elements</h2>
+                <h2>Filter by:</h2>
                 <div className="myBtnContainer">
                     <button className="btn_active" onClick={(event) =>this.filterSelection(0)}> Show all</button>
                     <button className="btn_nothing" onClick={(event) =>this.filterSelection(1)}> FullJob</button>
