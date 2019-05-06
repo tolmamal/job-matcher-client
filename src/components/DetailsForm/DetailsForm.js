@@ -44,6 +44,8 @@ class DetailsForm extends Component {
         this.setState({email:response.data[2]});
         // console.log(response.data[3]);
         this.setState({selectedTags:response.data[3]});
+        // console.log("selectedTags:",this.state.selectedTags,"response.data[3]",response.data[3])
+        // console.log("lenght",this.state.selectedTags.length)
     }
 
     getUserId = () => this.props.match.params.id;
