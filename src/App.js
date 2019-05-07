@@ -3,6 +3,7 @@ import React, {Component} from 'react';
 import './App.css';
 import {BrowserRouter as Router, Redirect, Route, Switch} from "react-router-dom";
 import SideMenu from "./components/SideMenu/SideMenu";
+import Wrapping from "./components/Wrapping/Wrapping";
 import RegisterForm from "./components/RegisterForm/RegisterForm";
 import UserPage from "./components/UserPage/UserPage";
 import About from "./components/About/About"
@@ -46,6 +47,7 @@ function AppRouter() {
     return (
         <Router>
             <div className="app-container">
+                {/*<Wrapping/>*/}
                 <SideMenu/>
                 <Switch>
                     <Route path="/" exact component={Home}/>
