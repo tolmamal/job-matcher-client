@@ -21,48 +21,60 @@ class HomeDesign extends Component {
 
                 </section>
 
-                <section id="feature">
+                <section id="service">
                     <div className="container">
                         <div className="row">
                             <div className="col-md-12">
                                 <div className="title-area">
-                                    <h2 className="title">Features</h2>
+                                    <h2 className="title">Our Services</h2>
                                     <span className="line"></span>
-                                    <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour</p>
+                                    <p>We offer a whole new world of employment opportunities in the form of a management and follow-up platform for submitting resumes to various positions. <br/>
+                                        We provide a wide and bounded repository of jobs across the web in the software world. Based on your resume, we provide personalized employment offers to the client.
+                                    </p>
                                 </div>
                             </div>
                             <div className="col-md-12">
-                                <div className="feature-content">
+                                <div className="service-content">
                                     <div className="row">
+                                        {/*start single service*/}
                                         <div className="col-md-4 col-sm-6">
-                                            <div className="single-feature wow zoomIn">
-                                                <i className="fa fa-leaf feature-icon"></i>
-                                                <h4 className="feat-title">Creative Design</h4>
-                                                <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.</p>
+                                            <div className="single-service wow zoomIn">
+                                                <i className="fa fa-database service-icon"></i>
+                                                <h4 className="service-title">Wide Data Bank</h4>
+                                                <p>A wide and varied of employment offers in software field</p>
                                             </div>
                                         </div>
+                                        {/*end single service*/}
 
+                                        {/*start single service*/}
                                         <div className="col-md-4 col-sm-6">
-                                            <div className="single-feature wow zoomIn">
-                                                <i className="fa fa-mobile feature-icon"></i>
-                                                <h4 className="feat-title">Varied repository</h4>
-                                                <p>There are many variations of jobs in software world. You just have to choose one.</p>
+                                            <div className="single-service wow zoomIn">
+                                                <i className="fa fa-user-circle service-icon"></i>
+                                                <h4 className="service-title">Personal Timeline Career</h4>
+                                                <p>Tracking and managing a customized career timeline for each client<br/>
+                                                based on previous experience in customer's professional field.</p>
                                             </div>
                                         </div>
+                                        {/*end single service*/}
 
-
-
+                                        {/*start single service*/}
+                                        <div className="col-md-4 col-sm-6">
+                                            <div className="single-service wow zoomIn">
+                                                <i className="fa fa-commenting service-icon"></i>
+                                                <h4 className="service-title">Customized Professional Recommends System</h4>
+                                                <p>Based on the client's resume and professional field, <br/>
+                                                    we also offer professional recommendations for studies <br/>
+                                                    in the field.
+                                                </p>
+                                            </div>
+                                        </div>
+                                        {/*end single service*/}
 
                                     </div>
                                 </div>
                             </div>
-
-
-
                         </div>
                     </div>
-
-
                 </section>
 
 
