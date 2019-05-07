@@ -2,17 +2,30 @@ import React, {
     Component
 } from "react";
 import "./TimeLine.css"
+import axiosInstance from "../../utils/axios";
 
 class TimeLine extends Component {
 
-    datess=["1/1/19","1/2/19","1/3/19","1/4/19"];
-    matchJobs=["a","b","c","d"];
-    submitedJobs=["a","c"];
-    responsivedJobs=["a","c"];
+    constructor(props) {
+        super(props);
+        //console.log(props.push)
+        this.state = {
+            datess:["1/1/19","1/2/19","1/3/19","1/4/19"],
+            matchJobs:["a","b","c","d"],
+            submitedJobs:["a","c"],
+            responsivedJobs:["a","c"]
+        };
+    };
+
+
+    // SETSTATE= async (e)=>{
+    //     const response = await axiosInstance.get(`/user/${this.props.match.params.id}/`);
+    //     // console.log(response.data[0]);
+    //
+    // };
 
     loadTimeLine=(e)=>{
         var lines = document.getElementsByClassName("timeline")[0];
-
 
         for (var i = 0; i < this.datess.length; i++) {
 
@@ -67,42 +80,7 @@ class TimeLine extends Component {
 
                 <div className="TLbody">
                     <div id="div1" className="timeline">
-                    {/*    <div className="TLcontainer left">*/}
-                    {/*        <div className="TLcontent">*/}
-                    {/*            <h2>2017</h2>*/}
-                    {/*            <p>a</p>*/}
-                    {/*        </div>*/}
-                    {/*    </div>*/}
-                    {/*    <div className="TLcontainer right">*/}
-                    {/*        <div className="TLcontent">*/}
-                    {/*            <h2>2016</h2>*/}
-                    {/*            <p>b</p>*/}
-                    {/*        </div>*/}
-                    {/*    </div>*/}
-                    {/*    <div className="TLcontainer left">*/}
-                    {/*        <div className="TLcontent">*/}
-                    {/*            <h2>2015</h2>*/}
-                    {/*            <p>c</p>*/}
-                    {/*        </div>*/}
-                    {/*    </div>*/}
-                    {/*    <div className="TLcontainer right">*/}
-                    {/*        <div className="TLcontent">*/}
-                    {/*            <h2>2012</h2>*/}
-                    {/*            <p>d</p>*/}
-                    {/*        </div>*/}
-                    {/*    </div>*/}
-                    {/*    <div className="TLcontainer left">*/}
-                    {/*        <div className="TLcontent">*/}
-                    {/*            <h2>2011</h2>*/}
-                    {/*            <p>e</p>*/}
-                    {/*        </div>*/}
-                    {/*    </div>*/}
-                    {/*    <div className="TLcontainer right">*/}
-                    {/*        <div className="TLcontent">*/}
-                    {/*            <h2>2007</h2>*/}
-                    {/*            <p>f</p>*/}
-                    {/*        </div>*/}
-                    {/*    </div>*/}
+
                     </div>
                     {/*<img src="jdejlo" className="TLImg" onLoad={(e)=>this.loadTimeLine(e)}/>*/}
                 </div>

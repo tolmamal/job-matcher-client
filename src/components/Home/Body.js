@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./Home.css";
+import JobsCounter from "./jobsCounter"
 
 
 
@@ -10,6 +11,7 @@ class Body extends Component {
     return (
       <div className="body">
         <div className="div">Home</div>
+        <JobsCounter/>
         <p className="pp" >Career and recruitment world</p>
          <table className="table">
             <tr className="tr">

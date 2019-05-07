@@ -1,37 +1,28 @@
 import React, {Component} from 'react';
 import "./GetUserMatch.css";
 import axiosInstance from "../../utils/axios";
-
+import "../Jobs/Jobs.css";
+import "../word2vec/word2vec";
+import Sort from "./Sort"
+import "./flipCard.css"
+import  Filters from "./Filters"
 
 class GetUserMatch extends Component {
 
-
-    getUserId = () => this.props.match.params.id;
-
-    findMatchHandler = async () => {
-        // TODO: add try&catch later
-        const response = await axiosInstance.post(`/user/${this.getUserId()}/svemtchjbs`);
-
-    };
-
+    constructor(props) {
+        super(props);
+    }
 
     render() {
         return (
             <div>
                 <br/>
+                <Filters{...this.props}/>
                 <br/>
-                <br/>
-                <h3>finding your matches ...</h3>
-                <br/>
-                <br/>
-                <br/>
-                <button id="find-match-button" onClick={this.findMatchHandler}>Find Location Match!</button>
+                <Sort {...this.props}/>
+                <div id="aaa"/>
             </div>
         );
     }
-
-
 }
-
-
 export default GetUserMatch;

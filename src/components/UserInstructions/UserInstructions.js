@@ -4,7 +4,6 @@ import Header from "../Header/Header";
 import Footer from "../Instructions/Fotter";
 import UserModal from "./UserModal";
 
-
 class UserInstructions extends Component {
 
     ssssshowClick=(e)=>{
