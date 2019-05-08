@@ -27,17 +27,10 @@ class ProfileCard extends Component {
         this.setState({last_name:response.data[1]});
         this.setState({cards_amount:response.data[3]});
         this.setState({cards: response.data[4]});
-        console.log("cards: ");
-        console.log(response.data[4]);
-        console.log("state.cards: ");
-        console.log(state.cards);
-        console.log("state.cards.length");
-        console.log(state.cards.length);
-        // this.setState({cards: state.cards.map(response.data[4] => response.data[4])});
 
-        // this.setState({cards: state.cards.map(t => response.data[4])});
-        // tags: state.selectedTags.map(t => t.value)
-        // this.setState({cards:response.data[4]});
+        // console.log("cards_amount: ", this.state.cards_amount);
+        // console.log("cards: ", this.state.cards);
+
 
     }
 
@@ -51,16 +44,56 @@ class ProfileCard extends Component {
         modal.style.display = "none";
     };
 
-    getRecommend = async () => {
 
-        console.log(" ******* getRecommend ************");
+
+
+    loadCard = async (e) => {
+        console.log("--- loadCard(e) ---");
+
+        // TODO: split the msg with whitespace for display !!!
         const response = await axiosInstance.post(`/user/${this.props.match.params.id}/recommendation`);
-        console.log(response.data);
 
 
-    };
 
-    loadCard = (e) => {
+
+        let lines = document.getElementsByClassName("cards-container")[0];
+
+        for(let i=0; i < this.state.cards_amount; i++)
+        {
+
+            let card = document.createElement("div");
+            card.className="card";
+            let line = document.createElement("h3");
+            line.className="title";
+            let title = document.createTextNode(this.state.cards[i]);
+            line.appendChild(title);
+            card.appendChild(line);
+
+            let bar = document.createElement("div");
+            bar.className = "bar";
+            let emptyBar = document.createElement("div");
+            emptyBar.className = "emptybar";
+            let filledBar = document.createElement("div");
+            filledBar.className = "filledbar";
+
+            bar.appendChild(emptyBar);
+            bar.appendChild(filledBar);
+            card.appendChild(bar);
+
+            let input = document.createElement("div");
+            input.className = "input";
+
+
+            let msg = document.createTextNode(response.data[this.state.cards[i]]);
+
+            input.appendChild(msg);
+            card.appendChild(input);
+
+
+            lines.appendChild(card);
+            // console.log("lines: " , lines);
+
+        }
 
 
 
@@ -71,8 +104,7 @@ class ProfileCard extends Component {
         // console.log("ProfileCard:  "+ this.props);
         return (
             <div>
-                <h4>cards amount = {cards_amount}</h4>
-                <h4>cards = {cards}</h4>
+
                 <div className="PCMain">
                     <h2 className="PCh2">hello {first_name}  {last_name} :</h2>
 
@@ -95,59 +127,11 @@ class ProfileCard extends Component {
                 </div>
 
                 <div id="user-recommend">
-                    <button id="rec-btn" onClick={this.getRecommend}><strong>View your recommendations</strong></button>
+                    <button id="rec-btn" onClick={(e) => this.loadCard(e)}><strong>View your recommendations</strong></button>
                 </div>
-                {/*<div className="container">*/}
-                {/*    <div className="card">*/}
-                {/*        <h3 className="title">Card 1</h3>*/}
-                {/*        <div className="bar">*/}
-                {/*            <div className="emptybar"></div>*/}
-                {/*            <div className="filledbar"></div>*/}
-                {/*        </div>*/}
-                {/*        <div className="circle">*/}
-                {/*            <svg version="1.1" xmlns="http://www.w3.org/2000/svg">*/}
-                {/*                <circle className="stroke" cx="60" cy="60" r="50"/>*/}
-                {/*            </svg>*/}
-                {/*        </div>*/}
-                {/*    </div>*/}
-                {/*    <div className="card">*/}
-                {/*        <h3 className="title">Card 2</h3>*/}
-                {/*        <div className="bar">*/}
-                {/*            <div className="emptybar"></div>*/}
-                {/*            <div className="filledbar"></div>*/}
-                {/*        </div>*/}
-                {/*        <div className="circle">*/}
-                {/*            <svg version="1.1" xmlns="http://www.w3.org/2000/svg">*/}
-                {/*                <circle className="stroke" cx="60" cy="60" r="50"/>*/}
-                {/*            </svg>*/}
-                {/*        </div>*/}
-                {/*    </div>*/}
-                {/*    <div className="card">*/}
-                {/*        <h3 className="title">Card 3</h3>*/}
-                {/*        <div className="bar">*/}
-                {/*            <div className="emptybar"></div>*/}
-                {/*            <div className="filledbar"></div>*/}
-                {/*        </div>*/}
-                {/*        <div className="circle">*/}
-                {/*            <svg version="1.1" xmlns="http://www.w3.org/2000/svg">*/}
-                {/*                <circle className="stroke" cx="60" cy="60" r="50"/>*/}
-                {/*            </svg>*/}
-                {/*        </div>*/}
-                {/*    </div>*/}
-                {/*    <div className="card">*/}
-                {/*        <h3 className="title">Card 4</h3>*/}
-                {/*        <div className="bar">*/}
-                {/*            <div className="emptybar"></div>*/}
-                {/*            <div className="filledbar"></div>*/}
-                {/*        </div>*/}
-                {/*        <div className="circle">*/}
-                {/*            <svg version="1.1" xmlns="http://www.w3.org/2000/svg">*/}
-                {/*                <circle className="stroke" cx="60" cy="60" r="50"/>*/}
-                {/*            </svg>*/}
-                {/*        </div>*/}
-                {/*    </div>*/}
+                <div className="cards-container">
 
-                {/*</div>*/}
+                </div>
 
             </div>
 

@@ -1,0 +1,131 @@
+#slider {
+    display: inline;
+    float: left;
+    width: 100%;
+}
+
+.main-slider {
+    display: inline;
+    float: left;
+    height: 600px;
+    margin-bottom: 0;
+    width: 100%;
+}
+.main-slider .slick-list {
+    height: 100%;
+}
+
+.single-slide{
+    float: left;
+    display: inline;
+    width: 100%;
+}
+
+.single-slide img{
+    width: 100%;
+}
+
+.slide-content {
+    background-color: rgba(0, 0, 0, 0.6);
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+
+.main-slider .slick-prev {
+    left: 23px;
+}
+
+.main-slider .slick-next {
+    right: 20px;
+}
+
+.main-slider .slick-prev,
+.main-slider .slick-next {
+    background-color: rgba(0,0,0,0.5);
+    top: 48%;
+    height: 50px;
+    width: 50px;
+    z-index: 999;
+    -webkit-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    transition: all 0.5s;
+}
+
+.main-slider .slick-prev::before {
+    content: "\f104";
+    font-family: fontAwesome;
+    font-size: 30px;
+}
+
+.main-slider .slick-next::before {
+    content: "\f105";
+    font-family: fontAwesome;
+    font-size: 30px;
+}
+
+.main-slider .slick-dots {
+    bottom: 10px;
+}
+
+.main-slider .slick-dots li {
+    background-color: rgba(0, 0, 0, 0.6);
+    border-radius: 50%;
+}
+
+.main-slider .slick-dots li button::before {
+    font-size: 25px;
+    line-height: 21px;
+}
+
+.slide-article {
+    display: inline;
+    float: left;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 150px;
+    width: 100%;
+}
+
+.slide-article h1 {
+    color: #fff;
+    font-size: 45px;
+    font-weight: bold;
+    line-height: 55px;
+    margin-bottom: 25px;
+    text-transform: uppercase;
+}
+
+.slide-article p {
+    color: #fff;
+    margin-bottom: 50px;
+}
+
+.read-more-btn{
+    color: #fff;
+    border: 1px solid #fff;
+    display: inline-block;
+    padding: 12px 22px;
+    /*font-weight: 700px;*/
+    font-weight: bold;
+    font-size: 16px;
+    -webkit-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    transition: all 0.5s;
+}
+
+.read-more-btn:hover,
+.read-more-btn:focus{
+    color: #fff;
+    text-decoration: none;
+    outline: none;
+}
+
+.slider-img{
+    display: inline;
+    float: left;
+    padding: 0 30px;
+    width: 100%;
+}
