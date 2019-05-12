@@ -7,6 +7,7 @@ import Utils from "../../utils/Utils";
 import axiosInstance from "../../utils/axios";
 import Select from "react-select";
 
+//
 const tagOptions = [
     {value: 'React', label: 'React'},
     {value: 'Redux', label: 'Redux'},
@@ -39,11 +40,12 @@ class DetailsForm extends Component {
         // console.log(response.data[0]);
         this.setState({first_name:response.data[0]});
         this.setState({last_name:response.data[1]});
-        this.setState({password:response.data[4]});
-        this.setState({confirmPassword:response.data[4]});
+        this.setState({password:response.data[5]});
+        this.setState({confirmPassword:response.data[5]});
         this.setState({email:response.data[2]});
-        // console.log(response.data[3]);
-        this.setState({selectedTags:response.data[3]});
+        // console.log("response.data[3]",response.data[0],response.data[1],
+        //     response.data[2],response.data[3],response.data[4]);
+        this.setState({selectedTags:response.data[4]});
         // console.log("selectedTags:",this.state.selectedTags,"response.data[3]",response.data[3])
         // console.log("lenght",this.state.selectedTags.length)
     }
@@ -107,6 +109,7 @@ class DetailsForm extends Component {
 
 
     render() {
+        // console.log("aaaaaa",this.state.selectedTags)
         const { first_name,last_name, password, confirmPassword,email,selectedTags, formValid } = this.state;
         return (
         <div>

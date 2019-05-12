@@ -235,14 +235,14 @@ class ProfileCard extends Component {
                 {/*</div>*/}
 
                 {/*TODO: change in form - instead of interest should be fields need UPDATE on DB also!*/}
-                {/*<div id="myModal" className="PCmodal">*/}
-                {/*    <div className="PCmodal-content">*/}
-                {/*        <span className="PCclose" onClick={(e)=>this.spanOnClick(100)}>&times;</span>*/}
-                {/*        /!*<p>Profile details:</p>*!/*/}
-                {/*        <DetailsForm {...this.props}/>*/}
-                {/*    </div>*/}
+                <div id="myModal" className="PCmodal">
+                    <div className="PCmodal-content">
+                        <span className="PCclose" onClick={(e)=>this.spanOnClick(100)}>&times;</span>
+                        {/*<p>Profile details:</p>*/}
+                        <DetailsForm {...this.props}/>
+                    </div>
 
-                {/*</div>*/}
+                </div>
 
                 <div className="user-timeline">
                     <div className="timeline-item" date-is="20-7-2018">
