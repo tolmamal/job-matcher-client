@@ -60,6 +60,11 @@
     display: inline;
     float: left;
     width: 100%;
+
+    box-sizing: border-box;
+    font-family: 'Open Sans' , sans-serif;
+    font-size: 16px;
+
 }
 
 
@@ -70,13 +75,19 @@
     float: left;
     padding: 90px 0;
     width: 100%;
+
+    box-sizing: border-box;
+    font-family: 'Open Sans' , sans-serif;
+    font-size: 16px;
 }
 
 
-.counter-area{
+.counter-area {
     display: inline;
     float: left;
     width: 100%;
+
+    box-sizing: border-box;
 }
 
 .single-counter{
@@ -84,9 +95,11 @@
     float: left;
     text-align: center;
     width: 100%;
+
+    margin-bottom: 30px;
 }
 
-.single-counter .counter-icon{
+.single-counter .counter-icon {
     display: inline;
     float: left;
     width: 100%;
