@@ -14,20 +14,19 @@ class ProfileCard extends Component {
         this.state = {
             first_name: "",
             last_name: "",
-            cards_amount:"",
+            cards_amount: "",
             cards: []
         };
     };
-
 
 
     componentWillMount = async () => {
         const response = await axiosInstance.get(`/user/${this.props.match.params.id}/changeProfile`);
         // console.log(response.data[0]);
         const {state} = this;
-        this.setState({first_name:response.data[0]});
-        this.setState({last_name:response.data[1]});
-        this.setState({cards_amount:response.data[3]});
+        this.setState({first_name: response.data[0]});
+        this.setState({last_name: response.data[1]});
+        this.setState({cards_amount: response.data[3]});
         this.setState({cards: response.data[4]});
 
         // console.log("cards_amount: ", this.state.cards_amount);
@@ -36,21 +35,46 @@ class ProfileCard extends Component {
 
     }
 
-    btnOnClick=(e)=>{
+    btnOnClick = (e) => {
         var modal = document.getElementById("myModal");
-        modal.style.display ="block";
+        modal.style.display = "block";
     };
 
-    spanOnClick=(e)=>{
+    spanOnClick = (e) => {
         var modal = document.getElementById("myModal");
         modal.style.display = "none";
     };
 
+    loadTimeline = async (e) => {
+
+        let lines = document.getElementsByClassName("user-timeline")[0];
 
 
+
+        {/*<div className="timeline-item" date-is="20-7-2018">*/}
+        {/*    <h1>Freelancer</h1>*/}
+        {/*    <p>Web developer in Microsoft Haifa</p>*/}
+        {/*</div>*/}
+
+        {/*<div className="timeline-item" date-is="8-10-2015">*/}
+        {/*    <h1>Full Stack Developer</h1>*/}
+        {/*<p>Web developer - all kind of projects</p>*/}
+        {/*</div>*/}
+
+        {/*<div className="timeline-item" date-is="10-4-2010">*/}
+        {/*    <h1>Back-End Developer</h1>*/}
+        {/*    <p>Back-end developer in Check Point Tel-Aviv</p>*/}
+        {/*</div>*/}
+
+
+
+
+
+
+    };
 
     loadCard = async (e) => {
-        console.log("--- loadCard(e) ---");
+        // console.log("--- loadCard(e) ---");
 
         // TODO: split the msg with whitespace for display !!!
         const response = await axiosInstance.post(`/user/${this.props.match.params.id}/recommendation`);
@@ -61,112 +85,64 @@ class ProfileCard extends Component {
         cards.className = "cards";
 
         let card = document.createElement("li");
-        card.className="card";
+        card.className = "card";
 
-         let line = document.createElement("h2");
-         line.className="line";
+        let line = document.createElement("h2");
+        line.className = "line";
 
-         let title = document.createTextNode("Professional Recommendations");
-         line.appendChild(title);
+        let title = document.createTextNode("Customized Professional Recommendations");
+        line.appendChild(title);
 
-         // let par = document.createElement("p");
 
         card.appendChild(line);
 
+        let newLine = document.createElement("br");
+        card.appendChild(newLine);
+
+        for (let i = 0; i < this.state.cards_amount; i++) {
+
+            let par = document.createElement("p");
+            let fieldTitle = document.createElement("h3");
+            let field = document.createTextNode(this.state.cards[i] + ":");
+
+            fieldTitle.appendChild(field);
+            par.appendChild(fieldTitle);
+            card.appendChild(par);
+            let result = document.createElement("p");
+            result.innerHTML = '<i class="fa fa-graduation-cap" aria-hidden="true"></i>';
+            let msg = document.createTextNode(" " + response.data[this.state.cards[i]]);
+            result.appendChild(msg);
+            par.appendChild(result);
+            card.appendChild(par);
+
+            let nl = document.createElement("br");
+            card.appendChild(nl);
 
 
-         for(let i=0; i < this.state.cards_amount; i++)
-         {
-
-             let par = document.createElement("p");
-             par.innerHTML = '<i class="fa fa-graduation-cap" aria-hidden="true"></i>';
-             let msg = document.createTextNode(this.state.cards[i]);
-             par.appendChild(msg);
-             card.appendChild(par);
-         }
+        }
 
 
-
-         // let msg = document.createTextNode("... User Recommendations INFO ...");
-         // par.appendChild(msg);
-
-         // card.appendChild(line);
-         // card.appendChild(par);
-
-         cards.appendChild(card);
-         lines.appendChild(cards);
-
-
-        {/*<ul className="cards">*/}
-        {/*    <li className="card">*/}
-        {/*        <h1>Card 1</h1>*/}
-        {/*        <p>*/}
-        {/*            ... User Recommendations INFO ...*/}
-        {/*        </p>*/}
-        {/*    </li>*/}
-        {/*</ul>*/}
-
-
-        // let lines = document.getElementsByClassName("cards-container")[0];
-        //
-        // for(let i=0; i < this.state.cards_amount; i++)
-        // {
-        //
-        //     let card = document.createElement("div");
-        //     card.className="card";
-        //     let line = document.createElement("h3");
-        //     line.className="title";
-        //     let title = document.createTextNode(this.state.cards[i]);
-        //     line.appendChild(title);
-        //     card.appendChild(line);
-        //
-        //     let bar = document.createElement("div");
-        //     bar.className = "bar";
-        //     let emptyBar = document.createElement("div");
-        //     emptyBar.className = "emptybar";
-        //     let filledBar = document.createElement("div");
-        //     filledBar.className = "filledbar";
-        //
-        //     bar.appendChild(emptyBar);
-        //     bar.appendChild(filledBar);
-        //     card.appendChild(bar);
-        //
-        //     let input = document.createElement("div");
-        //     input.className = "input";
-        //
-        //
-        //     let msg = document.createTextNode(response.data[this.state.cards[i]]);
-        //
-        //     input.appendChild(msg);
-        //     card.appendChild(input);
-        //
-        //
-        //     lines.appendChild(card);
-        //     // console.log("lines: " , lines);
-        //
-        // }
-
+        cards.appendChild(card);
+        lines.appendChild(cards);
 
 
     };
 
     loadSkills = () => {
-        console.log("------------ loadSkills ----------------");
+        // console.log("------------ loadSkills ----------------");
 
         let skills = document.getElementsByClassName("ds-skill")[0];
         console.log("cards_amount: ", this.state.cards_amount);
 
-        for(let i=0; i < this.state.cards_amount; i++)
-        {
+        for (let i = 0; i < this.state.cards_amount; i++) {
             console.log("i = ", i);
             let skill = document.createElement("div");
             skill.className = "skill";
             // skill.innerHTML = '<i class="fa fa-graduation-cap" aria-hidden="true"></i>';
 
 
-
             let line = document.createElement("h6");
-            line.className="skill-title";
+            line.className = "skill-title";
             let name = document.createTextNode(this.state.cards[i]);
             line.appendChild(name);
             skill.appendChild(line);
@@ -180,14 +156,12 @@ class ProfileCard extends Component {
     };
 
 
-
-
     //TODO: add background img to this page
     //
 
 
     render() {
-        const { first_name,last_name,cards_amount , cards} = this.state;
+        const {first_name, last_name, cards_amount, cards} = this.state;
         // console.log("ProfileCard:  "+ this.props);
         return (
             <div className="main-profile-card">
@@ -195,7 +169,8 @@ class ProfileCard extends Component {
                 <div className="profile-card">
                     <div className="ds-top"></div>
                     <div className="avatar-holder">
-                        <img className="img" src="http://www.cybecys.com/wp-content/uploads/2017/07/no-profile.png" alt="photo"/>
+                        <img className="img" src="http://www.cybecys.com/wp-content/uploads/2017/07/no-profile.png"
+                             alt="photo"/>
                     </div>
                     <div className="profile-name">
                         <a href="https://codepen.io/AlbertFeynman/" target="_blank">{first_name} {last_name}</a>
@@ -212,8 +187,8 @@ class ProfileCard extends Component {
                         </div>
                         <div className="update">
                             {/*TODO: change here -> suppose to call hen's function modal in btnOnClick()*/}
-                            <a href="#" className="btn" onClick={(e)=>this.btnOnClick(100)}>Update Profile &nbsp;
-                                <i className="fa fa-user-plus" ></i>
+                            <a href="#" className="btn" onClick={(e) => this.btnOnClick(100)}>Update Profile &nbsp;
+                                <i className="fa fa-user-plus"></i>
                             </a>
 
                         </div>
@@ -266,7 +241,15 @@ class ProfileCard extends Component {
                 <div className="user-recommend">
 
                     <div className="rcmd-btn">
-                        <button onClick={(e) => this.loadCard(e)}>View Recommendations</button>
+                        {/*<button onClick={(e) => this.loadCard(e)}>View Recommendations</button>*/}
+                        <a href="#" className="botn" onClick={(e) => this.loadCard(100)}>
+                            View&nbsp;Recommendations&nbsp;
+                            <span className="shift">›</span>
+                        </a>
+
+
+                        <div className="mask"></div>
+
 
                     </div>
 
