@@ -1,4 +1,6 @@
+.home-design {
 
+}
 
 .div {
     /*position: relative;
@@ -96,4 +98,128 @@
     /* margin-bottom: 0%;
     height: 300px; */
 }
+
+
+.background-img {
+    opacity: 0.9;
+
+
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+
+    min-height: 100%;
+    min-width: 1024px;
+
+    width: 100%;
+    height: auto;
+
+}
+
+.front {
+    position: absolute;
+    top: 80px;
+    left: 200px;
+}
+
+.web-title {
+    color: #fff;
+
+    /*color: black;*/
+    text-transform: uppercase;
+    font-size: 70px;
+    font-weight: bold;
+    line-height: 55px;
+    font-family: 'Lato' , SansSerif;
+
+    margin-top: 20px;
+
+    /*position: absolute;*/
+    /*top: 80px;*/
+    /*left: 200px;*/
+
+}
+
+.description {
+    font-size: 30px;
+    color: white;
+    /*font-weight: bolder;*/
+
+
+
+}
+
+#counter {
+    background-attachment: fixed;
+    background-image: url("https://i.imgur.com/cZtUiuN.jpg");
+    background-repeat: repeat;
+    background-size: cover;
+    color: #ffffff;
+    display: inline;
+    float: left;
+    width: 100%;
+}
+
+
+.counter-overlay {
+    background: rgba(15, 22, 30, 0.5) none repeat scroll 0 0;
+    color: #ffffff;
+    display: inline;
+    float: left;
+    padding: 90px 0;
+    width: 100%;
+}
+
+
+.counter-area{
+    display: inline;
+    float: left;
+    width: 100%;
+}
+
+.single-counter{
+    display: inline;
+    float: left;
+    text-align: center;
+    width: 100%;
+}
+
+.single-counter .counter-icon{
+    display: inline;
+    float: left;
+    width: 100%;
+    color: #fff;
+    font-size: 30px;
+}
+
+.single-counter .counter-no {
+    color: #fff;
+    display: inline;
+    float: left;
+    font-size: 45px;
+    font-weight: bold;
+    text-align: center;
+    width: 100%;
+    line-height: 60px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.single-counter .counter-label {
+    color: #fff;
+    display: inline;
+    float: left;
+    font-size: 20px;
+    width: 100%;
+}
+
+.single-counter .counter-label::after {
+    content: "";
+    height: 2px;
+    margin: 8px auto;
+    width: 35px;
+    display: block;
+}
+
 

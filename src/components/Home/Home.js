@@ -3,8 +3,8 @@ import Header from "../Header/Header";
 import Footer from "./Fotter";
 import Body from "../Home/Body";
 import Bbb from "../Bbb/bbb"
-
 import SlideShow from "../SlideShow/SlideShow"
+import HomeDesign from "../../components/HomeDesign/HomeDesign";
 
 class Home extends Component {
   constructor(props) {
@@ -13,17 +13,14 @@ class Home extends Component {
     this.state = {};
   }
 
+
+  //TODO: need to separate to 2 sections instead of home-design div & create component?
   render() {
     return (
-      <div>
-        <Header />
+        <HomeDesign/>
 
-        <Body />
 
-        {/*<SlideShow/>*/}
-        <Bbb/>
-        <Footer/>
-      </div>
+
     );
   }
 }
