@@ -11,7 +11,6 @@ export default class GetUserMatch extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            jobs: {},
             jobs_score: {},
             jobs_location: {}
 
@@ -64,11 +63,57 @@ export default class GetUserMatch extends Component {
                 var score = document.createTextNode("Score: " + this.state.jobs_score[key][2].toFixed(2) * 100 + "%");
                 ps.appendChild(score);
 
+                //heart element
+                var elem=document.createElement('a');
+                elem.className='heart';
+                var heart=document.createElement('i');
+                if(this.state.jobs_score[key][3]==true)
+                    heart.className = "fa fa-heart";
+                else {
+                    heart.className = "fa fa-heart";
+                    heart.classList.toggle('fa-heart-o');
+                }
+                heart.id=key;
+                heart.addEventListener('click', (event) =>this.UpdateFavorite(event), false);
+                elem.appendChild(heart);
+
+                //send element
+                var elem1=document.createElement('a');
+                elem1.className='send';
+                var send=document.createElement('i');
+                if(this.state.jobs_score[key][4]==true) {
+                    send.className = "fa fa-paper-plane";
+                }
+                else {
+                    send.className = "fa fa-paper-plane";
+                    send.classList.toggle('fa-paper-plane-o');
+                }
+                send.id=key+"send";
+                send.addEventListener('click', (event) =>this.UpdateSending(event), false);
+                elem1.appendChild(send);
+
+                //replay element
+                var elem2=document.createElement('a');
+                elem2.className='replay';
+                var replay=document.createElement('i');
+                if(this.state.jobs_score[key][5]==true)
+                    replay.className = "fa fa-check-square-o";
+                else {
+                    replay.className = "fa fa-square-o";
+                    replay.classList.toggle('fa-check-square-o');
+                }
+                replay.id=key+"replay";
+                replay.addEventListener('click', (event) =>this.UpdateReplay(event), false);
+                elem2.appendChild(replay);
+
                 flipCardFront.appendChild(pr);
                 flipCardBack.appendChild(ps);
                 flipCardBack.appendChild(ll);
                 var brl = document.createElement("br");
                 flipCardBack.appendChild(brl);
+                flipCardBack.appendChild(elem);
+                flipCardBack.appendChild(elem1);
+                flipCardBack.appendChild(elem2);
                 flipCardInner.appendChild(flipCardFront);
                 flipCardInner.appendChild(flipCardBack);
                 flipCard.appendChild(flipCardInner);
@@ -142,12 +187,57 @@ export default class GetUserMatch extends Component {
                 var score = document.createTextNode("Score: " + this.state.jobs_location[key][2].toFixed(2) * 100 + "%");
                 ps.appendChild(score);
 
+                //heart element
+                var elem=document.createElement('a');
+                elem.className='heart';
+                var heart=document.createElement('i');
+                if(this.state.jobs_location[key][4]==true)
+                    heart.className = "fa fa-heart";
+                else {
+                    heart.className = "fa fa-heart";
+                    heart.classList.toggle('fa-heart-o');
+                }
+                heart.id=key;
+                heart.addEventListener('click', (event) =>this.UpdateFavorite(event), false);
+                elem.appendChild(heart);
+
+                //send element
+                var elem1=document.createElement('a');
+                elem1.className='send';
+                var send=document.createElement('i');
+                if(this.state.jobs_location[key][5]==true) {
+                    send.className = "fa fa-paper-plane";
+                }
+                else {
+                    send.className = "fa fa-paper-plane";
+                    send.classList.toggle('fa-paper-plane-o');
+                }
+                send.id=key+"send";
+                send.addEventListener('click', (event) =>this.UpdateSending(event), false);
+                elem1.appendChild(send);
+
+                //replay element
+                var elem2=document.createElement('a');
+                elem2.className='replay';
+                var replay=document.createElement('i');
+                if(this.state.jobs_location[key][6]==true)
+                    replay.className = "fa fa-check-square-o";
+                else {
+                    replay.className = "fa fa-square-o";
+                    replay.classList.toggle('fa-check-square-o');
+                }
+                replay.id=key+"replay";
+                replay.addEventListener('click', (event) =>this.UpdateReplay(event), false);
+                elem2.appendChild(replay);
                 flipCardFront.appendChild(pr);
                 flipCardFront.appendChild(pc);
                 flipCardBack.appendChild(ps);
                 flipCardBack.appendChild(ll);
                 var brl = document.createElement("br");
                 flipCardBack.appendChild(brl);
+                flipCardBack.appendChild(elem);
+                flipCardBack.appendChild(elem1);
+                flipCardBack.appendChild(elem2);
                 flipCardInner.appendChild(flipCardFront);
                 flipCardInner.appendChild(flipCardBack);
                 flipCard.appendChild(flipCardInner);
@@ -191,20 +281,45 @@ export default class GetUserMatch extends Component {
         console.log('before switch');
 
         switch (c) {
-            case 6: {this.sortScore();break;}
-            case 7: {this.sortLocation();break;}
+            case 7: {this.sortScore();break;}
+            case 8: {this.sortLocation();break;}
             default: {console.log(c);}
 
         }};
 
+    UpdateFavorite= async(event)=>{
+        var heart = document.getElementById(event.target.id);
+        heart.classList.toggle('fa-heart-o');
+        const body={id:event.target.id}
+        const response = await axiosInstance.post(`/user/${this.getUserId()}/UpdateFavorite`,{body});
+    };
+
+    UpdateSending= async(event)=>{
+        //TODO:to add the perfix fot the it attribute
+        var send = document.getElementById(event.target.id);
+        console.log(event.target.id.substring(0,event.target.id.length-4));
+        send.classList.toggle('fa-paper-plane-o');
+        const body={id:event.target.id.substring(0, event.target.id.length-4)};
+        const response = await axiosInstance.post(`/user/${this.getUserId()}/UpdateSending`,{body});
+    };
+
+    UpdateReplay= async(event)=>{
+        //TODO:to add the perfix fot the it attribute
+        var send = document.getElementById(event.target.id);
+        console.log(event.target.id.substring(0,event.target.id.length-6));
+        send.classList.toggle('fa-square-o');
+        const body={id:event.target.id.substring(0, event.target.id.length-6)};
+        const response = await axiosInstance.post(`/user/${this.getUserId()}/UpdateReply`,{body});
+    };
+
     render(){
-    return(
-        <div>
-            <h2>Sort by:</h2>
-            <div className="myBtnContainer">
-            <button id="btn_active" className="btn_active" onClick={(event) =>this.sortSelection(6)}> Score </button>
-            <button id="btn_nothing" className="btn_nothing" onClick={(event) =>this.sortSelection(7)}> Location</button>
+        return(
+            <div>
+                <h2>Sort by:</h2>
+                <div className="myBtnContainer">
+                    <button id="btn_active" className="btn_active" onClick={(event) =>this.sortSelection(7)}> Score </button>
+                    <button id="btn_nothing" className="btn_nothing" onClick={(event) =>this.sortSelection(8)}> Location</button>
+                </div>
             </div>
-        </div>
-    );}
+        );}
 }
