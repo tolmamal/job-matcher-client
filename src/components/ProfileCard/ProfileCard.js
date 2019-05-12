@@ -73,7 +73,7 @@ class ProfileCard extends Component {
 
     };
 
-    loadCard = async (e) => {
+    loadCard = async () => {
         // console.log("--- loadCard(e) ---");
 
         // TODO: split the msg with whitespace for display !!!
@@ -117,8 +117,6 @@ class ProfileCard extends Component {
 
             let nl = document.createElement("br");
             card.appendChild(nl);
-
-
         }
 
 

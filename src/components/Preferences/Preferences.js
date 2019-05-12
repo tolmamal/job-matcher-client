@@ -16,15 +16,22 @@ const typeOptions = [
 class Preferences extends Component {
     constructor(props) {
         super(props);
-
         this.state = {
-            selectedType: ""
+            selectedType: []
         };
     }
 
+    componentWillMount = async () => {
+        const response = await axiosInstance.get(`/user/${this.getUserId()}/preferences`);
+        // console.log("response.data[0]",response.data);
+        var temp=[];
+        for (var i =0;i<response.data.length;i++)
+            temp[i] = { value: response.data[i], label: response.data[i] };
+        // console.log("temp",temp);
+        this.setState({selectedType:temp});
+    }
 
     getUserId = () => this.props.match.params.id;
-
 
     onTypeChanged = (selectedType) => {
         this.setState({selectedType});

@@ -34,7 +34,7 @@ class DetailsForm extends Component {
 
     constructor(props) {
         super(props);
-        console.log("props", props);
+        // console.log("props", props);
         this.state = {
             first_name:"",
             last_name: "",
@@ -57,10 +57,14 @@ class DetailsForm extends Component {
         this.setState({email:response.data[2]});
         // console.log("response.data[3]",response.data[0],response.data[1],
         //     response.data[2],response.data[3],response.data[4]);
-        this.setState({selectedTags:response.data[4]});
+        var temp=[];
+        for (var i =0;i<response.data[3];i++)
+            temp[i] = { value: response.data[4][i], label: response.data[4][i] };
+        // console.log("temp",temp);
+        this.setState({selectedTags:temp});
         // console.log("selectedTags:",this.state.selectedTags,"response.data[3]",response.data[3])
-        // console.log("lenght",this.state.selectedTags.length)
-    }
+        // console.log("selectedTags",this.state.selectedTags)
+    };
 
     getUserId = () => this.props.match.params.id;
 
@@ -123,6 +127,7 @@ class DetailsForm extends Component {
     render() {
         // console.log("aaaaaa",this.state.selectedTags)
         const { first_name,last_name, password, confirmPassword,email,selectedTags, formValid } = this.state;
+        // console.log("selectedTags",selectedTags)
         return (
         <div>
                 <form className="DFmodal-content" action="/action_page.php">
@@ -159,7 +164,7 @@ class DetailsForm extends Component {
                                 options={tagOptions}
                             />
                         {/*</div>*/}
-
+                        {/*{console.log("selectedTags",selectedTags)}*/}
                         {/*<label>*/}
                         {/*    <input type="checkbox" checked="checked" name="remember"*/}
                         {/*           style="margin-bottom:15px"/> Remember me*/}
