@@ -27,17 +27,21 @@ class GetUserMatch extends Component {
     render() {
         return (
             <div>
-                <br/>
-                <Filters{...this.props}/>
-                <br/>
-                <Sort {...this.props}/>
-                <br/>
-                <br/>
-                <div id="aaa"/>
-                <br/>
-                <br/>
-                <br/>
-                <button onClick={(e) => this.SendMail(e)}>send mail</button>
+                <div className="loader"></div>
+                <h3 className="txtLoader">loading...</h3>
+                <div className="jobDetails">
+                    <br/>
+                    <Filters{...this.props}/>
+                    <br/>
+                    <Sort {...this.props}/>
+                    <br/>
+                    <br/>
+                    <div id="aaa"/>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <button onClick={(e) => this.SendMail(e)}>send mail</button>
+                </div>
             </div>
         );
     }

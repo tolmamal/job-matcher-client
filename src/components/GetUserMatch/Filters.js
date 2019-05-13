@@ -18,6 +18,12 @@ class Filters extends Component{
 
     componentWillMount= async()=> {
         const response = await axiosInstance.post(`/user/${this.getUserId()}/word2vec`);
+        var loader = document.getElementsByClassName('loader')[0];
+        var jobDetails = document.getElementsByClassName('jobDetails')[0];
+        var txtLoader = document.getElementsByClassName('txtLoader')[0];
+        loader.style.display="none";
+        jobDetails.style.display="block";
+        txtLoader.style.display="none";
         console.log("responce-Fillter",response)
         if (response.data==null){
             console.log("responce-Fillter")
