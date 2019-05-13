@@ -122,9 +122,15 @@ class UserMenu extends Component {
                        onClick={(event) => this.instructionClick(5)}>instructions</a>
                     <a id="preferences" className="unactive" href="#preferences" onClick={(event) => this.preferencesClick(6)}>preferences</a>
                     <div className="search-container">
-                        <form action="/action_page.php">
-                            <input type="text" placeholder="Search.." name="search"/>
-                            <button type="submit"><i className="fa fa-search"></i></button>
+                        {/*<form action="/action_page.php">*/}
+                        {/*    <input type="text" placeholder="Search.." name="search"/>*/}
+                        {/*    <button type="submit"><i className="fa fa-search"></i></button>*/}
+                        {/*</form>*/}
+                        <form action="https://www.google.com/search" method="get" name="searchform" target="_blank">
+                            <input name="search" type="hidden" value="example.com" />
+                                <input autoComplete="on" name="q"  placeholder="Search " required="required" type="text" />
+                                    <button className="button" type="submit">Search</button>
+
                         </form>
                     </div>
                 </div>
