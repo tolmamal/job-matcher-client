@@ -16,26 +16,32 @@ class Filters extends Component{
 
     getUserId = () => this.props.match.params.id;
 
-    // componentWillMount= async()=> {
-    //     const response = await axiosInstance.post(`/user/${this.getUserId()}/word2vec`);
-    //     console.log("responce-Fillter",response)
-    //     if (response.data==null){
-    //         console.log("responce-Fillter")
-    //         var div = document.getElementById('aaa');
-    //         var note = document.createElement("p");
-    //         var txtNote = document.createTextNode("You must upload cv file!");
-    //         note.appendChild(txtNote);
-    //         div.appendChild(note);
-    //     }
-    //     else
-    //         this.state.jobs = response.data
-    // };
+    componentWillMount= async()=> {
+        const response = await axiosInstance.post(`/user/${this.getUserId()}/word2vec`);
+        console.log("responce-Fillter",response)
+        if (response.data==null){
+            console.log("responce-Fillter")
+            var div = document.getElementById('aaa');
+            var note = document.createElement("p");
+            var txtNote = document.createTextNode("You must upload cv file!");
+            note.appendChild(txtNote);
+            div.appendChild(note);
+        }
+        else
+            this.state.jobs = response.data
+    };
 
     filterSelection = async(c) => {
-        const response = await axiosInstance.post(`/user/${this.getUserId()}/word2vec`);
+        var div = document.getElementById('aaa');
+        if (div.children.length != 0) {
+            while (div.firstChild) {
+                div.removeChild(div.firstChild);
+            }
+        }
+        const response = await axiosInstance.post(`/user/${this.getUserId()}/word2vec2`);
         // console.log("responce-Fillter",response)
         if (response.data==null){
-            // console.log("responce-Fillter")
+            // console.log("responce-Fillter",response.data)
             var div = document.getElementById('aaa');
             var note = document.createElement("p");
             var txtNote = document.createTextNode("You must upload cv file!");
@@ -49,13 +55,6 @@ class Filters extends Component{
         btns[0].className = 'btn_nothing';
         var btns = document.getElementsByClassName('btn_nothing');
         btns[c].className = 'btn_active';
-
-        var div = document.getElementById('aaa');
-        if (div.children.length != 0) {
-            while (div.firstChild) {
-                div.removeChild(div.firstChild);
-            }
-        }
 
         switch (c) {
             case 0:{this.showAll();break;}
