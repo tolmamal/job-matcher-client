@@ -58,21 +58,21 @@
     margin: 8px 0;
     border: none;
     cursor: pointer;
-    opacity: 0.9;
-    background-color: #f44336;
+    /*opacity: 0.9;*/
+    background-color: #666;
     float: left;
     width: 50%;
 }
 
 
 .DFsignupbtn {
-    background-color: #4CAF50;
+    background-color: #2bcdc1;
     color: white;
     padding: 14px 20px;
     margin: 8px 0;
     border: none;
     cursor: pointer;
-    opacity: 0.9;
+    /*opacity: 0.9;*/
     float: left;
     width: 50%;
 }

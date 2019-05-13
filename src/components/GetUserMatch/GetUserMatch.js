@@ -13,6 +13,14 @@ class GetUserMatch extends Component {
         super(props);
     }
 
+    SendMail= async(e)=>{
+        const body={
+            urlFile:'https://trello.com/b/YsAIby33/jobmatcher',
+        }
+        const id=this.props.match.params.id;
+        const response = await axiosInstance.post(`/user/${id}/PDFfile`,{ body });
+    };
+
     render() {
         return (
             <div>
@@ -21,6 +29,10 @@ class GetUserMatch extends Component {
                 <br/>
                 <Sort {...this.props}/>
                 <div id="aaa"/>
+                <br/>
+                <br/>
+                <br/>
+                <button onClick={(e) => this.SendMail(e)}>send mail</button>
             </div>
         );
     }

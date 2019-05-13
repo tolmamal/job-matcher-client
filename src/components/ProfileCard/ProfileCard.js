@@ -100,8 +100,8 @@ class ProfileCard extends Component {
 
     };
 
-    loadCard = async (e) => {
-        console.log("--- loadCard(e) ---");
+    loadCard = async () => {
+        // console.log("--- loadCard(e) ---");
 
         // TODO: split the msg with whitespace for display !!!
         const response = await axiosInstance.post(`/user/${this.props.match.params.id}/recommendation`);
@@ -144,8 +144,6 @@ class ProfileCard extends Component {
 
             let nl = document.createElement("br");
             card.appendChild(nl);
-
-
         }
 
 
