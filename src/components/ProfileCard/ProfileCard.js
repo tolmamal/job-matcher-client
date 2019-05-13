@@ -15,10 +15,12 @@ class ProfileCard extends Component {
             first_name: "",
             last_name: "",
             cards_amount: "",
-            cards: []
+            cards: [],
+            timeLine: {}
         };
     };
 
+    getUserId = () => this.props.match.params.id;
 
     componentWillMount = async () => {
         const response = await axiosInstance.get(`/user/${this.props.match.params.id}/changeProfile`);
@@ -31,7 +33,8 @@ class ProfileCard extends Component {
 
         // console.log("cards_amount: ", this.state.cards_amount);
         // console.log("cards: ", this.state.cards);
-
+        // for time line
+        this.loadTimeline()
 
     }
 
@@ -46,10 +49,39 @@ class ProfileCard extends Component {
     };
 
     loadTimeline = async (e) => {
+        try {
+            console.log('in function loadTimeline')
+            const response = await axiosInstance.post(`/user/${this.getUserId()}/UserTimeLine`);
+            this.state.timeLine = response.data
+            console.log('response')
+            console.log(response)
+            console.log('this.state.timeLine')
+            console.log(this.state.timeLine)
 
-        let lines = document.getElementsByClassName("user-timeline")[0];
-
-
+            var div = document.getElementsByClassName("user-timeline")[0];
+            for (var key in this.state.timeLine) {
+                var div2 = document.createElement("div");
+                div2.className ="timeline-item";
+                var date = document.createTextNode(key);
+                div2.appendChild(date);
+                for (let i = 0; i < this.state.timeLine[key].length; i++){
+                    for (var k in this.state.timeLine[key][i]){
+                        var role = document.createElement("h1");
+                        var r = document.createTextNode((i+1) + '. '+this.state.timeLine[key][i][k][0]);
+                        role.appendChild(r);
+                        var sentORcallback = document.createElement("p");
+                        var type = document.createTextNode(this.state.timeLine[key][i][k][1]);
+                        sentORcallback.appendChild(type);
+                        div2.appendChild(role);
+                        div2.appendChild(type);
+                    }
+                }
+                div.appendChild(div2);
+            }
+        }
+        catch (e) {
+            this.setState({error: 'Cannot read the data'});
+        }
 
         {/*<div className="timeline-item" date-is="20-7-2018">*/}
         {/*    <h1>Freelancer</h1>*/}
@@ -66,15 +98,10 @@ class ProfileCard extends Component {
         {/*    <p>Back-end developer in Check Point Tel-Aviv</p>*/}
         {/*</div>*/}
 
-
-
-
-
-
     };
 
     loadCard = async (e) => {
-        // console.log("--- loadCard(e) ---");
+        console.log("--- loadCard(e) ---");
 
         // TODO: split the msg with whitespace for display !!!
         const response = await axiosInstance.post(`/user/${this.props.match.params.id}/recommendation`);
@@ -220,20 +247,20 @@ class ProfileCard extends Component {
                 </div>
 
                 <div className="user-timeline">
-                    <div className="timeline-item" date-is="20-7-2018">
-                        <h1>Freelancer</h1>
-                        <p>Web developer in Microsoft Haifa</p>
-                    </div>
+                    {/*<div className="timeline-item" date-is="20-7-2018">*/}
+                    {/*    <h1>Freelancer</h1>*/}
+                    {/*    <p>Web developer in Microsoft Haifa</p>*/}
+                    {/*</div>*/}
 
-                    <div className="timeline-item" date-is="8-10-2015">
-                        <h1>Full Stack Developer</h1>
-                        <p>Web developer - all kind of projects</p>
-                    </div>
+                    {/*<div className="timeline-item" date-is="8-10-2015">*/}
+                    {/*    <h1>Full Stack Developer</h1>*/}
+                    {/*    <p>Web developer - all kind of projects</p>*/}
+                    {/*</div>*/}
 
-                    <div className="timeline-item" date-is="10-4-2010">
-                        <h1>Back-End Developer</h1>
-                        <p>Back-end developer in Check Point Tel-Aviv</p>
-                    </div>
+                    {/*<div className="timeline-item" date-is="10-4-2010">*/}
+                    {/*    <h1>Back-End Developer</h1>*/}
+                    {/*    <p>Back-end developer in Check Point Tel-Aviv</p>*/}
+                    {/*</div>*/}
 
                 </div>
 

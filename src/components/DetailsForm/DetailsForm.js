@@ -51,11 +51,11 @@ class DetailsForm extends Component {
         // console.log(response.data[0]);
         this.setState({first_name:response.data[0]});
         this.setState({last_name:response.data[1]});
-        this.setState({password:response.data[4]});
-        this.setState({confirmPassword:response.data[4]});
+        this.setState({password:response.data[5]});
+        this.setState({confirmPassword:response.data[5]});
         this.setState({email:response.data[2]});
         // console.log(response.data[3]);
-        this.setState({selectedTags:response.data[3]});
+        this.setState({selectedTags:response.data[4]});
         // console.log("selectedTags:",this.state.selectedTags,"response.data[3]",response.data[3])
         // console.log("lenght",this.state.selectedTags.length)
     }
