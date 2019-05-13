@@ -30,7 +30,7 @@ class ProfileCard extends Component {
         this.setState({cards_amount: response.data[3]});
         this.setState({cards: response.data[4]});
         // for time line
-        // this.loadTimeline()
+        this.loadTimeline()
 
     };
 

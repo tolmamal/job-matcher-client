@@ -30,6 +30,7 @@ export default class GetUserMatch extends Component {
                 }
             }
             const response = await axiosInstance.post(`/user/${this.getUserId()}/sortBYscore`);
+            console.log('response' , response.data);
             if (response.data == null){
 
                 var div = document.getElementById('aaa');
