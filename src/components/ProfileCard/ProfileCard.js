@@ -24,19 +24,15 @@ class ProfileCard extends Component {
 
     componentWillMount = async () => {
         const response = await axiosInstance.get(`/user/${this.props.match.params.id}/changeProfile`);
-        // console.log(response.data[0]);
         const {state} = this;
         this.setState({first_name: response.data[0]});
         this.setState({last_name: response.data[1]});
         this.setState({cards_amount: response.data[3]});
         this.setState({cards: response.data[4]});
-
-        // console.log("cards_amount: ", this.state.cards_amount);
-        // console.log("cards: ", this.state.cards);
         // for time line
-        this.loadTimeline()
+        // this.loadTimeline()
 
-    }
+    };
 
     btnOnClick = (e) => {
         var modal = document.getElementById("myModal");
@@ -154,8 +150,6 @@ class ProfileCard extends Component {
     };
 
     loadSkills = () => {
-        // console.log("------------ loadSkills ----------------");
-
         let skills = document.getElementsByClassName("ds-skill")[0];
         console.log("cards_amount: ", this.state.cards_amount);
 
@@ -171,26 +165,16 @@ class ProfileCard extends Component {
             let name = document.createTextNode(this.state.cards[i]);
             line.appendChild(name);
             skill.appendChild(line);
-
             skills.appendChild(skill);
-
-
         }
-
-
     };
 
-
     //TODO: add background img to this page
-    //
-
 
     render() {
         const {first_name, last_name, cards_amount, cards} = this.state;
-        // console.log("ProfileCard:  "+ this.props);
         return (
             <div className="main-profile-card">
-                {/*<img className="background-img" src="https://i.imgur.com/CDS3Nyh.jpg"/>*/}
                 <div className="profile-card">
                     <div className="ds-top"></div>
                     <div className="avatar-holder">
@@ -271,17 +255,11 @@ class ProfileCard extends Component {
                             View&nbsp;Recommendations&nbsp;
                             <span className="shift">›</span>
                         </a>
-
-
-                        <div className="mask"></div>
-
-
+                        <div className="mask"/>
                     </div>
 
-                    <div className="cards-container">
+                    <div className="cards-container"/>
 
-
-                    </div>
                 </div>
 
             </div>

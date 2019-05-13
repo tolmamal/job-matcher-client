@@ -6,7 +6,6 @@
   padding-left: 10%;
 }
 
-
 .topnav a {
   float: left;
   display: block;
@@ -22,7 +21,6 @@
   color: black;
 }
 
-
 .topnav a.active {
   /*background-color: #2196F3;*/
   background-color: #2bcdc1;
@@ -34,7 +32,6 @@
   color: black;
 }
 
-
 .topnav .search-container {
   float: right;
 }
@@ -45,9 +42,6 @@
   font-size: 17px;
   border: none;
 }
-
-
-
 
 .topnav .search-container button {
   float: right;
@@ -63,7 +57,6 @@
 .topnav .search-container button:hover {
   background: #ccc;
 }
-
 
 @media screen and (max-width: 600px) {
   .topnav .search-container {
@@ -81,6 +74,7 @@
     border: 1px solid #ccc;  
   }
 }
+
 .UMHome{
   display:none;
 }
