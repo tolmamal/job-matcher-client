@@ -3,7 +3,6 @@ import React, {
 } from "react";
 import "./DetailsForm.css"
 import ValidatedInput from "../ValidatedInput";
-import Utils from "../../utils/Utils";
 import axiosInstance from "../../utils/axios";
 import Select from "react-select";
 
@@ -46,24 +45,17 @@ class DetailsForm extends Component {
         };
     };
 
-
     componentWillMount = async () => {
         const response = await axiosInstance.get(`/user/${this.props.match.params.id}/changeProfile`);
-        // console.log(response.data[0]);
         this.setState({first_name:response.data[0]});
         this.setState({last_name:response.data[1]});
         this.setState({password:response.data[5]});
         this.setState({confirmPassword:response.data[5]});
         this.setState({email:response.data[2]});
-        // console.log("response.data[3]",response.data[0],response.data[1],
-        //     response.data[2],response.data[3],response.data[4]);
         var temp=[];
         for (var i =0;i<response.data[3];i++)
             temp[i] = { value: response.data[4][i], label: response.data[4][i] };
-        // console.log("temp",temp);
         this.setState({selectedTags:temp});
-        // console.log("selectedTags:",this.state.selectedTags,"response.data[3]",response.data[3])
-        // console.log("selectedTags",this.state.selectedTags)
     };
 
     getUserId = () => this.props.match.params.id;
@@ -122,7 +114,6 @@ class DetailsForm extends Component {
         var modal = document.getElementById("myModal");
         modal.style.display = "none";
     }
-
 
     render() {
         // console.log("aaaaaa",this.state.selectedTags)
