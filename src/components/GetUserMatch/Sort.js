@@ -172,7 +172,16 @@ export default class GetUserMatch extends Component {
                     div.removeChild(div.firstChild);
                 }
             }
+            var locationLoad = document.getElementsByClassName('loader')[0];
+            var jobDetails = document.getElementsByClassName('jobDetails')[0];
+            var locationTxtLoader = document.getElementsByClassName('txtLoader')[0];
+            jobDetails.style.display="none";
+            locationLoad.style.display="block";
+            locationTxtLoader.style.display="block";
             const response = await axiosInstance.post(`/user/${this.getUserId()}/sortBYlocation`);
+            locationLoad.style.display="none";
+            locationTxtLoader.style.display="none";
+            jobDetails.style.display="block";
             if (response.data==null)
             {
 
