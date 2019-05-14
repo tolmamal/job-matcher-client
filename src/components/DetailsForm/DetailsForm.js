@@ -3,10 +3,10 @@ import React, {
 } from "react";
 import "./DetailsForm.css"
 import ValidatedInput from "../ValidatedInput";
-import Utils from "../../utils/Utils";
 import axiosInstance from "../../utils/axios";
 import Select from "react-select";
 
+//
 const tagOptions = [
     {value: 'Front-end', label: 'Front-end'},
     {value: 'Back-end', label: 'Back-end'},
@@ -33,7 +33,7 @@ class DetailsForm extends Component {
 
     constructor(props) {
         super(props);
-        console.log("props", props);
+        // console.log("props", props);
         this.state = {
             first_name:"",
             last_name: "",
@@ -45,20 +45,18 @@ class DetailsForm extends Component {
         };
     };
 
-
     componentWillMount = async () => {
         const response = await axiosInstance.get(`/user/${this.props.match.params.id}/changeProfile`);
-        // console.log(response.data[0]);
         this.setState({first_name:response.data[0]});
         this.setState({last_name:response.data[1]});
-        this.setState({password:response.data[4]});
-        this.setState({confirmPassword:response.data[4]});
+        this.setState({password:response.data[5]});
+        this.setState({confirmPassword:response.data[5]});
         this.setState({email:response.data[2]});
-        // console.log(response.data[3]);
-        this.setState({selectedTags:response.data[3]});
-        // console.log("selectedTags:",this.state.selectedTags,"response.data[3]",response.data[3])
-        // console.log("lenght",this.state.selectedTags.length)
-    }
+        var temp=[];
+        for (var i =0;i<response.data[3];i++)
+            temp[i] = { value: response.data[4][i], label: response.data[4][i] };
+        this.setState({selectedTags:temp});
+    };
 
     getUserId = () => this.props.match.params.id;
 
@@ -117,9 +115,10 @@ class DetailsForm extends Component {
         modal.style.display = "none";
     }
 
-
     render() {
+        // console.log("aaaaaa",this.state.selectedTags)
         const { first_name,last_name, password, confirmPassword,email,selectedTags, formValid } = this.state;
+        // console.log("selectedTags",selectedTags)
         return (
         <div>
                 <form className="DFmodal-content" action="/action_page.php">
@@ -156,7 +155,7 @@ class DetailsForm extends Component {
                                 options={tagOptions}
                             />
                         {/*</div>*/}
-
+                        {/*{console.log("selectedTags",selectedTags)}*/}
                         {/*<label>*/}
                         {/*    <input type="checkbox" checked="checked" name="remember"*/}
                         {/*           style="margin-bottom:15px"/> Remember me*/}

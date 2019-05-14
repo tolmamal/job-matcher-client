@@ -11,16 +11,37 @@ class GetUserMatch extends Component {
 
     constructor(props) {
         super(props);
+        this.state = {
+            jobs: {},
+        }
     }
+
+    SendMail= async(e)=>{
+        const body={
+            urlFile:'http://localhost:3000/user/5cd81b8d4011b44f6c72ce3c#svemtchjbs',
+        }
+        const id=this.props.match.params.id;
+        const response = await axiosInstance.post(`/user/${id}/PDFfile`,{ body });
+    };
 
     render() {
         return (
             <div>
-                <br/>
-                <Filters{...this.props}/>
-                <br/>
-                <Sort {...this.props}/>
-                <div id="aaa"/>
+                <div className="loader"></div>
+                <h3 className="txtLoader">loading...</h3>
+                <div className="jobDetails">
+                    <br/>
+                    <Filters{...this.props}/>
+                    <br/>
+                    <Sort {...this.props}/>
+                    <br/>
+                    <br/>
+                    <div id="aaa"/>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <button onClick={(e) => this.SendMail(e)}>send mail</button>
+                </div>
             </div>
         );
     }

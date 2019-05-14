@@ -3,33 +3,64 @@ import "./FIlters.css"
 import GetUserMatch from '../GetUserMatch/GetUserMatch'
 import axiosInstance from "../../utils/axios";
 
-class Filters extends Component {
+
+class Filters extends Component{
 
     constructor(props) {
-        super(props)
-        // console.log("Filters",this.props)
+        super(props);
+        // // console.log("Filters",this.props)
         this.state = {
-            jobs: {},
-        }
+            jobs: {}
+        };
     };
 
     getUserId = () => this.props.match.params.id;
 
-    filterSelection = async (c) => {
-        var btns = document.getElementsByClassName('btn_active');
-        btns[0].className = 'btn_nothing';
-        var btns = document.getElementsByClassName('btn_nothing');
-        btns[c].className = 'btn_active'
+    componentWillMount= async()=> {
+        const response = await axiosInstance.post(`/user/${this.getUserId()}/word2vec`);
+        var loader = document.getElementsByClassName('loader')[0];
+        var jobDetails = document.getElementsByClassName('jobDetails')[0];
+        var txtLoader = document.getElementsByClassName('txtLoader')[0];
+        loader.style.display="none";
+        jobDetails.style.display="block";
+        txtLoader.style.display="none";
+        console.log("responce-Fillter",response)
+        if (response.data==null){
+            console.log("responce-Fillter")
+            var div = document.getElementById('aaa');
+            var note = document.createElement("p");
+            var txtNote = document.createTextNode("You must upload cv file!");
+            note.appendChild(txtNote);
+            div.appendChild(note);
+        }
+        else
+            this.state.jobs = response.data
+    };
 
+    filterSelection = async(c) => {
         var div = document.getElementById('aaa');
         if (div.children.length != 0) {
             while (div.firstChild) {
                 div.removeChild(div.firstChild);
             }
         }
+        const response = await axiosInstance.post(`/user/${this.getUserId()}/word2vec2`);
+        // console.log("responce-Fillter",response)
+        if (response.data==null){
+            // console.log("responce-Fillter",response.data)
+            var div = document.getElementById('aaa');
+            var note = document.createElement("p");
+            var txtNote = document.createTextNode("You must upload cv file!");
+            note.appendChild(txtNote);
+            div.appendChild(note);
+        }
+        else
+            this.state.jobs = response.data
 
-        const response = await axiosInstance.post(`/user/${this.getUserId()}/word2vec`);
-        this.state.jobs = response.data
+        var btns = document.getElementsByClassName('btn_active');
+        btns[0].className = 'btn_nothing';
+        var btns = document.getElementsByClassName('btn_nothing');
+        btns[c].className = 'btn_active';
 
         switch (c) {
             case 0:{this.showAll();break;}
@@ -755,7 +786,7 @@ class Filters extends Component {
     UpdateSending= async(event)=>{
         //TODO:to add the perfix fot the it attribute
         var send = document.getElementById(event.target.id);
-        console.log(event.target.id.substring(0,event.target.id.length-4));
+        // console.log(event.target.id.substring(0,event.target.id.length-4));
         send.classList.toggle('fa-paper-plane-o');
         const body={id:event.target.id.substring(0, event.target.id.length-4)};
         const response = await axiosInstance.post(`/user/${this.getUserId()}/UpdateSending`,{body});
@@ -764,7 +795,7 @@ class Filters extends Component {
     UpdateReplay= async(event)=>{
         //TODO:to add the perfix fot the it attribute
         var send = document.getElementById(event.target.id);
-        console.log(event.target.id.substring(0,event.target.id.length-6));
+        // console.log(event.target.id.substring(0,event.target.id.length-6));
         send.classList.toggle('fa-square-o');
         const body={id:event.target.id.substring(0, event.target.id.length-6)};
         const response = await axiosInstance.post(`/user/${this.getUserId()}/UpdateReply`,{body});

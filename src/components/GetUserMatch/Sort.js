@@ -22,13 +22,6 @@ export default class GetUserMatch extends Component {
     sortScore = async () => {
         try {
             console.log('in sortScore')
-            const response = await axiosInstance.post(`/user/${this.getUserId()}/sortBYscore`);
-            this.state.jobs_score = response.data
-            console.log('response')
-            console.log(response)
-            console.log('this.state.jobs_score')
-            console.log(this.state.jobs_score)
-
             var div = document.getElementById('aaa');
             if (div.children.length != 0)
             {
@@ -36,103 +29,132 @@ export default class GetUserMatch extends Component {
                     div.removeChild(div.firstChild);
                 }
             }
+            const response = await axiosInstance.post(`/user/${this.getUserId()}/sortBYscore`);
+            console.log('response' , response.data);
+            if (response.data == null){
 
-            var row = document.createElement("div");
-            row.className = 'row';
-            var index = 0;
-            for (var key in this.state.jobs_score) {
-                var column = document.createElement("div");
-                column.className = 'column';
-                var flipCard = document.createElement("div");
-                flipCard.className = 'flip-card';
-                // flipCard.setAttribute("id", "flip-card");
-                var flipCardInner = document.createElement("div");
-                flipCardInner.className = 'flip-card-inner';
-                var flipCardFront = document.createElement("div");
-                flipCardFront.className = 'flip-card-front';
-                var pr = document.createElement("p");
-                var role = document.createTextNode(this.state.jobs_score[key][0]);
-                pr.appendChild(role);
-                var flipCardBack = document.createElement("div");
-                flipCardBack.className = 'flip-card-back';
-                var ll = document.createElement("a");
-                var link = document.createTextNode(this.state.jobs_score[key][1]);
-                ll.appendChild(link);
-                ll.href = this.state.jobs_score[key][1];
-                var ps = document.createElement("p");
-                var score = document.createTextNode("Score: " + this.state.jobs_score[key][2].toFixed(2) * 100 + "%");
-                ps.appendChild(score);
-
-                //heart element
-                var elem=document.createElement('a');
-                elem.className='heart';
-                var heart=document.createElement('i');
-                if(this.state.jobs_score[key][3]==true)
-                    heart.className = "fa fa-heart";
-                else {
-                    heart.className = "fa fa-heart";
-                    heart.classList.toggle('fa-heart-o');
-                }
-                heart.id=key;
-                heart.addEventListener('click', (event) =>this.UpdateFavorite(event), false);
-                elem.appendChild(heart);
-
-                //send element
-                var elem1=document.createElement('a');
-                elem1.className='send';
-                var send=document.createElement('i');
-                if(this.state.jobs_score[key][4]==true) {
-                    send.className = "fa fa-paper-plane";
-                }
-                else {
-                    send.className = "fa fa-paper-plane";
-                    send.classList.toggle('fa-paper-plane-o');
-                }
-                send.id=key+"send";
-                send.addEventListener('click', (event) =>this.UpdateSending(event), false);
-                elem1.appendChild(send);
-
-                //replay element
-                var elem2=document.createElement('a');
-                elem2.className='replay';
-                var replay=document.createElement('i');
-                if(this.state.jobs_score[key][5]==true)
-                    replay.className = "fa fa-check-square-o";
-                else {
-                    replay.className = "fa fa-square-o";
-                    replay.classList.toggle('fa-check-square-o');
-                }
-                replay.id=key+"replay";
-                replay.addEventListener('click', (event) =>this.UpdateReplay(event), false);
-                elem2.appendChild(replay);
-
-                flipCardFront.appendChild(pr);
-                flipCardBack.appendChild(ps);
-                flipCardBack.appendChild(ll);
-                var brl = document.createElement("br");
-                flipCardBack.appendChild(brl);
-                flipCardBack.appendChild(elem);
-                flipCardBack.appendChild(elem1);
-                flipCardBack.appendChild(elem2);
-                flipCardInner.appendChild(flipCardFront);
-                flipCardInner.appendChild(flipCardBack);
-                flipCard.appendChild(flipCardInner);
-                column.appendChild(flipCard);
-                if (index < 4) {
-                    row.appendChild(column);
-                    index++;
-                }
-                else {
-                    div.appendChild(row);
-                    index = 1;
-                    row = document.createElement("div");
-                    row.className = 'row';
-                    row.appendChild(column);
-
-                }
+                var div = document.getElementById('aaa');
+                var note = document.createElement("p");
+                var text = document.createTextNode("You must upload a cv file!");
+                var br = document.createElement("br");
+                note.appendChild(text);
+                div.appendChild(br);
+                div.appendChild(note);
             }
-            if (row.children.length != 0)
-                div.appendChild(row);
+            else
+            {
+                this.state.jobs_score = response.data
+                console.log('response')
+                console.log(response)
+                console.log('this.state.jobs_score')
+                console.log(this.state.jobs_score)
+
+                // var div = document.getElementById('aaa');
+                // if (div.children.length != 0)
+                // {
+                //     while(div.firstChild){
+                //         div.removeChild(div.firstChild);
+                //     }
+                // }
+
+                var row = document.createElement("div");
+                row.className = 'row';
+                var index = 0;
+                for (var key in this.state.jobs_score) {
+                    var column = document.createElement("div");
+                    column.className = 'column';
+                    var flipCard = document.createElement("div");
+                    flipCard.className = 'flip-card';
+                    // flipCard.setAttribute("id", "flip-card");
+                    var flipCardInner = document.createElement("div");
+                    flipCardInner.className = 'flip-card-inner';
+                    var flipCardFront = document.createElement("div");
+                    flipCardFront.className = 'flip-card-front';
+                    var pr = document.createElement("p");
+                    var role = document.createTextNode(this.state.jobs_score[key][0]);
+                    pr.appendChild(role);
+                    var flipCardBack = document.createElement("div");
+                    flipCardBack.className = 'flip-card-back';
+                    var ll = document.createElement("a");
+                    var link = document.createTextNode(this.state.jobs_score[key][1]);
+                    ll.appendChild(link);
+                    ll.href = this.state.jobs_score[key][1];
+                    var ps = document.createElement("p");
+                    var score = document.createTextNode("Score: " + this.state.jobs_score[key][2].toFixed(2) * 100 + "%");
+                    ps.appendChild(score);
+
+                    //heart element
+                    var elem=document.createElement('a');
+                    elem.className='heart';
+                    var heart=document.createElement('i');
+                    if(this.state.jobs_score[key][3]==true)
+                        heart.className = "fa fa-heart";
+                    else {
+                        heart.className = "fa fa-heart";
+                        heart.classList.toggle('fa-heart-o');
+                    }
+                    heart.id=key;
+                    heart.addEventListener('click', (event) =>this.UpdateFavorite(event), false);
+                    elem.appendChild(heart);
+
+                    //send element
+                    var elem1=document.createElement('a');
+                    elem1.className='send';
+                    var send=document.createElement('i');
+                    if(this.state.jobs_score[key][4]==true) {
+                        send.className = "fa fa-paper-plane";
+                    }
+                    else {
+                        send.className = "fa fa-paper-plane";
+                        send.classList.toggle('fa-paper-plane-o');
+                    }
+                    send.id=key+"send";
+                    send.addEventListener('click', (event) =>this.UpdateSending(event), false);
+                    elem1.appendChild(send);
+
+                    //replay element
+                    var elem2=document.createElement('a');
+                    elem2.className='replay';
+                    var replay=document.createElement('i');
+                    if(this.state.jobs_score[key][5]==true)
+                        replay.className = "fa fa-check-square-o";
+                    else {
+                        replay.className = "fa fa-square-o";
+                        replay.classList.toggle('fa-check-square-o');
+                    }
+                    replay.id=key+"replay";
+                    replay.addEventListener('click', (event) =>this.UpdateReplay(event), false);
+                    elem2.appendChild(replay);
+
+                    flipCardFront.appendChild(pr);
+                    flipCardBack.appendChild(ps);
+                    flipCardBack.appendChild(ll);
+                    var brl = document.createElement("br");
+                    flipCardBack.appendChild(brl);
+                    flipCardBack.appendChild(elem);
+                    flipCardBack.appendChild(elem1);
+                    flipCardBack.appendChild(elem2);
+                    flipCardInner.appendChild(flipCardFront);
+                    flipCardInner.appendChild(flipCardBack);
+                    flipCard.appendChild(flipCardInner);
+                    column.appendChild(flipCard);
+                    if (index < 4) {
+                        row.appendChild(column);
+                        index++;
+                    }
+                    else {
+                        div.appendChild(row);
+                        index = 1;
+                        row = document.createElement("div");
+                        row.className = 'row';
+                        row.appendChild(column);
+
+                    }
+                }
+                if (row.children.length != 0)
+                    div.appendChild(row);
+
+            }
 
         }
         catch (e) {
@@ -143,13 +165,6 @@ export default class GetUserMatch extends Component {
     sortLocation = async () => {
         try {
             console.log('in sortLocation')
-            const response = await axiosInstance.post(`/user/${this.getUserId()}/sortBYlocation`);
-            this.state.jobs_location = response.data
-            console.log('response')
-            console.log(response)
-            console.log('this.state.jobs_location')
-            console.log(this.state.jobs_location)
-
             var div = document.getElementById('aaa');
             if (div.children.length != 0)
             {
@@ -157,106 +172,147 @@ export default class GetUserMatch extends Component {
                     div.removeChild(div.firstChild);
                 }
             }
+            var locationLoad = document.getElementsByClassName('loader')[0];
+            var jobDetails = document.getElementsByClassName('jobDetails')[0];
+            var locationTxtLoader = document.getElementsByClassName('txtLoader')[0];
+            jobDetails.style.display="none";
+            locationLoad.style.display="block";
+            locationTxtLoader.style.display="block";
+            const response = await axiosInstance.post(`/user/${this.getUserId()}/sortBYlocation`);
+            locationLoad.style.display="none";
+            locationTxtLoader.style.display="none";
+            jobDetails.style.display="block";
+            if (response.data==null)
+            {
 
-            var row = document.createElement("div");
-            row.className = 'row';
-            var index = 0;
-            for (var key in this.state.jobs_location) {
-                var column = document.createElement("div");
-                column.className = 'column';
-                var flipCard = document.createElement("div");
-                flipCard.className = 'flip-card';
-                // flipCard.setAttribute("id", "flip-card");
-                var flipCardInner = document.createElement("div");
-                flipCardInner.className = 'flip-card-inner';
-                var flipCardFront = document.createElement("div");
-                flipCardFront.className = 'flip-card-front';
-                var pr = document.createElement("p");
-                var role = document.createTextNode(this.state.jobs_location[key][0]);
-                pr.appendChild(role);
-                var pc = document.createElement("p");
-                var city = document.createTextNode(this.state.jobs_location[key][3]);
-                pc.appendChild(city);
-                var flipCardBack = document.createElement("div");
-                flipCardBack.className = 'flip-card-back';
-                var ll = document.createElement("a");
-                var link = document.createTextNode(this.state.jobs_location[key][1]);
-                ll.appendChild(link);
-                ll.href = this.state.jobs_location[key][1];
-                var ps = document.createElement("p");
-                var score = document.createTextNode("Score: " + this.state.jobs_location[key][2].toFixed(2) * 100 + "%");
-                ps.appendChild(score);
+                var div = document.getElementById('aaa');
+                var note = document.createElement("p");
+                var text = document.createTextNode("You must upload a cv file!");
+                var br = document.createElement("br");
+                note.appendChild(text);
+                div.appendChild(br);
+                div.appendChild(note);
 
-                //heart element
-                var elem=document.createElement('a');
-                elem.className='heart';
-                var heart=document.createElement('i');
-                if(this.state.jobs_location[key][4]==true)
-                    heart.className = "fa fa-heart";
-                else {
-                    heart.className = "fa fa-heart";
-                    heart.classList.toggle('fa-heart-o');
-                }
-                heart.id=key;
-                heart.addEventListener('click', (event) =>this.UpdateFavorite(event), false);
-                elem.appendChild(heart);
-
-                //send element
-                var elem1=document.createElement('a');
-                elem1.className='send';
-                var send=document.createElement('i');
-                if(this.state.jobs_location[key][5]==true) {
-                    send.className = "fa fa-paper-plane";
-                }
-                else {
-                    send.className = "fa fa-paper-plane";
-                    send.classList.toggle('fa-paper-plane-o');
-                }
-                send.id=key+"send";
-                send.addEventListener('click', (event) =>this.UpdateSending(event), false);
-                elem1.appendChild(send);
-
-                //replay element
-                var elem2=document.createElement('a');
-                elem2.className='replay';
-                var replay=document.createElement('i');
-                if(this.state.jobs_location[key][6]==true)
-                    replay.className = "fa fa-check-square-o";
-                else {
-                    replay.className = "fa fa-square-o";
-                    replay.classList.toggle('fa-check-square-o');
-                }
-                replay.id=key+"replay";
-                replay.addEventListener('click', (event) =>this.UpdateReplay(event), false);
-                elem2.appendChild(replay);
-                flipCardFront.appendChild(pr);
-                flipCardFront.appendChild(pc);
-                flipCardBack.appendChild(ps);
-                flipCardBack.appendChild(ll);
-                var brl = document.createElement("br");
-                flipCardBack.appendChild(brl);
-                flipCardBack.appendChild(elem);
-                flipCardBack.appendChild(elem1);
-                flipCardBack.appendChild(elem2);
-                flipCardInner.appendChild(flipCardFront);
-                flipCardInner.appendChild(flipCardBack);
-                flipCard.appendChild(flipCardInner);
-                column.appendChild(flipCard);
-                if (index < 4) {
-                    row.appendChild(column);
-                    index++;
-                }
-                else {
-                    div.appendChild(row);
-                    index = 1;
-                    row = document.createElement("div");
-                    row.className = 'row';
-                    row.appendChild(column);
-
-                }
             }
-            if (row.children.length != 0)
-                div.appendChild(row);
+            else
+            {
+                this.state.jobs_location = response.data
+                console.log('response')
+                console.log(response)
+                console.log('this.state.jobs_location')
+                console.log(this.state.jobs_location)
+
+                // var div = document.getElementById('aaa');
+                // if (div.children.length != 0)
+                // {
+                //     while(div.firstChild){
+                //         div.removeChild(div.firstChild);
+                //     }
+                // }
+
+                var row = document.createElement("div");
+                row.className = 'row';
+                var index = 0;
+                for (var key in this.state.jobs_location) {
+                    var column = document.createElement("div");
+                    column.className = 'column';
+                    var flipCard = document.createElement("div");
+                    flipCard.className = 'flip-card';
+                    // flipCard.setAttribute("id", "flip-card");
+                    var flipCardInner = document.createElement("div");
+                    flipCardInner.className = 'flip-card-inner';
+                    var flipCardFront = document.createElement("div");
+                    flipCardFront.className = 'flip-card-front';
+                    var pr = document.createElement("p");
+                    var role = document.createTextNode(this.state.jobs_location[key][0]);
+                    pr.appendChild(role);
+                    var pc = document.createElement("p");
+                    var city = document.createTextNode(this.state.jobs_location[key][3]);
+                    var br = document.createElement('br');
+                    pc.appendChild(br);
+                    pc.appendChild(city);
+                    var flipCardBack = document.createElement("div");
+                    flipCardBack.className = 'flip-card-back';
+                    var ll = document.createElement("a");
+                    var link = document.createTextNode(this.state.jobs_location[key][1]);
+                    ll.appendChild(link);
+                    ll.href = this.state.jobs_location[key][1];
+                    var ps = document.createElement("p");
+                    var score = document.createTextNode("Score: " + this.state.jobs_location[key][2].toFixed(2) * 100 + "%");
+                    ps.appendChild(score);
+
+                    //heart element
+                    var elem=document.createElement('a');
+                    elem.className='heart';
+                    var heart=document.createElement('i');
+                    if(this.state.jobs_location[key][4]==true)
+                        heart.className = "fa fa-heart";
+                    else {
+                        heart.className = "fa fa-heart";
+                        heart.classList.toggle('fa-heart-o');
+                    }
+                    heart.id=key;
+                    heart.addEventListener('click', (event) =>this.UpdateFavorite(event), false);
+                    elem.appendChild(heart);
+
+                    //send element
+                    var elem1=document.createElement('a');
+                    elem1.className='send';
+                    var send=document.createElement('i');
+                    if(this.state.jobs_location[key][5]==true) {
+                        send.className = "fa fa-paper-plane";
+                    }
+                    else {
+                        send.className = "fa fa-paper-plane";
+                        send.classList.toggle('fa-paper-plane-o');
+                    }
+                    send.id=key+"send";
+                    send.addEventListener('click', (event) =>this.UpdateSending(event), false);
+                    elem1.appendChild(send);
+
+                    //replay element
+                    var elem2=document.createElement('a');
+                    elem2.className='replay';
+                    var replay=document.createElement('i');
+                    if(this.state.jobs_location[key][6]==true)
+                        replay.className = "fa fa-check-square-o";
+                    else {
+                        replay.className = "fa fa-square-o";
+                        replay.classList.toggle('fa-check-square-o');
+                    }
+                    replay.id=key+"replay";
+                    replay.addEventListener('click', (event) =>this.UpdateReplay(event), false);
+                    elem2.appendChild(replay);
+                    flipCardFront.appendChild(pr);
+                    flipCardFront.appendChild(pc);
+                    flipCardBack.appendChild(ps);
+                    flipCardBack.appendChild(ll);
+                    var brl = document.createElement("br");
+                    flipCardBack.appendChild(brl);
+                    flipCardBack.appendChild(elem);
+                    flipCardBack.appendChild(elem1);
+                    flipCardBack.appendChild(elem2);
+                    flipCardInner.appendChild(flipCardFront);
+                    flipCardInner.appendChild(flipCardBack);
+                    flipCard.appendChild(flipCardInner);
+                    column.appendChild(flipCard);
+                    if (index < 4) {
+                        row.appendChild(column);
+                        index++;
+                    }
+                    else {
+                        div.appendChild(row);
+                        index = 1;
+                        row = document.createElement("div");
+                        row.className = 'row';
+                        row.appendChild(column);
+
+                    }
+                }
+                if (row.children.length != 0)
+                    div.appendChild(row);
+            }
+
         }
         catch (e) {
             this.setState({error: 'Cannot read the data'});

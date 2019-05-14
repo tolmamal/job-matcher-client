@@ -4,11 +4,7 @@ import React, {
 import "./UserMenu.css"
 import About from "../About/About"
 import Home from "../Home/Home"
-import TimeLine from "../TimeLine/TimeLine";
 import ProfileCard from "../ProfileCard/ProfileCard";
-import StateStatus from "../StateStatus/StateStatus";
-import Footer from "../Footer/Footer";
-import Header from "../Header/Header";
 import UserInstructions from "../UserInstructions/UserInstructions";
 import Preferences from "../Preferences/Preferences";
 import GetUserMatch from "../GetUserMatch/GetUserMatch";
@@ -122,9 +118,15 @@ class UserMenu extends Component {
                        onClick={(event) => this.instructionClick(5)}>instructions</a>
                     <a id="preferences" className="unactive" href="#preferences" onClick={(event) => this.preferencesClick(6)}>preferences</a>
                     <div className="search-container">
-                        <form action="/action_page.php">
-                            <input type="text" placeholder="Search.." name="search"/>
-                            <button type="submit"><i className="fa fa-search"></i></button>
+                        {/*<form action="/action_page.php">*/}
+                        {/*    <input type="text" placeholder="Search.." name="search"/>*/}
+                        {/*    <button type="submit"><i className="fa fa-search"></i></button>*/}
+                        {/*</form>*/}
+                        <form action="https://www.google.com/search" method="get" name="searchform" target="_blank">
+                            <input name="search" type="hidden" value="example.com" />
+                                <input autoComplete="on" name="q"  placeholder="Search " required="required" type="text" />
+                                    <button className="button" type="submit">Search</button>
+
                         </form>
                     </div>
                 </div>
@@ -134,14 +136,8 @@ class UserMenu extends Component {
                 </div>
 
                 <div className="UMProfile">
-                    {/*<h3>follow </h3>*/}
-                    {/*<Header/>*/}
-
                     <ProfileCard {...this.props}/>
-                    {/*<TimeLine {...this.props}/>*/}
                     <br/>
-                    {/*<StateStatus {...this.props}/>*/}
-                    {/*<Footer/>*/}
                 </div>
 
                 <div className="UMCvDetails">

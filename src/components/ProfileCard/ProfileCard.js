@@ -15,25 +15,24 @@ class ProfileCard extends Component {
             first_name: "",
             last_name: "",
             cards_amount: "",
-            cards: []
+            cards: [],
+            timeLine: {}
         };
     };
 
+    getUserId = () => this.props.match.params.id;
 
     componentWillMount = async () => {
         const response = await axiosInstance.get(`/user/${this.props.match.params.id}/changeProfile`);
-        // console.log(response.data[0]);
         const {state} = this;
         this.setState({first_name: response.data[0]});
         this.setState({last_name: response.data[1]});
         this.setState({cards_amount: response.data[3]});
         this.setState({cards: response.data[4]});
+        // for time line
+        this.loadTimeline()
 
-        // console.log("cards_amount: ", this.state.cards_amount);
-        // console.log("cards: ", this.state.cards);
-
-
-    }
+    };
 
     btnOnClick = (e) => {
         var modal = document.getElementById("myModal");
@@ -46,10 +45,39 @@ class ProfileCard extends Component {
     };
 
     loadTimeline = async (e) => {
+        try {
+            console.log('in function loadTimeline')
+            const response = await axiosInstance.post(`/user/${this.getUserId()}/UserTimeLine`);
+            this.state.timeLine = response.data
+            console.log('response')
+            console.log(response)
+            console.log('this.state.timeLine')
+            console.log(this.state.timeLine)
 
-        let lines = document.getElementsByClassName("user-timeline")[0];
-
-
+            var div = document.getElementsByClassName("user-timeline")[0];
+            for (var key in this.state.timeLine) {
+                var div2 = document.createElement("div");
+                div2.className ="timeline-item";
+                var date = document.createTextNode(key);
+                div2.appendChild(date);
+                for (let i = 0; i < this.state.timeLine[key].length; i++){
+                    for (var k in this.state.timeLine[key][i]){
+                        var role = document.createElement("h1");
+                        var r = document.createTextNode((i+1) + '. '+this.state.timeLine[key][i][k][0]);
+                        role.appendChild(r);
+                        var sentORcallback = document.createElement("p");
+                        var type = document.createTextNode(this.state.timeLine[key][i][k][1]);
+                        sentORcallback.appendChild(type);
+                        div2.appendChild(role);
+                        div2.appendChild(type);
+                    }
+                }
+                div.appendChild(div2);
+            }
+        }
+        catch (e) {
+            this.setState({error: 'Cannot read the data'});
+        }
 
         {/*<div className="timeline-item" date-is="20-7-2018">*/}
         {/*    <h1>Freelancer</h1>*/}
@@ -65,11 +93,6 @@ class ProfileCard extends Component {
         {/*    <h1>Back-End Developer</h1>*/}
         {/*    <p>Back-end developer in Check Point Tel-Aviv</p>*/}
         {/*</div>*/}
-
-
-
-
-
 
     };
 
@@ -134,8 +157,6 @@ class ProfileCard extends Component {
     };
 
     loadSkills = () => {
-        // console.log("------------ loadSkills ----------------");
-
         let skills = document.getElementsByClassName("ds-skill")[0];
         console.log("cards_amount: ", this.state.cards_amount);
 
@@ -151,26 +172,16 @@ class ProfileCard extends Component {
             let name = document.createTextNode(this.state.cards[i]);
             line.appendChild(name);
             skill.appendChild(line);
-
             skills.appendChild(skill);
-
-
         }
-
-
     };
 
-
     //TODO: add background img to this page
-    //
-
 
     render() {
         const {first_name, last_name, cards_amount, cards} = this.state;
-        // console.log("ProfileCard:  "+ this.props);
         return (
             <div className="main-profile-card">
-                {/*<img className="background-img" src="https://i.imgur.com/CDS3Nyh.jpg"/>*/}
                 <div className="profile-card">
                     <div className="ds-top"></div>
                     <div className="avatar-holder">
@@ -225,20 +236,20 @@ class ProfileCard extends Component {
                 </div>
 
                 <div className="user-timeline">
-                    <div className="timeline-item" date-is="20-7-2018">
-                        <h1>Freelancer</h1>
-                        <p>Web developer in Microsoft Haifa</p>
-                    </div>
+                    {/*<div className="timeline-item" date-is="20-7-2018">*/}
+                    {/*    <h1>Freelancer</h1>*/}
+                    {/*    <p>Web developer in Microsoft Haifa</p>*/}
+                    {/*</div>*/}
 
-                    <div className="timeline-item" date-is="8-10-2015">
-                        <h1>Full Stack Developer</h1>
-                        <p>Web developer - all kind of projects</p>
-                    </div>
+                    {/*<div className="timeline-item" date-is="8-10-2015">*/}
+                    {/*    <h1>Full Stack Developer</h1>*/}
+                    {/*    <p>Web developer - all kind of projects</p>*/}
+                    {/*</div>*/}
 
-                    <div className="timeline-item" date-is="10-4-2010">
-                        <h1>Back-End Developer</h1>
-                        <p>Back-end developer in Check Point Tel-Aviv</p>
-                    </div>
+                    {/*<div className="timeline-item" date-is="10-4-2010">*/}
+                    {/*    <h1>Back-End Developer</h1>*/}
+                    {/*    <p>Back-end developer in Check Point Tel-Aviv</p>*/}
+                    {/*</div>*/}
 
                 </div>
 
@@ -251,17 +262,11 @@ class ProfileCard extends Component {
                             View&nbsp;Recommendations&nbsp;
                             <span className="shift">›</span>
                         </a>
-
-
-                        <div className="mask"></div>
-
-
+                        <div className="mask"/>
                     </div>
 
-                    <div className="cards-container">
+                    <div className="cards-container"/>
 
-
-                    </div>
                 </div>
 
             </div>
