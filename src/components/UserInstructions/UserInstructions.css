@@ -1,5 +1,19 @@
+.instructions-page {
+    background-image: url("https://i.imgur.com/CDS3Nyh.jpg");
+    color: white;
+
+}
 
 
-.UIdiv{
-    display: none;
+
+.instructions-page h1 {
+    font-family: 'Baloo Bhai', cursive;
+}
+
+.instructions-page p {
+    font-size: 20px;
+}
+
+.help-section p {
+    font-size: 20px;
 }

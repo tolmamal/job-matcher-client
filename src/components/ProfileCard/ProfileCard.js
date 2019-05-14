@@ -103,7 +103,7 @@ class ProfileCard extends Component {
 
     };
 
-    loadCard = async () => {
+    loadCard = async (e) => {
         // console.log("--- loadCard(e) ---");
 
         // TODO: split the msg with whitespace for display !!!
@@ -111,47 +111,54 @@ class ProfileCard extends Component {
 
         let lines = document.getElementsByClassName("cards-container")[0];
 
-        let cards = document.createElement("ul");
-        cards.className = "cards";
+        if(lines.children.length === 0)
+        {
+            let cards = document.createElement("ul");
+            cards.className = "cards";
 
-        let card = document.createElement("li");
-        card.className = "card";
+            let card = document.createElement("li");
+            card.className = "card";
 
-        let line = document.createElement("h2");
-        line.className = "line";
+            let line = document.createElement("h2");
+            line.className = "line";
 
-        let title = document.createTextNode("Customized Professional Recommendations");
-        line.appendChild(title);
+            let title = document.createTextNode("Customized Professional Recommendations");
+            line.appendChild(title);
 
 
-        card.appendChild(line);
+            card.appendChild(line);
 
-        let newLine = document.createElement("br");
-        card.appendChild(newLine);
+            let newLine = document.createElement("br");
+            card.appendChild(newLine);
 
-        for (let i = 0; i < this.state.cards_amount; i++) {
+            for (let i = 0; i < this.state.cards_amount; i++) {
 
-            let par = document.createElement("p");
-            let fieldTitle = document.createElement("h3");
-            let field = document.createTextNode(this.state.cards[i] + ":");
+                let par = document.createElement("p");
+                let fieldTitle = document.createElement("h3");
+                let field = document.createTextNode(this.state.cards[i] + ":");
 
-            fieldTitle.appendChild(field);
-            par.appendChild(fieldTitle);
-            card.appendChild(par);
-            let result = document.createElement("p");
-            result.innerHTML = '<i class="fa fa-graduation-cap" aria-hidden="true"></i>';
-            let msg = document.createTextNode(" " + response.data[this.state.cards[i]]);
-            result.appendChild(msg);
-            par.appendChild(result);
-            card.appendChild(par);
+                fieldTitle.appendChild(field);
+                par.appendChild(fieldTitle);
+                card.appendChild(par);
+                let result = document.createElement("p");
+                result.innerHTML = '<i class="fa fa-graduation-cap" aria-hidden="true"></i>';
+                let msg = document.createTextNode(" " + response.data[this.state.cards[i]]);
+                result.appendChild(msg);
+                par.appendChild(result);
+                card.appendChild(par);
 
-            let nl = document.createElement("br");
-            card.appendChild(nl);
+                let nl = document.createElement("br");
+                card.appendChild(nl);
+
+
+            }
+
+
+            cards.appendChild(card);
+            lines.appendChild(cards);
+
         }
 
-
-        cards.appendChild(card);
-        lines.appendChild(cards);
 
 
     };
