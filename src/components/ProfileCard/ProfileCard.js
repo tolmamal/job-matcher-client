@@ -30,7 +30,7 @@ class ProfileCard extends Component {
         this.setState({cards_amount: response.data[3]});
         this.setState({cards: response.data[4]});
         // for time line
-        this.loadTimeline()
+        // this.loadTimeline()
 
     };
 
@@ -47,6 +47,13 @@ class ProfileCard extends Component {
     loadTimeline = async (e) => {
         try {
             console.log('in function loadTimeline')
+            var div = document.getElementsByClassName('user-timeline')[0];
+            if (div.children.length != 0)
+            {
+                while(div.firstChild){
+                    div.removeChild(div.firstChild);
+                }
+            }
             const response = await axiosInstance.post(`/user/${this.getUserId()}/UserTimeLine`);
             this.state.timeLine = response.data
             console.log('response')
@@ -228,7 +235,23 @@ class ProfileCard extends Component {
 
                 </div>
 
-                <div className="user-timeline">
+                <div className="user-timeline"/>
+                <div className="user-recommend">
+
+                    <div className="rcmd-btn">
+                        {/*<button onClick={(e) => this.loadCard(e)}>View Recommendations</button>*/}
+                        <a href="#" className="botn" onClick={(e) => this.loadTimeline()}>
+                            Refresh&nbsp;Time Line&nbsp;
+                            <span className="shift">›</span>
+                        </a>
+                        <div className="mask"/>
+                    </div>
+                    <br/>
+                    <br/>
+
+                </div>
+
+                {/*<div className="user-timeline">*/}
                     {/*<div className="timeline-item" date-is="20-7-2018">*/}
                     {/*    <h1>Freelancer</h1>*/}
                     {/*    <p>Web developer in Microsoft Haifa</p>*/}
@@ -244,7 +267,7 @@ class ProfileCard extends Component {
                     {/*    <p>Back-end developer in Check Point Tel-Aviv</p>*/}
                     {/*</div>*/}
 
-                </div>
+                {/*</div>*/}
 
 
                 <div className="user-recommend">
