@@ -257,6 +257,7 @@ class ProfileCard extends Component {
                         </a>
                         <div className="mask"/>
                     </div>
+                    <br/>
 
                     <div className="cards-container"/>
 
