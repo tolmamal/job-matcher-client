@@ -30,7 +30,7 @@ class ProfileCard extends Component {
         this.setState({cards_amount: response.data[3]});
         this.setState({cards: response.data[4]});
         // for time line
-        this.loadTimeline()
+        // this.loadTimeline()
 
     };
 
@@ -47,6 +47,13 @@ class ProfileCard extends Component {
     loadTimeline = async (e) => {
         try {
             console.log('in function loadTimeline')
+            var div = document.getElementsByClassName('user-timeline')[0];
+            if (div.children.length != 0)
+            {
+                while(div.firstChild){
+                    div.removeChild(div.firstChild);
+                }
+            }
             const response = await axiosInstance.post(`/user/${this.getUserId()}/UserTimeLine`);
             this.state.timeLine = response.data
             console.log('response')
@@ -96,7 +103,7 @@ class ProfileCard extends Component {
 
     };
 
-    loadCard = async () => {
+    loadCard = async (e) => {
         // console.log("--- loadCard(e) ---");
 
         // TODO: split the msg with whitespace for display !!!
@@ -104,47 +111,54 @@ class ProfileCard extends Component {
 
         let lines = document.getElementsByClassName("cards-container")[0];
 
-        let cards = document.createElement("ul");
-        cards.className = "cards";
+        if(lines.children.length === 0)
+        {
+            let cards = document.createElement("ul");
+            cards.className = "cards";
 
-        let card = document.createElement("li");
-        card.className = "card";
+            let card = document.createElement("li");
+            card.className = "card";
 
-        let line = document.createElement("h2");
-        line.className = "line";
+            let line = document.createElement("h2");
+            line.className = "line";
 
-        let title = document.createTextNode("Customized Professional Recommendations");
-        line.appendChild(title);
+            let title = document.createTextNode("Customized Professional Recommendations");
+            line.appendChild(title);
 
 
-        card.appendChild(line);
+            card.appendChild(line);
 
-        let newLine = document.createElement("br");
-        card.appendChild(newLine);
+            let newLine = document.createElement("br");
+            card.appendChild(newLine);
 
-        for (let i = 0; i < this.state.cards_amount; i++) {
+            for (let i = 0; i < this.state.cards_amount; i++) {
 
-            let par = document.createElement("p");
-            let fieldTitle = document.createElement("h3");
-            let field = document.createTextNode(this.state.cards[i] + ":");
+                let par = document.createElement("p");
+                let fieldTitle = document.createElement("h3");
+                let field = document.createTextNode(this.state.cards[i] + ":");
 
-            fieldTitle.appendChild(field);
-            par.appendChild(fieldTitle);
-            card.appendChild(par);
-            let result = document.createElement("p");
-            result.innerHTML = '<i class="fa fa-graduation-cap" aria-hidden="true"></i>';
-            let msg = document.createTextNode(" " + response.data[this.state.cards[i]]);
-            result.appendChild(msg);
-            par.appendChild(result);
-            card.appendChild(par);
+                fieldTitle.appendChild(field);
+                par.appendChild(fieldTitle);
+                card.appendChild(par);
+                let result = document.createElement("p");
+                result.innerHTML = '<i class="fa fa-graduation-cap" aria-hidden="true"></i>';
+                let msg = document.createTextNode(" " + response.data[this.state.cards[i]]);
+                result.appendChild(msg);
+                par.appendChild(result);
+                card.appendChild(par);
 
-            let nl = document.createElement("br");
-            card.appendChild(nl);
+                let nl = document.createElement("br");
+                card.appendChild(nl);
+
+
+            }
+
+
+            cards.appendChild(card);
+            lines.appendChild(cards);
+
         }
 
-
-        cards.appendChild(card);
-        lines.appendChild(cards);
 
 
     };
@@ -228,7 +242,23 @@ class ProfileCard extends Component {
 
                 </div>
 
-                <div className="user-timeline">
+                <div className="user-timeline"/>
+                <div className="user-recommend">
+
+                    <div className="rcmd-btn">
+                        {/*<button onClick={(e) => this.loadCard(e)}>View Recommendations</button>*/}
+                        <a href="#" className="botn" onClick={(e) => this.loadTimeline()}>
+                            Refresh&nbsp;Time Line&nbsp;
+                            <span className="shift">›</span>
+                        </a>
+                        <div className="mask"/>
+                    </div>
+                    <br/>
+                    <br/>
+
+                </div>
+
+                {/*<div className="user-timeline">*/}
                     {/*<div className="timeline-item" date-is="20-7-2018">*/}
                     {/*    <h1>Freelancer</h1>*/}
                     {/*    <p>Web developer in Microsoft Haifa</p>*/}
@@ -244,7 +274,7 @@ class ProfileCard extends Component {
                     {/*    <p>Back-end developer in Check Point Tel-Aviv</p>*/}
                     {/*</div>*/}
 
-                </div>
+                {/*</div>*/}
 
 
                 <div className="user-recommend">
