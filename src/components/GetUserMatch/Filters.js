@@ -11,6 +11,7 @@ class Filters extends Component{
         // // console.log("Filters",this.props)
         this.state = {
             jobs: {}
+
         };
     };
 
@@ -38,6 +39,8 @@ class Filters extends Component{
     };
 
     filterSelection = async(c) => {
+
+
         var div = document.getElementById('aaa');
         if (div.children.length != 0) {
             while (div.firstChild) {
@@ -66,12 +69,14 @@ class Filters extends Component{
             case 0:{this.showAll();break;}
             case 1:{this.FullJob();break;}
             case 2:{this.HalfJob();break;}
-            case 3:{this.StudentJob(); break;}
+            case 3:{this.StudentJob();break;}
             case 4:{this.SendingJob();break;}
             case 5:{this.FavoriteJob();break;}
             case 6:{this.ReplyJob();break;}
             default:{break;}
+
         }
+
 
 
     };
@@ -799,6 +804,7 @@ class Filters extends Component{
         send.classList.toggle('fa-square-o');
         const body={id:event.target.id.substring(0, event.target.id.length-6)};
         const response = await axiosInstance.post(`/user/${this.getUserId()}/UpdateReply`,{body});
+        this.setState()
     };
 
     render() {
@@ -814,6 +820,7 @@ class Filters extends Component{
                     <button className="btn_nothing" onClick={(event) =>this.filterSelection(5)}> FavoriteJob</button>
                     <button className="btn_nothing" onClick={(event) =>this.filterSelection(6)}> ReplyJob</button>
                 </div>
+
             </div>
         );
     }
