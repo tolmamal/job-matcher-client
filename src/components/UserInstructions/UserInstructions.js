@@ -16,6 +16,7 @@ class UserInstructions extends Component {
                     <h1>Instructions</h1>
                     <br/>
                     <br/>
+                    <br/>
                     <p>
                         These instructions are designed to show the functionality of the services we offer in our
                         website.<br/>
@@ -24,7 +25,7 @@ class UserInstructions extends Component {
                     <br/>
                     <br/>
                     <br/>
-                    <iframe width="600" height="400" src="https://www.youtube.com/embed/tgbNymZ7vqY">
+                    <iframe width="500" height="400" src="https://www.youtube.com/embed/tgbNymZ7vqY">
 
                     </iframe>
 
@@ -33,11 +34,13 @@ class UserInstructions extends Component {
                 </div>
                 <br/>
                 <br/>
+                <br/>
+                <br/>
                 <div className="help-section">
                     <p>
                         For any other help, please contact us: &nbsp;
                         <i className="fa fa-envelope-open" aria-hidden="true"></i> &nbsp; jobmatcher100@gmail.com<br/>
-                        All rights reserved. &nbsp;<i className="fa fa-copyright" aria-hidden="true"></i>
+                        <br/>All rights reserved. &nbsp;<i className="fa fa-copyright" aria-hidden="true"></i>
                     </p>
 
                 </div>
