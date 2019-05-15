@@ -125,7 +125,7 @@ class UserMenu extends Component {
                         <form action="https://www.google.com/search" method="get" name="searchform" target="_blank">
                             <input name="search" type="hidden" value="example.com" />
                                 <input autoComplete="on" name="q"  placeholder="Search " required="required" type="text" />
-                                    <button className="button" type="submit">Search</button>
+                                    <button className="fa fa-search" type="submit"></button>
 
                         </form>
                     </div>

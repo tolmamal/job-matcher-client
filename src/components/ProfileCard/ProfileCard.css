@@ -185,14 +185,13 @@
 
 
 .timeline-item h1 {
-    font-size: 2rem;
+    /*font-size: 2rem;*/
+    font-size: 27px;
     margin-bottom: .5em;
     font-family: 'Oswald', sans-serif;
 
-
-
-
 }
+
 
 .timeline-item p {
     font-size: 1rem;
