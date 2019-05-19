@@ -1,3 +1,18 @@
+.about {
+    font-family: 'Open Sans', sans-serif;
+}
+
+.about h1 {
+    font-family: 'Baloo Bhai', cursive;
+    color: #2b665e;
+}
+
+
+.about h2 {
+    text-decoration: underline;
+}
+
+
 
 
 .div {

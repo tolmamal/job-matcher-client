@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import "./FIlters.css"
 import GetUserMatch from '../GetUserMatch/GetUserMatch'
 import axiosInstance from "../../utils/axios";
+import {FILTER_NAMES} from "./GetUserMatch";
 
 
 class Filters extends Component{
@@ -65,16 +66,16 @@ class Filters extends Component{
         var btns = document.getElementsByClassName('btn_nothing');
         btns[c].className = 'btn_active';
 
+        this.props.updateSelectedFilter(c);
         switch (c) {
-            case 0:{this.showAll();break;}
-            case 1:{this.FullJob();break;}
-            case 2:{this.HalfJob();break;}
-            case 3:{this.StudentJob();break;}
-            case 4:{this.SendingJob();break;}
-            case 5:{this.FavoriteJob();break;}
-            case 6:{this.ReplyJob();break;}
+            case FILTER_NAMES.SHOW_ALL:{this.showAll();break;}
+            case FILTER_NAMES.FULL_JOB:{this.FullJob();break;}
+            case FILTER_NAMES.HALF_JOB:{this.HalfJob();break;}
+            case FILTER_NAMES.STUDENT_JOB:{this.StudentJob();break;}
+            case FILTER_NAMES.SENDING_JOB:{this.SendingJob();break;}
+            case FILTER_NAMES.FAVORITE_JOB:{this.FavoriteJob();break;}
+            case FILTER_NAMES.REPLY_JOB:{this.ReplyJob();break;}
             default:{break;}
-
         }
 
 

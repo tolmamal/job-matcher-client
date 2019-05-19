@@ -81,12 +81,23 @@ class UploadFile extends Component {
 
     render() {
         return(
-            <div>
+
+            <div className="main-file">
+                <div className="file-inst">
+                    <br/>
+                    <br/>
+                    <h2>How does it work?</h2>
+                    <br/>
+                    <p>In order to get customized job's matches you need to upload a cv file.<br/>
+                        Our system analyse it and using our special algorithm, based on your resume we offer you <br/>the matches results with a score to each match that indicates how much the job suit you.
+                    </p>
+                </div>
                 <br/>
                 <br/>
                 <br/>
                 <br/>
                 <h3>Please load your CV file</h3>
+                <br/>
                 <input type="file" onChange={this.showFile}/>
                 <div id="show-text"></div>
 

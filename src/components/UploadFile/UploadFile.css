@@ -1,11 +1,27 @@
+.main-file {
+    font-family: 'Lato', sans-serif;
+}
+
+
+.file-inst h2 {
+    color: #2b665e;
+
+}
+
+
+.file-inst p {
+    font-size: 20px;
+}
+
+
 input[type="file"] {
-    background: #7886d8;
+    background: #2bcdc1;
     padding: 15px 11px 18px 20px;
     border-radius: 4px;
     cursor: pointer;
     color: white;
     width: 220px;
-    border: 2px solid #3F51B5;
+    border: 2px solid black;
     outline: 0;
 
 

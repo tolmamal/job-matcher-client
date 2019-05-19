@@ -196,7 +196,8 @@ class ProfileCard extends Component {
                              alt="photo"/>
                     </div>
                     <div className="profile-name">
-                        <a href="https://codepen.io/AlbertFeynman/" target="_blank">{first_name} {last_name}</a>
+                        {/*<a href="https://codepen.io/AlbertFeynman/" target="_blank">{first_name} {last_name}</a>*/}
+                        <a target="_blank">{first_name} {last_name}</a>
 
                     </div>
                     <div className="ds-skill">
@@ -211,7 +212,7 @@ class ProfileCard extends Component {
                         <div className="update">
                             {/*TODO: change here -> suppose to call hen's function modal in btnOnClick()*/}
                             <a href="#" className="btn" onClick={(e) => this.btnOnClick(100)}>Update Profile &nbsp;
-                                <i className="fa fa-user-plus"></i>
+                                <i className="fa fa-user-plus" ></i>
                             </a>
 
                         </div>
@@ -246,7 +247,6 @@ class ProfileCard extends Component {
                 <div className="user-recommend">
 
                     <div className="rcmd-btn">
-                        {/*<button onClick={(e) => this.loadCard(e)}>View Recommendations</button>*/}
                         <a href="#" className="botn" onClick={(e) => this.loadTimeline()}>
                             Refresh&nbsp;Time Line&nbsp;
                             <span className="shift">›</span>
