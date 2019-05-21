@@ -108,15 +108,15 @@ class UserMenu extends Component {
                 <div className="topnav">
                     <a id="home" className="unactive" href="#home" onClick={(event) => this.homeClick(0)}>Home</a>
                     <a id="profile" className="active" href="#profile"
-                       onClick={(event) => this.profileClick(1)}>profile</a>
-                    <a id="cvDetails" className="unactive" href="#mtchJbs" onClick={(event) => this.cvDetailsClick(2)}>cv
+                       onClick={(event) => this.profileClick(1)}>Profile</a>
+                    <a id="cvDetails" className="unactive" href="#mtchJbs" onClick={(event) => this.cvDetailsClick(2)}>CV
                         details</a>
                     <a id="jobDetails" className="unactive" href="#svemtchjbs"
-                       onClick={(event) => this.jobDetailsClick(3)}>job details</a>
-                    <a id="about" className="unactive" href="#about" onClick={(event) => this.aboutClick(4)}>about</a>
+                       onClick={(event) => this.jobDetailsClick(3)}>Job details</a>
+                    <a id="about" className="unactive" href="#about" onClick={(event) => this.aboutClick(4)}>About</a>
                     <a id="instruction" className="unactive" href="#instructions"
-                       onClick={(event) => this.instructionClick(5)}>instructions</a>
-                    <a id="preferences" className="unactive" href="#preferences" onClick={(event) => this.preferencesClick(6)}>preferences</a>
+                       onClick={(event) => this.instructionClick(5)}>Instructions</a>
+                    <a id="preferences" className="unactive" href="#preferences" onClick={(event) => this.preferencesClick(6)}>Preferences</a>
                     <div className="search-container">
                         {/*<form action="/action_page.php">*/}
                         {/*    <input type="text" placeholder="Search.." name="search"/>*/}

@@ -9,7 +9,7 @@ class Filters extends Component{
 
     constructor(props) {
         super(props);
-        // // console.log("Filters",this.props)
+
         this.state = {
             jobs: {}
 

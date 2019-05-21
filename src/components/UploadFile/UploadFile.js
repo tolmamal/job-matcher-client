@@ -51,6 +51,7 @@ class UploadFile extends Component {
 
         const reader = new FileReader()
         const textFile = /text.*/;
+        // console.log("file name: ", file.name);
 
         if (!file.type.match(textFile)) {
             alert('NOT A TEXT FILE')
@@ -61,12 +62,12 @@ class UploadFile extends Component {
 
         reader.onload = async (event) => {
             const {target: {result}} = event;
-            console.log(result)
+            // console.log(result);
 
             const response = await axiosInstance.post(`/user/${this.getUserId()}/update`, {data: result});
-            if (response.data === false)
-                // alert("WARNING: CV file exist already!")
-                alert("WARNING: CV file exist already!");
+            // if (response.data === false)
+            //     // alert("WARNING: CV file exist already!")
+            //     alert("WARNING: CV file exist already!");
 
 
 
@@ -75,8 +76,22 @@ class UploadFile extends Component {
         reader.readAsText(file);
         event.target.value = null;
 
+        // TODO: after adding a file - button needs to be disabled
+
+        // let file_name = document.getElementsByClassName("file-info")[0];
+        // let display = document.createElement("div");
+        //
+        // display.innerHTML = '<i class="fa fa-file-pdf-o" aria-hidden="true"></i>';
+        //
+        // let file_title = document.createTextNode(file.name);
+        // display.appendChild(file_title);
+        // file_name.appendChild(display);
+
+
 
     };
+
+
 
 
     render() {
@@ -100,6 +115,12 @@ class UploadFile extends Component {
                 <br/>
                 <input type="file" onChange={this.showFile}/>
                 <div id="show-text"></div>
+                <br/>
+                <div className="file-info">
+                    <i class="fa fa-file-pdf-o" aria-hidden="true"></i>
+
+
+                </div>
 
             </div>
         );
