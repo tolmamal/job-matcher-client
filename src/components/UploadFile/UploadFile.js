@@ -35,7 +35,31 @@ class UploadFile extends Component {
 
     };
 
+    deleteIDshowText() {
+        var div = document.getElementById('show-text');
+        if (div.children.length != 0)
+        {
+            while(div.firstChild){
+                div.removeChild(div.firstChild);
+            }
+        }
+    }
 
+    showElementInNewDivForMsg(text)
+    {
+        var div = document.getElementById('show-text');
+        var note = document.createElement("p");
+        // var text = document.createTextNode("Failed! No cv file in your profile details");
+        var br = document.createElement("br");
+        note.appendChild(text);
+        div.appendChild(br);
+        div.appendChild(note);
+    }
+
+    showTextNameFile()
+    {
+
+    }
 
     showFile = async (event) => {
 
@@ -60,6 +84,21 @@ class UploadFile extends Component {
               file_name: file.name
             };
             const response = await axiosInstance.post(`/user/${this.getUserId()}/update`,{data: result,body});
+            //////////////////////////////////////////////////////
+            console.log('response from UploadFile ', response)
+            if (response.data == 'cv')
+            {
+                this.deleteIDshowText();
+                var text = document.createTextNode("Already exist a cv file, first delete!");
+                this.showElementInNewDivForMsg(text);
+            }
+            else
+            {
+                this.deleteIDshowText();
+                var text = document.createTextNode("Upload cv file success!");
+                this.showElementInNewDivForMsg(text);
+            }
+            //////////////////////////////////////////////////////
 
         };
 
@@ -69,8 +108,35 @@ class UploadFile extends Component {
 
 
     deleteFileHandler = async () => {
+        this.deleteIDshowText();
+        var txt;
+        if (window .confirm("Are you sure you want to delete the file?")) {
+            txt = "You pressed OK!";
+            const response = await axiosInstance.delete(`/user/${this.getUserId()}/update`);
+            //////////////////////////////////////////////////////
+            // if (response.data == 'failed' )
+            // {
+            //     this.deleteIDshowText();
+            //     var text = document.createTextNode("Failed! No cv file in your profile details");
+            //     this.showElementInNewDivForMsg(text);
+            // }
+            if (response.data == 'success')
+            {
+                var text = document.createTextNode("success!  now you can upload the new cv file");
+                this.showElementInNewDivForMsg(text);
+            }
+            else  // if esponse.data == 'failed' or esponse.data == 'error'
+            {
+                var text = document.createTextNode("Failed! No cv file in your profile details");
+                this.showElementInNewDivForMsg(text);
+            }
+            //////////////////////////////////////////////////////
+        }
+        // else {
+        //     txt = "You pressed Cancel!";
+        // }
+        // document.getElementById("demo").innerHTML = txt;
 
-        const response = await axiosInstance.delete(`/user/${this.getUserId()}/update`);
 
     };
 
@@ -108,9 +174,8 @@ class UploadFile extends Component {
                 <div className="delete-file">
                     <button className="delete-btn" onClick={this.deleteFileHandler}>
                         <i className="fa fa-trash"></i>  Delete File
-
                     </button>
-
+                    {/*<p id="demo"></p>*/}
                 </div>
 
             </div>
