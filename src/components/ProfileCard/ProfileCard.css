@@ -236,7 +236,6 @@
     top:300px;
     width: 80%;
     float: right;
-
 }
 
 
@@ -483,11 +482,12 @@
     position: relative;
     list-style-type: none;
     padding: 0;
-    max-width: 34em;
-    margin: 20% auto 0;
-
-    height: 100%;
-    /*background: #222232;*/
+    /* max-width: 34em; */
+    float: right;
+    right: 20%;
+    margin: 5% 0;
+    /* height: 100%; */
+    /* background: #222232; */
 }
 
 .card h1 {
