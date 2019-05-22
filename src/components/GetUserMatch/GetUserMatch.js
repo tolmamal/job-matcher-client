@@ -7,23 +7,39 @@ import Sort from "./Sort"
 import "./flipCard.css"
 import  Filters from "./Filters"
 
+export const FILTER_NAMES = {
+    SHOW_ALL: 0,
+    FULL_JOB: 1,
+    HALF_JOB: 2,
+    STUDENT_JOB: 3,
+    SENDING_JOB:4,
+    FAVORITE_JOB:5,
+    REPLY_JOB: 6
+};
+
 class GetUserMatch extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            jobs: {}
-
+            jobs: {},
+            selectedFilter: 0
         }
     }
 
-    SendMail= async(e)=>{
-        const body={
+    SendMail = async (e) => {
+        const {selectedFilter} = this.state;
+        const body = {
             urlFile:'http://localhost:3000/user/5cd81b8d4011b44f6c72ce3c#svemtchjbs',
+            selectedFilter
         }
         const id = this.props.match.params.id;
         const response = await axiosInstance.post(`/user/${id}/PDFfile`,{ body });
     };
+
+    updateSelectedFilter = (selectedFilter) => {
+        this.setState({selectedFilter});
+    }
 
     render() {
         return (
@@ -32,7 +48,7 @@ class GetUserMatch extends Component {
                 <h3 className="txtLoader">loading...</h3>
                 <div className="jobDetails">
                     <br/>
-                    <Filters{...this.props}/>
+                    <Filters updateSelectedFilter={this.updateSelectedFilter} {...this.props}/>
                     <br/>
                     <Sort {...this.props}/>
                     <br/>
