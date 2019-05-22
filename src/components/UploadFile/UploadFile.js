@@ -8,89 +8,71 @@ class UploadFile extends Component {
 
     getUserId = () => this.props.match.params.id;
 
-    // showFile = async (event) => {
-    //
-    //     const {files} = event.target;
-    //     const file = files[0];
-    //     // var preview = document.getElementById('show-text');
-    //     // var file = document.querySelector('input[type=file]').files[0];
-    //     const reader = new FileReader()
-    //
-    //     const textFile = /text.*/;
-    //
-    //     if (!file.type.match(textFile)) {
-    //         alert('NOT A TEXT FILE')
-    //         return;
-    //     } else {
-    //         // preview.innerHTML = "<span class='error'>It doesn't seem to be a text file!</span>";
-    //     }
-    //
-    //
-    //     reader.onload = async (event) => {
-    //         const {target: {result}} = event;
-    //         console.log(result)
-    //
-    //
-    //
-    //         // preview.innerHTML = event.target.result;
-    //         const response = await axiosInstance.post(`/user/${this.getUserId()}/update`, {data: result});
-    //     };
-    //
-    //     reader.readAsText(file);
-    //     event.target.value = null;
-    //     //console.log(response.data);
-    // };
+
+    componentWillMount = async () => {
+
+        console.log("componentWillMount()");
+
+
+        const response = await axiosInstance.get(`/user/${this.getUserId()}/update`);
+
+        if(response.data[0] === 1) {
+            console.log("User has only 1 CV FILE as should be!");
+
+            let info = document.getElementsByClassName("file-info")[0];
+            let display = document.createElement("div");
+            display.innerHTML = '<i class="fa fa-file-pdf-o" aria-hidden="true" style="font-size: 40px"></i>';
+            let file_title = document.createTextNode("  " + response.data[1]);
+            file_title.classname = "file-title";
+            display.appendChild(file_title);
+            info.appendChild(display);
+
+
+        }
+
+        else
+            console.log("User has " + response.data[0] + " CV files");
+
+    };
 
 
 
     showFile = async (event) => {
 
-        const success = false; //flag True will indicate that user doesn't already have CV file
         const {files} = event.target;
         const file = files[0];
 
-        const reader = new FileReader()
+        const reader = new FileReader();
         const textFile = /text.*/;
-        // console.log("file name: ", file.name);
 
         if (!file.type.match(textFile)) {
-            alert('NOT A TEXT FILE')
+            alert('NOT A TEXT FILE');
             return;
         } else {
             // preview.innerHTML = "<span class='error'>It doesn't seem to be a text file!</span>";
         }
 
+
         reader.onload = async (event) => {
             const {target: {result}} = event;
-            // console.log(result);
 
-            const response = await axiosInstance.post(`/user/${this.getUserId()}/update`, {data: result});
-            // if (response.data === false)
-            //     // alert("WARNING: CV file exist already!")
-            //     alert("WARNING: CV file exist already!");
-
-
+            const body = {
+              file_name: file.name
+            };
+            const response = await axiosInstance.post(`/user/${this.getUserId()}/update`,{data: result,body});
 
         };
 
         reader.readAsText(file);
         event.target.value = null;
-
-        // TODO: after adding a file - button needs to be disabled
-
-        // let file_name = document.getElementsByClassName("file-info")[0];
-        // let display = document.createElement("div");
-        //
-        // display.innerHTML = '<i class="fa fa-file-pdf-o" aria-hidden="true"></i>';
-        //
-        // let file_title = document.createTextNode(file.name);
-        // display.appendChild(file_title);
-        // file_name.appendChild(display);
-
-
-
     };
 
+
+    deleteFileHandler = async () => {
+
+        const response = await axiosInstance.delete(`/user/${this.getUserId()}/update`);
+
+    };
 
 
 
@@ -99,6 +81,8 @@ class UploadFile extends Component {
 
             <div className="main-file">
                 <div className="file-inst">
+                    <br/>
+                    <br/>
                     <br/>
                     <br/>
                     <h2>How does it work?</h2>
@@ -117,8 +101,15 @@ class UploadFile extends Component {
                 <div id="show-text"></div>
                 <br/>
                 <div className="file-info">
-                    <i class="fa fa-file-pdf-o" aria-hidden="true"></i>
 
+                </div>
+                <br/>
+                <br/>
+                <div className="delete-file">
+                    <button className="delete-btn" onClick={this.deleteFileHandler}>
+                        <i className="fa fa-trash"></i>  Delete File
+
+                    </button>
 
                 </div>
 
