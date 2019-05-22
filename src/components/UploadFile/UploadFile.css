@@ -5,6 +5,8 @@
 
 .file-inst h2 {
     color: #2b665e;
+    font-weight: bold;
+    font-size: 30px;
 
 }
 
@@ -29,5 +31,63 @@ input[type="file"] {
 }
 
 .file-info {
-    font-size: 16px;
+    font-size: 20px;
+}
+
+
+.delete-file button {
+
+    font-family: inherit;
+    font-size: 100%;
+
+    padding: .5em 1em;
+    color: rgba(0,0,0,0.8);
+
+    border: transparent;
+    background-color: #E6E6E6;
+
+    text-decoration: none;
+    border-radius: 2px;
+
+
+
+    display: inline-block;
+    zoom: 1;
+    white-space: nowrap;
+    vertical-align: middle;
+
+    text-align: center;
+    cursor: pointer;
+    -webkit-user-drag: none;
+    user-select: none;
+    box-sizing: border-box;
+
+    line-height: normal;
+    letter-spacing: 0.01em;
+    -webkit-appearance: button;
+    text-transform: none;
+    overflow: visible;
+
+    margin: 0;
+    align-items: flex-start;
+    text-rendering: auto;
+    word-spacing: normal;
+    text-indent: 0px;
+    text-shadow: none;
+    -webkit-writing-mode: horizontal-tb !important;
+}
+
+
+.fa {
+    display: inline-block;
+    font-family: FontAwesome;
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    box-sizing: border-box;
+}
+
+.delete-file button:hover {
+    color: #c94e50;
 }

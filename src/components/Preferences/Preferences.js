@@ -29,7 +29,7 @@ class Preferences extends Component {
             temp[i] = { value: response.data[i], label: response.data[i] };
         // console.log("temp",temp);
         this.setState({selectedType:temp});
-    }
+    };
 
     getUserId = () => this.props.match.params.id;
 
