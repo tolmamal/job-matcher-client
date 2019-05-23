@@ -153,6 +153,13 @@
 
 .skill-info {
     color: white;
+
+}
+
+.skill-info h6 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px;
+
 }
 
 
@@ -330,56 +337,6 @@
     box-shadow: 0 0 5px rgba(255, 245, 245, 0.8);
     transition: background 0s;
 }
-
-
-
-
-    /*.rcmd-btn button {*/
-/*    display: inline-block;*/
-/*    border-radius: 4px;*/
-/*    background-color: #2bcdc1;*/
-/*    border: none;*/
-/*    color: #FFFFFF;*/
-/*    text-align: center;*/
-/*    font-size: 28px;*/
-/*    padding: 20px;*/
-/*    width: 355px;*/
-/*    height: 62px;*/
-/*    transition: all 0.5s;*/
-/*    cursor: pointer;*/
-/*    margin: 5px;*/
-/*}*/
-
-/*.rcmd-btn button span {*/
-/*    cursor: pointer;*/
-/*    display: inline-block;*/
-/*    position: relative;*/
-/*    transition: 0.5s;*/
-/*}*/
-
-/*.rcmd-btn button span:after {*/
-/*    content: '\00bb';*/
-/*    position: absolute;*/
-/*    opacity: 0;*/
-/*    top: 0;*/
-/*    right: -20px;*/
-/*    transition: 0.5s;*/
-/*}*/
-
-/*.rcmd-btn button:hover span {*/
-/*    padding-right: 25px;*/
-/*}*/
-
-
-/*.rcmd-btn button:hover span:after {*/
-/*    opacity: 1;*/
-/*    right: 0;*/
-/*}*/
-
-
-
-
-
 
 
 .PCcard {

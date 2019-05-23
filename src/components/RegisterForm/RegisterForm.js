@@ -94,16 +94,16 @@ class RegisterForm extends Component {
 
         return (
             <div id="register-form" className="container">
+                <div className="register-container">
                 <Confetti
                     run={success}
                     width={window.innerWidth}
                     height={window.innerHeight}
                 />
-                {/* <h3>יצירת משתמש חדש</h3> */}
+
                 <h3>Create account</h3>
-                <br></br>
-                <br></br>
-                <br></br>
+                <br/>
+
                 <div className="user-fields">
                     <ValidatedInput onInputChange={this.onInputChange} name="first_name" value={first_name}
                                     placeholder="First name" valid={formValid}/>
@@ -128,7 +128,7 @@ class RegisterForm extends Component {
                 </div>
                 <br></br>
                 <button className="regBtn" onClick={this.submitForm}>Create your account</button>
-
+                </div>
             </div>
         );
     }

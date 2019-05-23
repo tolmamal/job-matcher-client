@@ -29,8 +29,19 @@ class ProfileCard extends Component {
         this.setState({last_name: response.data[1]});
         this.setState({cards_amount: response.data[3]});
         this.setState({cards: response.data[4]});
-        // for time line
-        // this.loadTimeline()
+
+
+        let skills = document.getElementsByClassName("skill-info")[0];
+        for(let i=0; i<this.state.cards_amount; i++)
+        {
+            let skill = document.createElement("h6");
+            skill.innerHTML = '<i class="fa fa-graduation-cap" aria-hidden="true"></i>';
+            let skill_name = document.createTextNode("    " + this.state.cards[i]);
+
+            skill.appendChild(skill_name);
+            skills.appendChild(skill);
+        }
+
 
     };
 
@@ -86,20 +97,7 @@ class ProfileCard extends Component {
             this.setState({error: 'Cannot read the data'});
         }
 
-        {/*<div className="timeline-item" date-is="20-7-2018">*/}
-        {/*    <h1>Freelancer</h1>*/}
-        {/*    <p>Web developer in Microsoft Haifa</p>*/}
-        {/*</div>*/}
 
-        {/*<div className="timeline-item" date-is="8-10-2015">*/}
-        {/*    <h1>Full Stack Developer</h1>*/}
-        {/*<p>Web developer - all kind of projects</p>*/}
-        {/*</div>*/}
-
-        {/*<div className="timeline-item" date-is="10-4-2010">*/}
-        {/*    <h1>Back-End Developer</h1>*/}
-        {/*    <p>Back-end developer in Check Point Tel-Aviv</p>*/}
-        {/*</div>*/}
 
     };
 
@@ -183,7 +181,7 @@ class ProfileCard extends Component {
         }
     };
 
-    //TODO: add background img to this page
+
 
     render() {
         const {first_name, last_name, cards_amount, cards} = this.state;
@@ -204,13 +202,9 @@ class ProfileCard extends Component {
                         <h5>Skill <i className="fa fa-code" aria-hidden="true"></i></h5>
                         <br/>
                         <div className="skill-info">
-                            <i class="fa fa-graduation-cap" aria-hidden="true"></i>
-                            <br/>
-                            {/*TODO: take care of splitting cards list*/}
-                            <h6>{cards}</h6>
+
                         </div>
                         <div className="update">
-                            {/*TODO: change here -> suppose to call hen's function modal in btnOnClick()*/}
                             <a href="#" className="btn" onClick={(e) => this.btnOnClick(100)}>Update Profile &nbsp;
                                 <i className="fa fa-user-plus" ></i>
                             </a>
