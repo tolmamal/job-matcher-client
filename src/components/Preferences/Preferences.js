@@ -22,17 +22,20 @@ class Preferences extends Component {
     }
 
     componentWillMount = async () => {
-        const response = await axiosInstance.get(`/user/${this.getUserId()}/preferences`);
-        // console.log("response.data[0]",response.data);
-        var temp=[];
-        for (var i =0;i<response.data.length;i++)
-            temp[i] = { value: response.data[i], label: response.data[i] };
-        // console.log("temp",temp);
-        this.setState({selectedType:temp});
-        // for star icon
-        this.ratestar();
-        setInterval(this.ratestar, 3000);
-
+        try {
+            const response = await axiosInstance.get(`/user/${this.getUserId()}/preferences`);
+            // console.log("response.data[0]",response.data);
+            var temp = [];
+            for (var i = 0; i < response.data.length; i++)
+                temp[i] = {value: response.data[i], label: response.data[i]};
+            // console.log("temp",temp);
+            this.setState({selectedType: temp});
+            // for star icon
+            this.ratestar();
+            setInterval(this.ratestar, 3000);
+        }catch (e) {
+            console.log("catch componentWillMount Preferences")
+        }
     }
 
     getUserId = () => this.props.match.params.id;

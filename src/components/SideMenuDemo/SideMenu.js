@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
 import BurgerMenu from 'react-burger-menu';
 import classNames from 'classnames';
 import './SideMenu.css';

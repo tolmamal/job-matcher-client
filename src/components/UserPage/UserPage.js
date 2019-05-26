@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import './UserPage.css';
 import UserMenu from '../UserMenu/UserMenu';
-import axiosInstance from '../../utils/axios';
 
 class UserPage extends Component {
 

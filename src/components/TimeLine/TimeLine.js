@@ -2,7 +2,6 @@ import React, {
     Component
 } from "react";
 import "./TimeLine.css"
-import axiosInstance from "../../utils/axios";
 
 class TimeLine extends Component {
 

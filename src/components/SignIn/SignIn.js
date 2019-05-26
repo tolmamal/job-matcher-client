@@ -5,9 +5,6 @@ import Utils from "../../utils/Utils";
 import ValidatedInput from "../ValidatedInput";
 import jwt_decode from 'jwt-decode';
 
-import UserPage from '../../components/UserPage/UserPage';
-
-
 class SignIn extends Component {
 
     constructor(props) {
