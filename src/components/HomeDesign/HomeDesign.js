@@ -2,7 +2,40 @@ import React, {Component} from 'react';
 import './HomeDesign.css';
 
 
+
 class HomeDesign extends Component {
+
+
+    componentWillMount() {
+        var a=document.getElementsByClassName("counter-no counter");
+        console.log("fffffffffffff",a[0]);
+        // a.animationIterationCount();
+        // a.each(function () {
+        //     var b=a.props;
+        //     b.prop('Counter',0).animate({
+        //         Counter: b.text()
+        //     }, {
+        //         duration: 5000,
+        //         easing: 'swing',
+        //         step: function (now) {
+        //             b.text(Math.ceil(now));
+        //         }
+        //     });
+        // });
+
+        // $('.counter-count').each(function () {
+        //     $(this).prop('Counter',0).animate({
+        //         Counter: $(this).text()
+        //     }, {
+        //         duration: 5000,
+        //         easing: 'swing',
+        //         step: function (now) {
+        //             $(this).text(Math.ceil(now));
+        //         }
+        //     });
+        // });
+    }
+
     render() {
         return (
             <div>
@@ -79,14 +112,15 @@ class HomeDesign extends Component {
 
 
                 <section id="counter">
-                    <div className="counter-overlay">
-                        <div className="container">
+                    {/*<div className="counter-overlay">*/}
+                        <div className="container" >
                             <div className="row">
                                 <div className="col-md-12">
                                     <div className="counter-area">
                                         <div className="row">
+
                                             {/*start single counter*/}
-                                            <div className="col-md-3 col-sm-6">
+                                            <div className="col-md-4 col-sm-6">
                                                 <div className="single-counter">
                                                     <div className="counter-icon">
                                                         <i className="fa fa-suitcase"></i>
@@ -100,7 +134,24 @@ class HomeDesign extends Component {
                                                 </div>
                                             </div>
                                             {/*end of single counter*/}
-                                            <div className="col-md-3 col-sm-6">
+
+                                            <div className="col-md-4 col-sm-6">
+                                                <div className="single-counter">
+                                                    <div className="counter-icon">
+                                                        <i className="fa fa-suitcase"></i>
+                                                    </div>
+                                                    <div className="counter-no counter">
+                                                        123
+                                                    </div>
+                                                    <div className="counter-label">
+                                                        Job Offers
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+
+                                            <div className="col-md-4 col-sm-6">
                                                 <div className="single-counter">
                                                     <div className="counter-icon">
                                                         <i className="fa fa-clock-o"></i>
@@ -114,7 +165,7 @@ class HomeDesign extends Component {
                                                 </div>
                                             </div>
 
-                                            <div className="col-md-3 col-sm-6">
+                                            <div className="col-md-4 col-sm-6">
                                                 <div className="single-counter">
                                                     <div className="counter-icon">
                                                         <i className="fa fa-trophy"></i>
@@ -133,9 +184,12 @@ class HomeDesign extends Component {
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    {/*</div>*/}
 
                 </section>
+
+
+
             </div>
 
 

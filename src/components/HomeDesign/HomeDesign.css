@@ -67,7 +67,6 @@
 
 }
 
-
 .counter-overlay {
     background: rgba(15, 22, 30, 0.5) none repeat scroll 0 0;
     color: #ffffff;
@@ -81,12 +80,12 @@
     font-size: 16px;
 }
 
-
 .counter-area {
     display: inline;
     float: left;
     width: 100%;
-
+    margin-top: 80px;
+    magin-bottom: 80px;
     box-sizing: border-box;
 }
 
@@ -136,8 +135,6 @@
     display: block;
 }
 
-
-
 .container {
     padding-right: 15px;
     padding-left: 15px;
@@ -148,7 +145,6 @@
     box-sizing: border-box;
 
 }
-
 
 #service {
     background-color: #fff;
@@ -171,7 +167,6 @@
     width: 100%;
 
     box-sizing: border-box;
-
 
 }
 
@@ -268,8 +263,6 @@
 
 }
 
-
-
 .title-area .line {
     background-color: #777;
     display: inline-block;
@@ -312,7 +305,6 @@
     padding-left: 15px;
 }
 
-
 .row {
     margin-right: -15px;
     margin-left: -15px;
@@ -346,10 +338,10 @@
     }
 }
 
-
 @media (min-width: 1200px) {
     .container {
         width: 1170px;
     }
 
 }
+
