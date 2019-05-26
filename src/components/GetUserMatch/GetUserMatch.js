@@ -45,6 +45,7 @@ class GetUserMatch extends Component {
         return (
             <div>
                 <div className="loader"></div>
+
                 <h3 className="txtLoader">loading...</h3>
                 <div className="jobDetails">
                     <br/>

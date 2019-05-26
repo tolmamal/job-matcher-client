@@ -9,8 +9,9 @@ import UserInstructions from "../UserInstructions/UserInstructions";
 import Preferences from "../Preferences/Preferences";
 import GetUserMatch from "../GetUserMatch/GetUserMatch";
 import UploadFile from "../UploadFile/UploadFile";
+import StateStatus from "../StateStatus/StateStatus";
 
-// new comment
+
 
 class UserMenu extends Component {
 
@@ -137,6 +138,8 @@ class UserMenu extends Component {
 
                 <div className="UMProfile">
                     <ProfileCard {...this.props}/>
+
+
                     <br/>
                 </div>
 
@@ -158,6 +161,7 @@ class UserMenu extends Component {
 
                 <div className="UMPreferences">
                     <Preferences {...this.props}/>
+                    <StateStatus {...this.props}/>
                 </div>
             </div>
         );
