@@ -3,13 +3,13 @@ import React, {
 } from "react";
 import "./UserMenu.css"
 import About from "../About/About"
-import Home from "../Home/Home"
 import ProfileCard from "../ProfileCard/ProfileCard";
 import UserInstructions from "../UserInstructions/UserInstructions";
 import Preferences from "../Preferences/Preferences";
 import GetUserMatch from "../GetUserMatch/GetUserMatch";
 import UploadFile from "../UploadFile/UploadFile";
 import StateStatus from "../StateStatus/StateStatus";
+import HomeDesign from "../HomeDesign/HomeDesign";
 
 
 
@@ -133,7 +133,7 @@ class UserMenu extends Component {
                 </div>
 
                 <div className="UMHome">
-                    <Home/>
+                    <HomeDesign/>
                 </div>
 
                 <div className="UMProfile">

@@ -33,7 +33,11 @@ class GetUserMatch extends Component {
             selectedFilter
         }
         const id = this.props.match.params.id;
-        const response = await axiosInstance.post(`/user/${id}/PDFfile`,{ body });
+        try {
+            const response = await axiosInstance.post(`/user/${id}/PDFfile`, {body});
+        }catch (e) {
+            console.log("catch SendMail GetUserMatch")
+        }
     };
 
     updateSelectedFilter = (selectedFilter) => {

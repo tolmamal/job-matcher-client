@@ -29,6 +29,7 @@ class HomeDesign extends Component {
     render() {
         return (
             <div>
+
                 <section id="home-design">
                     <img className="background-img" src="https://i.imgur.com/CDS3Nyh.jpg"/>
                     <div className="front">
@@ -161,7 +162,6 @@ class HomeDesign extends Component {
                     {/*</div>*/}
 
                 </section>
-
 
 
             </div>

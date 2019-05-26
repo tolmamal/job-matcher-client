@@ -6,7 +6,7 @@ import ValidatedInput from "../ValidatedInput";
 import axiosInstance from "../../utils/axios";
 import Select from "react-select";
 
-//
+
 const tagOptions = [
     {value: 'Front-end', label: 'Front-end'},
     {value: 'Back-end', label: 'Back-end'},
@@ -46,16 +46,20 @@ class DetailsForm extends Component {
     };
 
     componentWillMount = async () => {
-        const response = await axiosInstance.get(`/user/${this.props.match.params.id}/changeProfile`);
-        this.setState({first_name:response.data[0]});
-        this.setState({last_name:response.data[1]});
-        this.setState({password:response.data[5]});
-        this.setState({confirmPassword:response.data[5]});
-        this.setState({email:response.data[2]});
-        var temp=[];
-        for (var i =0;i<response.data[3];i++)
-            temp[i] = { value: response.data[4][i], label: response.data[4][i] };
-        this.setState({selectedTags:temp});
+        try {
+            const response = await axiosInstance.get(`/user/${this.props.match.params.id}/changeProfile`);
+            this.setState({first_name: response.data[0]});
+            this.setState({last_name: response.data[1]});
+            this.setState({password: response.data[5]});
+            this.setState({confirmPassword: response.data[5]});
+            this.setState({email: response.data[2]});
+            var temp = [];
+            for (var i = 0; i < response.data[3]; i++)
+                temp[i] = {value: response.data[4][i], label: response.data[4][i]};
+            this.setState({selectedTags: temp});
+        }catch (e) {
+            console.log("catch componentWillMount details!!");
+        }
     };
 
     getUserId = () => this.props.match.params.id;
@@ -108,6 +112,7 @@ class DetailsForm extends Component {
         }
         var modal = document.getElementById("myModal");
         modal.style.display = "none";
+
     };
 
     DFcancelbtnOnClick=(e)=> {
