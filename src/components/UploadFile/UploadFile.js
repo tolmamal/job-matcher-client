@@ -20,6 +20,14 @@ class UploadFile extends Component {
             console.log("User has only 1 CV FILE as should be!");
 
             let info = document.getElementsByClassName("file-info")[0];
+            this.delteTextNameFile();
+            // // var div = document.getElementById('show-text');
+            // if (info.children.length != 0)
+            // {
+            //     while(info.firstChild){
+            //         info.removeChild(info.firstChild);
+            //     }
+            // }
             let display = document.createElement("div");
             display.innerHTML = '<i class="fa fa-file-pdf-o" aria-hidden="true" style="font-size: 40px"></i>';
             let file_title = document.createTextNode("  " + response.data[1]);
@@ -56,9 +64,15 @@ class UploadFile extends Component {
         div.appendChild(note);
     }
 
-    showTextNameFile()
+    delteTextNameFile()
     {
-
+        let info = document.getElementsByClassName("file-info")[0];
+        if (info.children.length != 0)
+        {
+            while(info.firstChild){
+                info.removeChild(info.firstChild);
+            }
+        }
     }
 
     showFile = async (event) => {
@@ -97,6 +111,7 @@ class UploadFile extends Component {
                 this.deleteIDshowText();
                 var text = document.createTextNode("Upload cv file success!");
                 this.showElementInNewDivForMsg(text);
+                this.componentWillMount();
             }
             //////////////////////////////////////////////////////
 
@@ -124,6 +139,7 @@ class UploadFile extends Component {
             {
                 var text = document.createTextNode("success!  now you can upload the new cv file");
                 this.showElementInNewDivForMsg(text);
+                this.delteTextNameFile();
             }
             else  // if esponse.data == 'failed' or esponse.data == 'error'
             {
@@ -139,7 +155,6 @@ class UploadFile extends Component {
 
 
     };
-
 
 
     render() {
