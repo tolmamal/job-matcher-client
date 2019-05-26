@@ -4,6 +4,7 @@ import React, {
 import "./ProfileCard.css"
 import DetailsForm from "../DetailsForm/DetailsForm";
 import axiosInstance from "../../utils/axios";
+import StateStatus from "../StateStatus/StateStatus";
 
 class ProfileCard extends Component {
 
@@ -286,6 +287,10 @@ class ProfileCard extends Component {
                     <div className="cards-container"/>
 
                 </div>
+                {/*<div className="user-status">*/}
+                {/*    <StateStatus {...this.props}/>*/}
+
+                {/*</div>*/}
 
             </div>
 

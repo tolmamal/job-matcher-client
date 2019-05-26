@@ -43,13 +43,15 @@
 .loader {
     display: block;
     position: fixed;
+
     border: 16px solid #f3f3f3;
     border-radius: 50%;
     border-top: 16px solid #2bcdc1;
-    width: 300px;
-    height:300px;
-    left: 40%;
-    top:20%;
+
+    width: 200px;
+    height:200px;
+    left: 43%;
+    top:30%;
     -webkit-animation: spin 2s linear infinite; /* Safari */
     animation: spin 2s linear infinite;
 }

@@ -145,9 +145,10 @@ class DetailsForm extends Component {
                         <label className="DFlable" htmlFor="psw-repeat"><b>Confirm Password</b></label>
                         <ValidatedInput onInputChange={this.onInputChange} name="confirmPassword" value={confirmPassword} type="password" placeholder="Re-enter password" valid={formValid} />
                         <br/>
+                        <br/>
 
                         {/*<div className="DFtags-selections">*/}
-                            <label className="DFlable" htmlFor="intrs"><b>Interests</b></label>
+                            <label className="DFlable" htmlFor="intrs"><b>Fields:</b></label>
                             <Select className="DFtags-selections"
                                 isMulti={true}
                                 value={selectedTags}
