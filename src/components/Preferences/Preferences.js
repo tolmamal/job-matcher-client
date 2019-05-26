@@ -29,6 +29,10 @@ class Preferences extends Component {
             temp[i] = { value: response.data[i], label: response.data[i] };
         // console.log("temp",temp);
         this.setState({selectedType:temp});
+        // for star icon
+        this.ratestar();
+        setInterval(this.ratestar, 3000);
+
     }
 
     getUserId = () => this.props.match.params.id;
@@ -61,32 +65,66 @@ class Preferences extends Component {
 
     };
 
+    ratestar() {
+        var a;
+        a = document.getElementById("div1");
+        a.innerHTML = "&#xf006;";
+        setTimeout(function () {
+            a.innerHTML = "&#xf123;";
+        }, 1000);
+        setTimeout(function () {
+            a.innerHTML = "&#xf005;";
+        }, 2000);
+        var b;
+        b = document.getElementById("div2");
+        b.innerHTML = "&#xf006;";
+        setTimeout(function () {
+            b.innerHTML = "&#xf123;";
+        }, 1000);
+        setTimeout(function () {
+            b.innerHTML = "&#xf005;";
+        }, 2000);
+
+
+    }
+
     render() {
         const {selectedType,success} = this.state;
         return (
             <div>
-                <h2>Edit your professional preferences</h2>
-                <br></br>
-                <br></br>
-                <br></br>
-                <div className="type-options">
-                    <h4>Job-Type:</h4>
-                    <Select
-                        isMulti={false}
-                        value={selectedType}
-                        onChange={this.onTypeChanged}
-                        options={typeOptions}
+                <div className="main-file">
+                    <div className="file-inst">
+                        <br/><br/>
+                        <h2>How does it work?</h2>
+                        <br/>
+                        <p>In order to get customized job's matches you need to choose your preference about the Job-Type. <br/>
+                            If you do not have preference the default choice is a full-time job.<br/>
+                        </p>
+                        <br/>
+                        <p> <i id="div1" className="fa" aria-hidden="true " />
+                            Our recommendation: For better matching result choose your preference
+                            <i id="div2" className="fa" aria-hidden="true " />
+                            {/*<i className="fa fa-star-o" aria-hidden="true"/>*/}
+                        </p>
+                        {/*<h2>Edit your professional preferences</h2>*/}
+                        <br></br>
+                        <br></br>
+                        <br></br>
+                        <div className="type-options">
+                            <h4>Please choose your preference:</h4>
+                            <br/>
+                            <Select
+                                isMulti={false}
+                                value={selectedType}
+                                onChange={this.onTypeChanged}
+                                options={typeOptions}
 
-                    />
-
+                            />
+                        </div>
+                    </div>
                 </div>
-                <br></br>
-                <br></br>
-                <br></br>
-                <br></br>
-                <br></br>
-                <br></br>
-                <button onClick={this.editHandler}>Edit preferences</button>
+
+                <button className="edit-preferences-btn" onClick={this.editHandler}>Select</button>
 
 
             </div>

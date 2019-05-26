@@ -5,3 +5,35 @@
     margin: auto;
 }
 
+.edit-preferences-btn {
+    margin: 100px auto;
+    text-align: center;
+    display: inline-block;
+    border-radius: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    /*position: relative;*/
+    padding: 20px 30px 20px 30px;
+    /*background: rgba(60, 162, 162, 0.6);*/
+    background: #5FCEC0;
+    /*color: rgba(0, 0, 0, 0.5);*/
+    color: #fff;
+    cursor: pointer;
+    font-weight: bolder;
+
+}
+
+.button.special {
+    background: #5FCEC0;
+    color: #fff;
+    box-shadow: 0 0 0 2px #5FCEC0;
+}
+
+#div1{
+    font-size:28px;
+    color: Yellow;
+}
+
+#div2{
+    font-size:28px;
+    color: Yellow;
+}
