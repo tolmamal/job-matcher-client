@@ -16,14 +16,20 @@ class StateStatus extends Component {
     };
 
     componentWillMount = async () => {
-        const response = await axiosInstance.get(`/user/${this.props.match.params.id}/set_status`);
-        this.setState({find:response.data[0]});
-        var modal1 = document.getElementById("find1");
-        var modal2= document.getElementById("find2");
-        if(this.state.find==false)
-            modal1.checked="checked";
-        else
-            modal2.checked="checked";
+        try {
+            const response = await axiosInstance.get(`/user/${this.props.match.params.id}/set_status`);
+            this.setState({find:response.data[0]});
+            var modal1 = document.getElementById("find1");
+            var modal2= document.getElementById("find2");
+            if(this.state.find==false)
+                modal1.checked="checked";
+            else
+                modal2.checked="checked";
+        }
+        catch (e) {
+            this.setState({error: 'Cannot read the data'});
+        }
+
     };
 
 

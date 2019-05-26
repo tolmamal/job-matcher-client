@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import "./GetUserMatch.css";
 import axiosInstance from "../../utils/axios";
 import "../Jobs/Jobs.css";
-import "../word2vec/word2vec";
 import "./flipCard.css"
 
 
