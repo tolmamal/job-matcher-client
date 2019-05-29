@@ -73,12 +73,12 @@ class DetailsForm extends Component {
     };
 
     isValid = () => {
-            const { password, confirmPassword, first_name, last_name } = this.state;
+            const { password, confirmPassword,selectedTags, first_name, last_name } = this.state;
             // return Utils.validateEmail(email)
             //     &&
             return password.length >= 5
             && password === confirmPassword
-            // && selectedTags.length >= 2
+            && selectedTags.length >= 2
             && first_name
             && last_name;
     };
