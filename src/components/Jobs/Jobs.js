@@ -20,7 +20,7 @@ class Jobs extends Component {
     // description: "",
     // requirements: ""
 
-    componentDidMount = async () => {
+    componentWillMount = async () => {
         try {
             const response = await axiosInstance.get('/jobs/upload')
                 .then(response => {
