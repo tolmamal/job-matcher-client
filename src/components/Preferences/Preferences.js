@@ -3,15 +3,11 @@ import "./Preferences.css";
 import Select from "react-select";
 import axiosInstance from '../../utils/axios';
 
-
 const typeOptions = [
     {value: 'partTime', label: 'part-time job'},
     {value: 'fullTime', label: 'full-time job'},
     {value: 'none', label: 'none'}
 ];
-
-
-
 
 class Preferences extends Component {
     constructor(props) {
@@ -68,7 +64,8 @@ class Preferences extends Component {
 
     };
 
-    ratestar =()=> {
+    ratestar = () => {
+
         var a;
         a = document.getElementById("div1");
         a.innerHTML = "&#xf006;";

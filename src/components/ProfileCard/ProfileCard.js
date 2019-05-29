@@ -105,7 +105,7 @@ class ProfileCard extends Component {
     };
 
     loadCard = async (e) => {
-        console.log("--- loadCard(e) ---");
+        // console.log("--- loadCard(e) ---");
 
         // TODO: split the msg with whitespace for display !!!
         try {
@@ -182,10 +182,10 @@ class ProfileCard extends Component {
 
     loadSkills = () => {
         let skills = document.getElementsByClassName("ds-skill")[0];
-        console.log("cards_amount: ", this.state.cards_amount);
+        // console.log("cards_amount: ", this.state.cards_amount);
 
         for (let i = 0; i < this.state.cards_amount; i++) {
-            console.log("i = ", i);
+            // console.log("i = ", i);
             let skill = document.createElement("div");
             skill.className = "skill";
             // skill.innerHTML = '<i class="fa fa-graduation-cap" aria-hidden="true"></i>';
