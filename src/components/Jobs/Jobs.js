@@ -43,12 +43,13 @@ class Jobs extends Component {
         const {jobsList} = this.state;
         return (
             <div>
-                Jobs offers:
+            <br/>
+                All Jobs offers:
                 {jobsList.map(job => {
                     return (
                         <div className="jobCard" key={job.identifier}>
                             <div className="jobContent">
-                                <span className="jobName">{job.identifier}. Role: {job.role_name}</span>
+                                <span className="jobName">Role: {job.role_name}</span>
                                 <p>Location: {job.location} </p>
                                 <p>Type: {job.type}</p>
                                 <p>Salary: {job.salary}</p>

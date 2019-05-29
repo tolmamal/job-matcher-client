@@ -26,7 +26,7 @@ class Filters extends Component{
             loader.style.display = "none";
             jobDetails.style.display = "block";
             txtLoader.style.display = "none";
-            console.log("responce-Fillter", response)
+            // console.log("responce-Fillter", response)
             if (response.data == null) {
                 console.log("responce-Fillter")
                 var div = document.getElementById('aaa');

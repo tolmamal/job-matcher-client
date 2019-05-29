@@ -3,15 +3,11 @@ import "./Preferences.css";
 import Select from "react-select";
 import axiosInstance from '../../utils/axios';
 
-
 const typeOptions = [
     {value: 'partTime', label: 'part-time job'},
     {value: 'fullTime', label: 'full-time job'},
     {value: 'none', label: 'none'}
 ];
-
-
-
 
 class Preferences extends Component {
     constructor(props) {
@@ -32,11 +28,11 @@ class Preferences extends Component {
             this.setState({selectedType: temp});
             // for star icon
             this.ratestar();
-            setInterval(this.ratestar, 3000);
+            setInterval(this.ratestar() , 3000);
         }catch (e) {
             console.log("catch componentWillMount Preferences")
         }
-    }
+    };
 
     getUserId = () => this.props.match.params.id;
 
@@ -68,7 +64,8 @@ class Preferences extends Component {
 
     };
 
-    ratestar() {
+    ratestar = () => {
+
         var a;
         a = document.getElementById("div1");
         a.innerHTML = "&#xf006;";
@@ -89,7 +86,7 @@ class Preferences extends Component {
         }, 2000);
 
 
-    }
+    };
 
     render() {
         const {selectedType,success} = this.state;
