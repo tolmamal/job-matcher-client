@@ -3,15 +3,11 @@ import "./Preferences.css";
 import Select from "react-select";
 import axiosInstance from '../../utils/axios';
 
-
 const typeOptions = [
     {value: 'partTime', label: 'part-time job'},
     {value: 'fullTime', label: 'full-time job'},
     {value: 'none', label: 'none'}
 ];
-
-
-
 
 class Preferences extends Component {
     constructor(props) {
@@ -19,21 +15,24 @@ class Preferences extends Component {
         this.state = {
             selectedType: []
         };
-    }
+    };
 
     componentWillMount = async () => {
-        const response = await axiosInstance.get(`/user/${this.getUserId()}/preferences`);
-        // console.log("response.data[0]",response.data);
-        var temp=[];
-        for (var i =0;i<response.data.length;i++)
-            temp[i] = { value: response.data[i], label: response.data[i] };
-        // console.log("temp",temp);
-        this.setState({selectedType:temp});
-        // for star icon
-        this.ratestar();
-        setInterval(this.ratestar, 3000);
-
-    }
+        try {
+            const response = await axiosInstance.get(`/user/${this.getUserId()}/preferences`);
+            // console.log("response.data[0]",response.data);
+            var temp = [];
+            for (var i = 0; i < response.data.length; i++)
+                temp[i] = {value: response.data[i], label: response.data[i]};
+            // console.log("temp",temp);
+            this.setState({selectedType: temp});
+            // for star icon
+            this.ratestar();
+            setInterval(this.ratestar(),3000,this.ratestar());
+        }catch (e) {
+            console.log("catch componentWillMount Preferences")
+        }
+    };
 
     getUserId = () => this.props.match.params.id;
 
@@ -65,7 +64,8 @@ class Preferences extends Component {
 
     };
 
-    ratestar() {
+    ratestar = () => {
+
         var a;
         a = document.getElementById("div1");
         a.innerHTML = "&#xf006;";
@@ -86,7 +86,7 @@ class Preferences extends Component {
         }, 2000);
 
 
-    }
+    };
 
     render() {
         const {selectedType,success} = this.state;

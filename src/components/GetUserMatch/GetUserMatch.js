@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import "./GetUserMatch.css";
 import axiosInstance from "../../utils/axios";
 import "../Jobs/Jobs.css";
-import "../word2vec/word2vec";
 import Sort from "./Sort"
 import "./flipCard.css"
 import  Filters from "./Filters"
@@ -34,7 +33,11 @@ class GetUserMatch extends Component {
             selectedFilter
         }
         const id = this.props.match.params.id;
-        const response = await axiosInstance.post(`/user/${id}/PDFfile`,{ body });
+        try {
+            const response = await axiosInstance.post(`/user/${id}/PDFfile`, {body});
+        }catch (e) {
+            console.log("catch SendMail GetUserMatch")
+        }
     };
 
     updateSelectedFilter = (selectedFilter) => {

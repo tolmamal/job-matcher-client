@@ -11,35 +11,38 @@ class UploadFile extends Component {
 
     componentWillMount = async () => {
 
-        console.log("componentWillMount()");
+        // console.log("componentWillMount()");
+
+        try {
+            const response = await axiosInstance.get(`/user/${this.getUserId()}/update`);
+
+            if (response.data[0] === 1) {
+                // console.log("User has only 1 CV FILE as should be!");
+
+                let info = document.getElementsByClassName("file-info")[0];
+                this.delteTextNameFile();
+                // // var div = document.getElementById('show-text');
+                // if (info.children.length != 0)
+                // {
+                //     while(info.firstChild){
+                //         info.removeChild(info.firstChild);
+                //     }
+                // }
+                let display = document.createElement("div");
+                display.innerHTML = '<i class="fa fa-file-pdf-o" aria-hidden="true" style="font-size: 40px"></i>';
+                let file_title = document.createTextNode("  " + response.data[1]);
+                file_title.classname = "file-title";
+                display.appendChild(file_title);
+                info.appendChild(display);
 
 
-        const response = await axiosInstance.get(`/user/${this.getUserId()}/update`);
-
-        if(response.data[0] === 1) {
-            console.log("User has only 1 CV FILE as should be!");
-
-            let info = document.getElementsByClassName("file-info")[0];
-            this.delteTextNameFile();
-            // // var div = document.getElementById('show-text');
-            // if (info.children.length != 0)
-            // {
-            //     while(info.firstChild){
-            //         info.removeChild(info.firstChild);
-            //     }
-            // }
-            let display = document.createElement("div");
-            display.innerHTML = '<i class="fa fa-file-pdf-o" aria-hidden="true" style="font-size: 40px"></i>';
-            let file_title = document.createTextNode("  " + response.data[1]);
-            file_title.classname = "file-title";
-            display.appendChild(file_title);
-            info.appendChild(display);
-
-
+            }
+            // else
+            //     console.log("User has " + response.data[0] + " CV files");
         }
-
-        else
-            console.log("User has " + response.data[0] + " CV files");
+        catch (e) {
+            this.setState({error: 'Cannot read the data'});
+        }
 
     };
 
@@ -97,23 +100,31 @@ class UploadFile extends Component {
             const body = {
               file_name: file.name
             };
-            const response = await axiosInstance.post(`/user/${this.getUserId()}/update`,{data: result,body});
-            //////////////////////////////////////////////////////
-            console.log('response from UploadFile ', response)
-            if (response.data == 'cv')
+
+            try
             {
-                this.deleteIDshowText();
-                var text = document.createTextNode("Already exist a cv file, first delete!");
-                this.showElementInNewDivForMsg(text);
+                const response = await axiosInstance.post(`/user/${this.getUserId()}/update`,{data: result,body});
+                //////////////////////////////////////////////////////
+                // console.log('response from UploadFile ', response)
+                if (response.data == 'cv')
+                {
+                    this.deleteIDshowText();
+                    var text = document.createTextNode("Already exist a cv file, first delete!");
+                    this.showElementInNewDivForMsg(text);
+                }
+                else
+                {
+                    this.deleteIDshowText();
+                    var text = document.createTextNode("Upload cv file success!");
+                    this.showElementInNewDivForMsg(text);
+                    this.componentWillMount();
+                }
+                //////////////////////////////////////////////////////
             }
-            else
-            {
-                this.deleteIDshowText();
-                var text = document.createTextNode("Upload cv file success!");
-                this.showElementInNewDivForMsg(text);
-                this.componentWillMount();
+            catch (e) {
+                this.setState({error: 'Cannot read the data'});
             }
-            //////////////////////////////////////////////////////
+
 
         };
 
@@ -127,26 +138,33 @@ class UploadFile extends Component {
         var txt;
         if (window .confirm("Are you sure you want to delete the file?")) {
             txt = "You pressed OK!";
-            const response = await axiosInstance.delete(`/user/${this.getUserId()}/update`);
-            //////////////////////////////////////////////////////
-            // if (response.data == 'failed' )
-            // {
-            //     this.deleteIDshowText();
-            //     var text = document.createTextNode("Failed! No cv file in your profile details");
-            //     this.showElementInNewDivForMsg(text);
-            // }
-            if (response.data == 'success')
+            try
             {
-                var text = document.createTextNode("success!  now you can upload the new cv file");
-                this.showElementInNewDivForMsg(text);
-                this.delteTextNameFile();
+                const response = await axiosInstance.delete(`/user/${this.getUserId()}/update`);
+                //////////////////////////////////////////////////////
+                // if (response.data == 'failed' )
+                // {
+                //     this.deleteIDshowText();
+                //     var text = document.createTextNode("Failed! No cv file in your profile details");
+                //     this.showElementInNewDivForMsg(text);
+                // }
+                if (response.data == 'success')
+                {
+                    var text = document.createTextNode("success!  now you can upload the new cv file");
+                    this.showElementInNewDivForMsg(text);
+                    this.delteTextNameFile();
+                }
+                else  // if esponse.data == 'failed' or esponse.data == 'error'
+                {
+                    var text = document.createTextNode("Failed! No cv file in your profile details");
+                    this.showElementInNewDivForMsg(text);
+                }
+                //////////////////////////////////////////////////////
             }
-            else  // if esponse.data == 'failed' or esponse.data == 'error'
-            {
-                var text = document.createTextNode("Failed! No cv file in your profile details");
-                this.showElementInNewDivForMsg(text);
+            catch (e) {
+                this.setState({error: 'Cannot read the data'});
             }
-            //////////////////////////////////////////////////////
+
         }
         // else {
         //     txt = "You pressed Cancel!";

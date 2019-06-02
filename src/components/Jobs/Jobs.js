@@ -20,7 +20,7 @@ class Jobs extends Component {
     // description: "",
     // requirements: ""
 
-    componentDidMount = async () => {
+    componentWillMount = async () => {
         try {
             const response = await axiosInstance.get('/jobs/upload')
                 .then(response => {
@@ -42,18 +42,18 @@ class Jobs extends Component {
     render() {
         const {jobsList} = this.state;
         return (
-            <div>
-                Jobs offers:
+            <div className="All-jobs">
+            <br/>
+                <h2>All the jobs we offer:</h2>
                 {jobsList.map(job => {
                     return (
                         <div className="jobCard" key={job.identifier}>
                             <div className="jobContent">
-                                <span className="jobName">{job.identifier}. Role: {job.role_name}</span>
-                                <p>Location: {job.location} </p>
-                                <p>Type: {job.type}</p>
-                                <p>Salary: {job.salary}</p>
-                                <p>Description: {job.description}</p>
-                                <p>Requirements: {job.requirements}</p>
+                                <span className="jobName">Role: {job.role_name}</span>
+                                <p>Location: {job.location} <br/>
+                                Type: {job.type}   Salary: {job.salary} <br/>
+                                Description: {job.description} <br/>
+                                Requirements: {job.requirements}</p>
                             </div>
                         </div>
                     )

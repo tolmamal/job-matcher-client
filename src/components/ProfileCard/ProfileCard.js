@@ -4,14 +4,13 @@ import React, {
 import "./ProfileCard.css"
 import DetailsForm from "../DetailsForm/DetailsForm";
 import axiosInstance from "../../utils/axios";
-import StateStatus from "../StateStatus/StateStatus";
 
 class ProfileCard extends Component {
 
 
     constructor(props) {
         super(props);
-        console.log(props.push)
+        // console.log("props.push",props.push)
         this.state = {
             first_name: "",
             last_name: "",
@@ -24,23 +23,26 @@ class ProfileCard extends Component {
     getUserId = () => this.props.match.params.id;
 
     componentWillMount = async () => {
-        const response = await axiosInstance.get(`/user/${this.props.match.params.id}/changeProfile`);
-        const {state} = this;
-        this.setState({first_name: response.data[0]});
-        this.setState({last_name: response.data[1]});
-        this.setState({cards_amount: response.data[3]});
-        this.setState({cards: response.data[4]});
+        try {
+            const response = await axiosInstance.get(`/user/${this.props.match.params.id}/changeProfile`);
+            const {state} = this;
+            this.setState({first_name: response.data[0]});
+            this.setState({last_name: response.data[1]});
+            this.setState({cards_amount: response.data[3]});
+            this.setState({cards: response.data[4]});
 
 
-        let skills = document.getElementsByClassName("skill-info")[0];
-        for(let i=0; i<this.state.cards_amount; i++)
-        {
-            let skill = document.createElement("h6");
-            skill.innerHTML = '<i class="fa fa-graduation-cap" aria-hidden="true"></i>';
-            let skill_name = document.createTextNode("    " + this.state.cards[i]);
+            let skills = document.getElementsByClassName("skill-info")[0];
+            for (let i = 0; i < this.state.cards_amount; i++) {
+                let skill = document.createElement("h6");
+                skill.innerHTML = '<i class="fa fa-graduation-cap" aria-hidden="true"></i>';
+                let skill_name = document.createTextNode("    " + this.state.cards[i]);
 
-            skill.appendChild(skill_name);
-            skills.appendChild(skill);
+                skill.appendChild(skill_name);
+                skills.appendChild(skill);
+            }
+        }catch (e) {
+            console.log("error in componentWillMount in ProfuleCard!")
         }
 
 
@@ -106,56 +108,72 @@ class ProfileCard extends Component {
         // console.log("--- loadCard(e) ---");
 
         // TODO: split the msg with whitespace for display !!!
-        const response = await axiosInstance.post(`/user/${this.props.match.params.id}/recommendation`);
+        try {
+            const response = await axiosInstance.post(`/user/${this.props.match.params.id}/recommendation`);
 
-        let lines = document.getElementsByClassName("cards-container")[0];
+            let lines = document.getElementsByClassName("cards-container")[0];
 
-        if(lines.children.length === 0)
-        {
-            let cards = document.createElement("ul");
-            cards.className = "cards";
-
-            let card = document.createElement("li");
-            card.className = "card";
-
-            let line = document.createElement("h2");
-            line.className = "line";
-
-            let title = document.createTextNode("Customized Professional Recommendations");
-            line.appendChild(title);
-
-
-            card.appendChild(line);
-
-            let newLine = document.createElement("br");
-            card.appendChild(newLine);
-
-            for (let i = 0; i < this.state.cards_amount; i++) {
-
-                let par = document.createElement("p");
-                let fieldTitle = document.createElement("h3");
-                let field = document.createTextNode(this.state.cards[i] + ":");
-
-                fieldTitle.appendChild(field);
-                par.appendChild(fieldTitle);
-                card.appendChild(par);
-                let result = document.createElement("p");
-                result.innerHTML = '<i class="fa fa-graduation-cap" aria-hidden="true"></i>';
-                let msg = document.createTextNode(" " + response.data[this.state.cards[i]]);
-                result.appendChild(msg);
-                par.appendChild(result);
-                card.appendChild(par);
-
-                let nl = document.createElement("br");
-                card.appendChild(nl);
-
-
+            for(var i=0;i<lines.children.length;i++){
+                lines.removeChild(lines.firstChild);
             }
+            // if(lines.children.length === 0)
+            // {
+                let cards = document.createElement("ul");
+                cards.className = "cards";
+
+                let card = document.createElement("li");
+                card.className = "card";
+
+                let line = document.createElement("h2");
+                line.className = "line";
+
+                let title = document.createTextNode("Customized Professional Recommendations");
+                line.appendChild(title);
 
 
-            cards.appendChild(card);
-            lines.appendChild(cards);
+                card.appendChild(line);
 
+                let newLine = document.createElement("br");
+                card.appendChild(newLine);
+                console.log("if(response.data!='Faild')",response.data!='Faild',response.data);
+                if(response.data!='Faild') {
+                    console.log("if(response.data!='Faild')",response.data!='Faild');
+                    for (let i = 0; i < this.state.cards_amount; i++) {
+
+                        let par = document.createElement("p");
+                        let fieldTitle = document.createElement("h3");
+                        let field = document.createTextNode(this.state.cards[i] + ":");
+
+                        fieldTitle.appendChild(field);
+                        par.appendChild(fieldTitle);
+                        card.appendChild(par);
+                        let result = document.createElement("p");
+                        result.innerHTML = '<i class="fa fa-graduation-cap" aria-hidden="true"></i>';
+                        let msg = document.createTextNode(" " + response.data[this.state.cards[i]]);
+                        result.appendChild(msg);
+                        par.appendChild(result);
+                        card.appendChild(par);
+
+                        let nl = document.createElement("br");
+                        card.appendChild(nl);
+
+
+                    }
+                }
+                else{
+                    let result = document.createElement("p");
+                    let msg = document.createTextNode("You must upload cv file!" );
+                    result.appendChild(msg);
+                    card.appendChild(result);
+                }
+
+
+                cards.appendChild(card);
+                lines.appendChild(cards);
+
+            // }
+        }catch (e) {
+            console.log("catch recommendations!!");
         }
 
 
@@ -164,10 +182,10 @@ class ProfileCard extends Component {
 
     loadSkills = () => {
         let skills = document.getElementsByClassName("ds-skill")[0];
-        console.log("cards_amount: ", this.state.cards_amount);
+        // console.log("cards_amount: ", this.state.cards_amount);
 
         for (let i = 0; i < this.state.cards_amount; i++) {
-            console.log("i = ", i);
+            // console.log("i = ", i);
             let skill = document.createElement("div");
             skill.className = "skill";
             // skill.innerHTML = '<i class="fa fa-graduation-cap" aria-hidden="true"></i>';

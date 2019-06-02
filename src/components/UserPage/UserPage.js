@@ -1,15 +1,14 @@
 import React, {Component} from 'react';
 import './UserPage.css';
 import UserMenu from '../UserMenu/UserMenu';
-import axiosInstance from '../../utils/axios';
 
 class UserPage extends Component {
 
 
 
-    componentDidMount() {
-        console.log(`calling /api/user/${this.getUserId()}`);
-    }
+    // componentDidMount() {
+    //     console.log(`calling /api/user/${this.getUserId()}`);
+    // }
 
     getUserId = () => this.props.match.params.id;
 

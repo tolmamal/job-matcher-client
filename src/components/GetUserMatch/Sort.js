@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import "./GetUserMatch.css";
 import axiosInstance from "../../utils/axios";
 import "../Jobs/Jobs.css";
-import "../word2vec/word2vec";
 import "./flipCard.css"
 
 
@@ -21,7 +20,7 @@ export default class GetUserMatch extends Component {
 
     sortScore = async () => {
         try {
-            console.log('in sortScore')
+            // console.log('in sortScore')
             var div = document.getElementById('aaa');
             if (div.children.length != 0)
             {
@@ -30,7 +29,7 @@ export default class GetUserMatch extends Component {
                 }
             }
             const response = await axiosInstance.post(`/user/${this.getUserId()}/sortBYscore`);
-            console.log('response' , response.data);
+            // console.log('response' , response.data);
             if (response.data == null){
 
                 var div = document.getElementById('aaa');
@@ -164,7 +163,7 @@ export default class GetUserMatch extends Component {
 
     sortLocation = async () => {
         try {
-            console.log('in sortLocation')
+            // console.log('in sortLocation')
             var div = document.getElementById('aaa');
             if (div.children.length != 0)
             {
@@ -324,9 +323,6 @@ export default class GetUserMatch extends Component {
         btns[1].className='btn_nothing';
         var btns=document.getElementsByClassName('btn_nothing');
         btns[c-1].className='btn_active'
-
-        console.log('in filterSelection');
-
         var div = document.getElementById('aaa');
         if (div.children.length != 0)
         {
@@ -334,8 +330,6 @@ export default class GetUserMatch extends Component {
                 div.removeChild(div.firstChild);
             }
         }
-        console.log('before switch');
-
         switch (c) {
             case 7: {this.sortScore();break;}
             case 8: {this.sortLocation();break;}
@@ -343,20 +337,28 @@ export default class GetUserMatch extends Component {
 
         }};
 
-    UpdateFavorite= async(event)=>{
+    UpdateFavorite= async(event)=> {
         var heart = document.getElementById(event.target.id);
         heart.classList.toggle('fa-heart-o');
-        const body={id:event.target.id}
-        const response = await axiosInstance.post(`/user/${this.getUserId()}/UpdateFavorite`,{body});
+        const body = {id: event.target.id};
+        try {
+            const response = await axiosInstance.post(`/user/${this.getUserId()}/UpdateFavorite`, {body});
+        } catch (e) {
+            console.log("catch UpdateFavorite Sort")
+        }
     };
 
     UpdateSending= async(event)=>{
         //TODO:to add the perfix fot the it attribute
         var send = document.getElementById(event.target.id);
-        console.log(event.target.id.substring(0,event.target.id.length-4));
+        // console.log(event.target.id.substring(0,event.target.id.length-4));
         send.classList.toggle('fa-paper-plane-o');
         const body={id:event.target.id.substring(0, event.target.id.length-4)};
-        const response = await axiosInstance.post(`/user/${this.getUserId()}/UpdateSending`,{body});
+        try{
+            const response = await axiosInstance.post(`/user/${this.getUserId()}/UpdateSending`,{body});
+        }catch (e) {
+            console.log("catch UpdateSending Sort")
+        }
     };
 
     UpdateReplay= async(event)=>{
@@ -365,7 +367,11 @@ export default class GetUserMatch extends Component {
         console.log(event.target.id.substring(0,event.target.id.length-6));
         send.classList.toggle('fa-square-o');
         const body={id:event.target.id.substring(0, event.target.id.length-6)};
-        const response = await axiosInstance.post(`/user/${this.getUserId()}/UpdateReply`,{body});
+        try{
+            const response = await axiosInstance.post(`/user/${this.getUserId()}/UpdateReply`,{body});
+        }catch (e) {
+            console.log("catch UpdateReplay Sort")
+        }
     };
 
     render(){

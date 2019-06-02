@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import "./FIlters.css"
-import GetUserMatch from '../GetUserMatch/GetUserMatch'
 import axiosInstance from "../../utils/axios";
 import {FILTER_NAMES} from "./GetUserMatch";
 
@@ -19,24 +18,27 @@ class Filters extends Component{
     getUserId = () => this.props.match.params.id;
 
     componentWillMount= async()=> {
-        const response = await axiosInstance.post(`/user/${this.getUserId()}/word2vec`);
-        var loader = document.getElementsByClassName('loader')[0];
-        var jobDetails = document.getElementsByClassName('jobDetails')[0];
-        var txtLoader = document.getElementsByClassName('txtLoader')[0];
-        loader.style.display="none";
-        jobDetails.style.display="block";
-        txtLoader.style.display="none";
-        console.log("responce-Fillter",response)
-        if (response.data==null){
-            console.log("responce-Fillter")
-            var div = document.getElementById('aaa');
-            var note = document.createElement("p");
-            var txtNote = document.createTextNode("You must upload cv file!");
-            note.appendChild(txtNote);
-            div.appendChild(note);
+        try {
+            const response = await axiosInstance.post(`/user/${this.getUserId()}/word2vec`);
+            var loader = document.getElementsByClassName('loader')[0];
+            var jobDetails = document.getElementsByClassName('jobDetails')[0];
+            var txtLoader = document.getElementsByClassName('txtLoader')[0];
+            loader.style.display = "none";
+            jobDetails.style.display = "block";
+            txtLoader.style.display = "none";
+            // console.log("responce-Fillter", response)
+            if (response.data == null) {
+                console.log("responce-Fillter")
+                var div = document.getElementById('aaa');
+                var note = document.createElement("p");
+                var txtNote = document.createTextNode("You must upload cv file!");
+                note.appendChild(txtNote);
+                div.appendChild(note);
+            } else
+                this.state.jobs = response.data
+        }catch (e) {
+            console.log("catch componentWillMount Fillters!!");
         }
-        else
-            this.state.jobs = response.data
     };
 
     filterSelection = async(c) => {
@@ -48,34 +50,60 @@ class Filters extends Component{
                 div.removeChild(div.firstChild);
             }
         }
-        const response = await axiosInstance.post(`/user/${this.getUserId()}/word2vec2`);
-        // console.log("responce-Fillter",response)
-        if (response.data==null){
-            // console.log("responce-Fillter",response.data)
-            var div = document.getElementById('aaa');
-            var note = document.createElement("p");
-            var txtNote = document.createTextNode("You must upload cv file!");
-            note.appendChild(txtNote);
-            div.appendChild(note);
-        }
-        else
-            this.state.jobs = response.data
+        try {
+            const response = await axiosInstance.post(`/user/${this.getUserId()}/word2vec2`);
+            // console.log("responce-Fillter",response)
+            if (response.data == null) {
+                // console.log("responce-Fillter",response.data)
+                var div = document.getElementById('aaa');
+                var note = document.createElement("p");
+                var txtNote = document.createTextNode("You must upload cv file!");
+                note.appendChild(txtNote);
+                div.appendChild(note);
+            } else
+                this.state.jobs = response.data
 
-        var btns = document.getElementsByClassName('btn_active');
-        btns[0].className = 'btn_nothing';
-        var btns = document.getElementsByClassName('btn_nothing');
-        btns[c].className = 'btn_active';
+            var btns = document.getElementsByClassName('btn_active');
+            btns[0].className = 'btn_nothing';
+            var btns = document.getElementsByClassName('btn_nothing');
+            btns[c].className = 'btn_active';
 
-        this.props.updateSelectedFilter(c);
-        switch (c) {
-            case FILTER_NAMES.SHOW_ALL:{this.showAll();break;}
-            case FILTER_NAMES.FULL_JOB:{this.FullJob();break;}
-            case FILTER_NAMES.HALF_JOB:{this.HalfJob();break;}
-            case FILTER_NAMES.STUDENT_JOB:{this.StudentJob();break;}
-            case FILTER_NAMES.SENDING_JOB:{this.SendingJob();break;}
-            case FILTER_NAMES.FAVORITE_JOB:{this.FavoriteJob();break;}
-            case FILTER_NAMES.REPLY_JOB:{this.ReplyJob();break;}
-            default:{break;}
+            this.props.updateSelectedFilter(c);
+            switch (c) {
+                case FILTER_NAMES.SHOW_ALL: {
+                    this.showAll();
+                    break;
+                }
+                case FILTER_NAMES.FULL_JOB: {
+                    this.FullJob();
+                    break;
+                }
+                case FILTER_NAMES.HALF_JOB: {
+                    this.HalfJob();
+                    break;
+                }
+                case FILTER_NAMES.STUDENT_JOB: {
+                    this.StudentJob();
+                    break;
+                }
+                case FILTER_NAMES.SENDING_JOB: {
+                    this.SendingJob();
+                    break;
+                }
+                case FILTER_NAMES.FAVORITE_JOB: {
+                    this.FavoriteJob();
+                    break;
+                }
+                case FILTER_NAMES.REPLY_JOB: {
+                    this.ReplyJob();
+                    break;
+                }
+                default: {
+                    break;
+                }
+            }
+        }catch (e) {
+            console.log("catch fillterSelection Fillters!!");
         }
 
 
@@ -786,8 +814,12 @@ class Filters extends Component{
         var heart = document.getElementById(event.target.id);
         heart.classList.toggle('fa-heart-o');
         const body={id:event.target.id}
-        const response = await axiosInstance.post(`/user/${this.getUserId()}/UpdateFavorite`,{body});
-    };
+        try {
+            const response = await axiosInstance.post(`/user/${this.getUserId()}/UpdateFavorite`, {body});
+        }catch (e) {
+            console.log("catch UpdateFavorite Fillters!!");
+        }
+        };
 
     UpdateSending= async(event)=>{
         //TODO:to add the perfix fot the it attribute
@@ -795,7 +827,11 @@ class Filters extends Component{
         // console.log(event.target.id.substring(0,event.target.id.length-4));
         send.classList.toggle('fa-paper-plane-o');
         const body={id:event.target.id.substring(0, event.target.id.length-4)};
-        const response = await axiosInstance.post(`/user/${this.getUserId()}/UpdateSending`,{body});
+        try{
+            const response = await axiosInstance.post(`/user/${this.getUserId()}/UpdateSending`,{body});
+        }catch (e) {
+            console.log("catch UpdateSending Fillters!!");
+        }
     };
 
     UpdateReplay= async(event)=>{
@@ -804,8 +840,13 @@ class Filters extends Component{
         // console.log(event.target.id.substring(0,event.target.id.length-6));
         send.classList.toggle('fa-square-o');
         const body={id:event.target.id.substring(0, event.target.id.length-6)};
-        const response = await axiosInstance.post(`/user/${this.getUserId()}/UpdateReply`,{body});
-        this.setState()
+        try{
+            const response = await axiosInstance.post(`/user/${this.getUserId()}/UpdateReply`,{body});
+            this.setState()
+        }catch (e) {
+            console.log("catch UpdateReplay Fillters!!");
+        }
+
     };
 
     render() {

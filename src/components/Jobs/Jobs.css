@@ -5,6 +5,12 @@
     align-items: center;
 }
 
+.All-jobs h2 {
+    color: #2b665e;
+    font-weight: bold;
+    font-size: 30px;
+}
+
 .jobCard {
     display: flex;
     flex-direction: column;
@@ -26,5 +32,14 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    color: red;
+    color: #2b665e;
+    font-weight: bold;
 }
+
+.jobName p{
+
+}
+
+
+
+
