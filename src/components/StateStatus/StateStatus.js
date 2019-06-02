@@ -3,35 +3,39 @@ import React, {
 } from "react";
 import "./StateStatus.css"
 import axiosInstance from "../../utils/axios";
+import ValidatedInput from "../ValidatedInput";
 
 class StateStatus extends Component {
 
 
     constructor(props) {
         super(props);
+
         this.state = {
-            find:false
+            find: false
         };
 
     };
+
 
     componentWillMount = async () => {
         const response = await axiosInstance.get(`/user/${this.props.match.params.id}/set_status`);
         this.setState({find:response.data[0]});
         var modal1 = document.getElementById("find1");
         var modal2= document.getElementById("find2");
-        if(this.state.find==false)
+        if(this.state.find === false)
             modal1.checked="checked";
         else
             modal2.checked="checked";
     };
 
 
+
         render() {
         return (
             <div>
-                <h2>Set your finder status:</h2>
-                <label className="SScontainer">not found jod yet
+                <h3>Set your finder status:</h3>
+                <label className="SScontainer">not found job yet
                     <input id="find1" checked="checked" type="radio" name="radio"/>
                         <span className="SScheckmark"></span>
                 </label>
