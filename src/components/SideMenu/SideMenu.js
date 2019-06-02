@@ -225,7 +225,8 @@ class SideMenu extends Component {
     getUserWelcome = () => {
         const token = getToken();
         if (!token) {
-            return <Link to='/signin'>Login</Link>;
+            // return <Link to='/signin'>Login</Link>;
+            return <label>Hello Guest! </label>
         }
         const data = jwt_decode(token);
 
