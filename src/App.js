@@ -12,6 +12,7 @@ import {removeToken} from "./utils/axios";
 import isAuthenticated from "./components/isAuthenticated";
 import HomeDesign from "./components/HomeDesign/HomeDesign";
 import UserInstructions from "./components/UserInstructions/UserInstructions";
+import Contact from "./components/Contact/Contact";
 
 
 function Index() {
@@ -54,6 +55,7 @@ function AppRouter() {
                     <Route path="/user/:id/" component={isAuthenticated(UserPage)}/>
                     <Route path="/instructions/" component={UserInstructions}/>
                     <Route path="/jobs/" component={isAuthenticated(Jobs)}/>
+                    <Route path="/contact/" component={Contact}/>
                     <Route path="/logout" component={isAuthenticated(LogOut)}/>
                 </Switch>
             </div>

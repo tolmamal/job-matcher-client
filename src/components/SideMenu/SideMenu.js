@@ -203,6 +203,7 @@ const SIDE_MENU_ITEMS = {
         {link: (data) => '/instructions', label: 'Instructions'},
         {link: (data) => `/user/${data.id}`, label: 'User Page'},
         {link: (data) => '/jobs', label: 'Jobs'},
+        {link: (data) => '/contact', label: 'Contact Us'},
         {link: (data) => '/logout', label: 'Log Out'},
     ]
 };
