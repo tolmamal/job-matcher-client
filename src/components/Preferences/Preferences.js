@@ -28,7 +28,7 @@ class Preferences extends Component {
             this.setState({selectedType: temp});
             // for star icon
             this.ratestar();
-            setInterval(this.ratestar,3000,this.ratestar());
+            setInterval(this.ratestar(),3000,this.ratestar());
         }catch (e) {
             console.log("catch componentWillMount Preferences")
         }
