@@ -1,3 +1,62 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+
+.user-status {
+    font-family: roboto;
+}
+
+input[type=radio] {
+    position: absolute;
+    visibility: hidden;
+    display: none;
+}
+
+
+label {
+    color: #9a929e;
+    display: inline-block;
+    cursor: pointer;
+    font-weight: bold;
+    padding: 5px 20px;
+}
+
+input[type=radio]:checked + label {
+    color: #ccc8ce;
+    background: #675f6b;
+}
+
+
+label + input[type=radio] + label {
+    border-left: solid 3px #675f6b;
+}
+
+.radio-group {
+    border: solid 3px #675f6b;
+    display: inline-block;
+    margin: 20px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 .SScontainer {
     /*display: block;*/
@@ -37,7 +96,7 @@
 
 /* When the radio button is checked, add a blue background */
 .SScontainer input:checked ~ .SScheckmark {
-    background-color: #FF9F55;
+    background-color: #2b665e;
 }
 
 /* Create the indicator (the dot/circle - hidden when not checked) */

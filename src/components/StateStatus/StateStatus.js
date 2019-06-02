@@ -48,20 +48,20 @@ class StateStatus extends Component {
 
 
     render() {
-    return (
-        <div>
-            <h2>Set your finder status:</h2>
-            <label className="SScontainer">not found jod yet
-                <input id="find1" onClick={(e)=>this.SetStatus(false)} type="radio" name="radio"/>
+        return (
+            <div>
+                <h2>Set your finder status:</h2>
+                <label className="SScontainer">not found jod yet
+                    <input id="find1" onClick={(e)=>this.SetStatus(false)} type="radio" name="radio"/>
                     <span className="SScheckmark"></span>
-            </label>
-            <label className="SScontainer">found job
-                <input id="find2" onClick={(e)=>this.SetStatus(true)} type="radio" name="radio"/>
+                </label>
+                <label className="SScontainer">found job
+                    <input id="find2" onClick={(e)=>this.SetStatus(true)} type="radio" name="radio"/>
                     <span className="SScheckmark"></span>
-            </label>
-        </div>
+                </label>
+            </div>
 
-    );
+        );
 
     }
 }
