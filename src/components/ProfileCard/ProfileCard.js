@@ -58,42 +58,72 @@ class ProfileCard extends Component {
         modal.style.display = "none";
     };
 
+    deleteIDshowText() {
+        var div = document.getElementsByClassName('user-timeline')[0];
+        if (div.children.length != 0)
+        {
+            while(div.firstChild){
+                div.removeChild(div.firstChild);
+            }
+        }
+    }
+
+    showElementInNewDivForMsg(text)
+    {
+        var div = document.getElementsByClassName('user-timeline')[0];
+        var note = document.createElement("p");
+        // var text = document.createTextNode("Failed! No cv file in your profile details");
+        var br = document.createElement("br");
+        note.appendChild(text);
+        div.appendChild(br);
+        div.appendChild(note);
+    }
+
     loadTimeline = async (e) => {
         try {
             console.log('in function loadTimeline')
-            var div = document.getElementsByClassName('user-timeline')[0];
-            if (div.children.length != 0)
-            {
-                while(div.firstChild){
-                    div.removeChild(div.firstChild);
-                }
-            }
+            this.deleteIDshowText();
+            var txt;
             const response = await axiosInstance.post(`/user/${this.getUserId()}/UserTimeLine`);
-            this.state.timeLine = response.data
-            console.log('response')
-            console.log(response)
-            console.log('this.state.timeLine')
-            console.log(this.state.timeLine)
+            console.log('response.data',response.data)
+            // console.log(response)
+            // console.log('this.state.timeLine')
+            // console.log(this.state.timeLine)
+            if (response.data == 'noJobs')
+            {
+                var text = document.createTextNode("No details to show, you must check the cv file & job details");
+                this.showElementInNewDivForMsg(text);
 
-            var div = document.getElementsByClassName("user-timeline")[0];
-            for (var key in this.state.timeLine) {
-                var div2 = document.createElement("div");
-                div2.className ="timeline-item";
-                var date = document.createTextNode(key);
-                div2.appendChild(date);
-                for (let i = 0; i < this.state.timeLine[key].length; i++){
-                    for (var k in this.state.timeLine[key][i]){
-                        var role = document.createElement("h1");
-                        var r = document.createTextNode((i+1) + '. '+this.state.timeLine[key][i][k][0]);
-                        role.appendChild(r);
-                        var sentORcallback = document.createElement("p");
-                        var type = document.createTextNode(this.state.timeLine[key][i][k][1]);
-                        sentORcallback.appendChild(type);
-                        div2.appendChild(role);
-                        div2.appendChild(type);
+            }
+            else if (response.data == 'NoSendingReplyDate')
+            {
+                var text = document.createTextNode("No details to show, you need to mark in job details sending jobs or reply job");
+                this.showElementInNewDivForMsg(text);
+            }
+            else
+            {
+                this.state.timeLine = response.data;
+                var div = document.getElementsByClassName("user-timeline")[0];
+                for (var key in this.state.timeLine) {
+                    var div2 = document.createElement("div");
+                    div2.className ="timeline-item";
+                    var date = document.createTextNode(key);
+                    div2.appendChild(date);
+                    for (let i = 0; i < this.state.timeLine[key].length; i++){
+                        for (var k in this.state.timeLine[key][i]){
+                            var role = document.createElement("h1");
+                            var r = document.createTextNode((i+1) + '. '+this.state.timeLine[key][i][k][0]);
+                            role.appendChild(r);
+                            var sentORcallback = document.createElement("p");
+                            var type = document.createTextNode(this.state.timeLine[key][i][k][1]);
+                            sentORcallback.appendChild(type);
+                            div2.appendChild(role);
+                            div2.appendChild(type);
+                        }
                     }
+                    div.appendChild(div2);
                 }
-                div.appendChild(div2);
+
             }
         }
         catch (e) {
@@ -255,7 +285,7 @@ class ProfileCard extends Component {
                     </div>
 
                 </div>
-
+                {/*<div id="show-text-timeLine"/>*/}
                 <div className="user-timeline"/>
                 <div className="user-recommend">
 
