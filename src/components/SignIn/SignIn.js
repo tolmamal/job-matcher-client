@@ -31,52 +31,7 @@ class SignIn extends Component {
 
     };
 
-    // submitForm = async () => {
-    //     if (!this.isValid()) {
-    //         this.setState({formValid: false});
-    //         return;
-    //     }
-    //     const {state} = this;
-    //     const body = {
-    //         email: state.email,
-    //         password: state.password
-    //
-    //     };
-    //
-    //     try {
-    //
-    //     } catch (e) {
-    //         console.log(e);
-    //
-    //     }
-    //
-    //
-    // };
 
-    // submitForm = async () => {
-    //     if (!this.isValid()) {
-    //         this.setState({ formValid: false });
-    //         return;
-    //     }
-    //     const { state } = this;
-    //     const body = {
-    //         email: state.email,
-    //         password: state.password
-    //
-    //     };
-    //
-    //     try {
-    //
-    //     }
-    //     catch (e) {
-    //         console.log(e);
-    //
-    //     }
-    //
-    //
-    //
-    //
-    // };
 
 
     submitHandler = async () => {

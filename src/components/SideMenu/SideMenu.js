@@ -196,6 +196,7 @@ const SIDE_MENU_ITEMS = {
         {link: (data) => '/register', label: 'Register'},
         {link: (data) => '/signin', label: 'Sign In'},
 
+
     ],
     USER: [
         {link: (data) => '/', label: 'Home'},
