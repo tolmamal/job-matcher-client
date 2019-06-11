@@ -112,6 +112,11 @@
  .bm-menu a:hover, .bm-menu a:focus {
 	 color: #c94e50;
 }
+
+ .bm-item-list{
+	 height: auto !important;
+ }
+
  .bm-item-list a {
 	 padding: 0.8em;
 }

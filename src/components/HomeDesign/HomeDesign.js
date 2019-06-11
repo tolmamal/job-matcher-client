@@ -24,7 +24,7 @@ class HomeDesign extends Component {
         txt = document.createTextNode(usersfindjobcounter.data.toString());
         usersfindjob.appendChild(txt);
 
-    }
+    };
 
     render() {
         return (
@@ -117,7 +117,7 @@ class HomeDesign extends Component {
                                                         <i className="fa fa-suitcase"></i>
                                                     </div>
                                                     <div id="jobsOffers" className="counter-no counter">
-                                                        {/*1275*/}
+                                                        {/*379*/}
                                                     </div>
                                                     <div className="counter-label">
                                                         Job Offers
@@ -132,7 +132,7 @@ class HomeDesign extends Component {
                                                         <i className="fa fa-clock-o"></i>
                                                     </div>
                                                     <div id="registersusers" className="counter-no counter">
-                                                        {/*400*/}
+                                                        {/*225*/}
                                                     </div>
                                                     <div className="counter-label">
                                                         Registered Users
@@ -146,7 +146,7 @@ class HomeDesign extends Component {
                                                         <i className="fa fa-trophy"></i>
                                                     </div>
                                                     <div  id="usersfindjob" className="counter-no counter">
-                                                        {/*350*/}
+                                                        {/*71*/}
                                                     </div>
                                                     <div className="counter-label">
                                                         Users Find Job
